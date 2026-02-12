@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Snowflake</string>
+
+    <string name="close">Close</string>
+
+    <string name="snowflake_disabled">Snowflake is disabled</string>
+    <string name="snowflake_enabled">Snowflake is enabled</string>
+    <string name="snowflake_running">Running</string>
+    <string name="snowflake_stopped">Stopped</string>
+    <string name="snowflake_learn_more">Learn more about Snowflake</string>
+
+    <string name="battery_optimizations_text">Please disable battery optimizations for this app so it can run in the background successfully</string>
+    <string name="battery_optimizations_action">Continue</string>
+
+    <string name="about">About</string>
+    <string name="about_text">Help people in censored countries bypass censorship by running this app.
+        \n\nThe only prerequisite to install this app is that the Internet in your country is not heavily censored already.
+        \n\nThere is no need to worry about which websites people are accessing through your Snowflake app Their visible browsing IP address will match their Tor exit node not yours since you’re an entrypoint.
+    </string>
+
+    <string name="settings">Settings</string>
+    <string name="settings_background">Run in the background</string>
+    <string name="settings_background_context">We’ll ask Android to start the app in the background</string>
+    <string name="settings_unmetered">Unmetered network only</string>
+    <string name="settings_unmetered_context">Only run if connected to an unmetered network like WiFi</string>
+    <string name="settings_charging">Charging only</string>
+    <string name="settings_charging_context">Only run if the device battery is charging</string>
+    <string name="settings_capacity">Only run if the device battery is charging</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Help %d person at the same time</item>
+        <item quantity="other">Help %d persons at the same time</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Help an unlimited number of persons</string>
+
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Your Snowflake is ready to help users circumvent censorship.</string>
+    <string name="notification_text_connected">Your Snowflake is currently helping someone circumvent censorship.</string>
+</resources>
