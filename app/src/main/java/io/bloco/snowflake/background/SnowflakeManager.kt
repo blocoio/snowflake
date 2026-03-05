@@ -3,18 +3,26 @@ package io.bloco.snowflake.background
 import IPtProxy.SnowflakeClientEvents
 import IPtProxy.SnowflakeProxy
 import io.bloco.snowflake.models.SnowflakeConfig
+import io.bloco.snowflake.models.StatsInstant
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 class SnowflakeManager(
     snowflakeProxyProvider: () -> SnowflakeProxy,
     private val backgroundContext: CoroutineContext,
     private val getSnowflakeConfig: () -> Flow<SnowflakeConfig>,
+    private val storeStatsInstant: suspend (StatsInstant) -> Unit,
+    private val storeClientConnection: suspend (Instant) -> Unit,
 ) {
 
     private val _state = MutableStateFlow<State>(State.Stopped)
@@ -31,7 +39,14 @@ class SnowflakeManager(
                     snowflakeProxy.clientEvents = object : SnowflakeClientEvents {
                         override fun connected() {
                             Timber.i("connected")
-                            _state.value = State.Running(true)
+                            _state.update {
+                                if (it is State.Running) {
+                                    it.copy(clientsConnected = it.clientsConnected + 1)
+                                } else it
+                            }
+                            CoroutineScope(backgroundContext).launch {
+                                storeClientConnection(Clock.System.now())
+                            }
                         }
 
                         override fun connectionFailed() {
@@ -40,7 +55,14 @@ class SnowflakeManager(
 
                         override fun disconnected(country: String?) {
                             Timber.i("disconnected $country")
-                            _state.value = State.Running(false)
+                            _state.update {
+                                if (it is State.Running) {
+                                    it.copy(
+                                        clientsConnected = (it.clientsConnected - 1)
+                                            .coerceAtLeast(0)
+                                    )
+                                } else it
+                            }
                         }
 
                         override fun stats(
@@ -52,11 +74,25 @@ class SnowflakeManager(
                             outboundUnit: String?,
                             summaryInterval: Long,
                         ) {
-                            if (
-                                connectionCount == 0L
-                                && failedConnectionCount == 0L
-                                && summaryInterval == 0L
-                            ) return
+                            if (summaryInterval == 0L) return
+
+                            if (inboundBytes != 0L || outboundBytes != 0L || failedConnectionCount != 0L) {
+                                CoroutineScope(backgroundContext).launch {
+                                    storeStatsInstant(
+                                        StatsInstant(
+                                            timestamp = Clock.System.now(),
+                                            connectionCount = connectionCount,
+                                            failedConnectionCount = failedConnectionCount,
+                                            inboundBytes = inboundBytes,
+                                            outboundBytes = outboundBytes,
+                                            inboundUnit = inboundUnit,
+                                            outboundUnit = outboundUnit,
+                                            summaryInterval = summaryInterval,
+                                        )
+                                    )
+                                }
+                            }
+
                             Timber.i(
                                 """
                                 stats
@@ -75,7 +111,7 @@ class SnowflakeManager(
                 }
             }
 
-            _state.value = State.Running(false)
+            _state.value = State.Running()
         }
     }
 
@@ -100,7 +136,7 @@ class SnowflakeManager(
     }
 
     sealed interface State {
-        data class Running(val clientConnected: Boolean = false) : State
+        data class Running(val clientsConnected: Int = 0) : State
         data object Stopped : State
     }
 

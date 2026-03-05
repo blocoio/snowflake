@@ -12,7 +12,9 @@ import io.bloco.snowflake.background.BatteryOptimization
 import io.bloco.snowflake.background.SnowflakeManager
 import io.bloco.snowflake.data.AppDataStore
 import io.bloco.snowflake.data.FetchStunServers
+import io.bloco.snowflake.data.StatsStore
 import io.bloco.snowflake.domain.GetSnowflakeConfig
+import io.bloco.snowflake.domain.GetStatsSummary
 import io.bloco.snowflake.domain.RefreshStunServers
 import io.bloco.snowflake.ui.home.HomeViewModel
 import io.bloco.snowflake.ui.settings.SettingsViewModel
@@ -44,6 +46,7 @@ class Dependencies(app: Application) {
 
     val appDataStore by lazy { AppDataStore(dataStoreProvider) }
     val fetchStunServers by lazy { FetchStunServers(::httpClientProvider) }
+    private val statsStore by lazy { StatsStore() }
 
     // Background
 
@@ -56,6 +59,8 @@ class Dependencies(app: Application) {
             snowflakeProxyProvider = { snowflakeProxy },
             backgroundContext = backgroundContext,
             getSnowflakeConfig = getSnowflakeConfig::invoke,
+            storeStatsInstant = statsStore::storeInstant,
+            storeClientConnection = statsStore::storeConnection,
         )
     }
 
@@ -65,6 +70,12 @@ class Dependencies(app: Application) {
         GetSnowflakeConfig(
             getCapacity = appDataStore::capacity,
             getStunServers = appDataStore::stunServers,
+        )
+    }
+    private val getStatsSummary by lazy {
+        GetStatsSummary(
+            getStatsInstants = statsStore::instants,
+            getClientConnections = statsStore::clientConnections,
         )
     }
     val refreshStunServers by lazy {
@@ -88,6 +99,7 @@ class Dependencies(app: Application) {
         getAppConfig = appDataStore::appConfig,
         setIsEnabled = appDataStore::setSnowflakeEnabled,
         isIgnoringBatteryOptimizations = batteryOptimization::isIgnoring,
+        getStatsSummary = getStatsSummary::invoke,
     )
 
     fun settingsViewModel(

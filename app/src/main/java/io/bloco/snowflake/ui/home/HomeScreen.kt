@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -122,12 +123,49 @@ fun HomeScreen(
             style = MaterialTheme.typography.labelLarge
         )
 
-        if (state.snowflakeState is SnowflakeManager.State.Running && state.snowflakeState.clientConnected) {
+        if (state.snowflakeState is SnowflakeManager.State.Running) {
             Text(
-                text = "You are currently helping someone",
+                text = if (state.snowflakeState.clientsConnected == 0) {
+                    stringResource(R.string.snowflake_looking_to_help)
+                } else {
+                    pluralStringResource(
+                        R.plurals.snowflake_helping,
+                        state.snowflakeState.clientsConnected,
+                        state.snowflakeState.clientsConnected,
+                    )
+                },
                 style = MaterialTheme.typography.labelLarge
             )
         }
+
+        Text(
+            text = stringResource(R.string.snowflake_stats_title),
+            style = MaterialTheme.typography.labelLarge,
+            modifier = Modifier.padding(top = 8.dp)
+        )
+        Text(
+            text = stringResource(
+                R.string.snowflake_stats_connections,
+                state.statsSummary?.clientConnections ?: 0L
+            ),
+            style = MaterialTheme.typography.labelMedium,
+        )
+        Text(
+            text = stringResource(
+                R.string.snowflake_stats_inbound,
+                state.statsSummary?.inboundBytes ?: 0L,
+                state.statsSummary?.inboundUnit ?: "B"
+            ),
+            style = MaterialTheme.typography.labelMedium,
+        )
+        Text(
+            text = stringResource(
+                R.string.snowflake_stats_outbound,
+                state.statsSummary?.outboundBytes ?: 0L,
+                state.statsSummary?.outboundUnit ?: "B"
+            ),
+            style = MaterialTheme.typography.labelMedium,
+        )
 
         if (state.isIgnoringBatteryOptimizations == false) {
             Surface(
@@ -177,7 +215,7 @@ private fun HomeScreenPreview() {
     SnowflakeTheme {
         HomeScreen(
             state = HomeViewModel.State(
-                snowflakeState = SnowflakeManager.State.Running(true),
+                snowflakeState = SnowflakeManager.State.Running(2),
                 config = AppConfig(
                     isEnabled = true,
                     background = true,

@@ -124,7 +124,7 @@ class SnowflakeWorker(
             .setContentTitle(resources.getString(R.string.notification_channel))
             .setContentText(
                 resources.getString(
-                    if (state.clientConnected) {
+                    if (state.clientsConnected > 0) {
                         R.string.notification_text_connected
                     } else {
                         R.string.notification_text
