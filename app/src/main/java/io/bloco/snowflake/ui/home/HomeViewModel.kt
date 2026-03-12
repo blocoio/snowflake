@@ -4,9 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.bloco.snowflake.background.SnowflakeManager
 import io.bloco.snowflake.common.PublishFlow
-import io.bloco.snowflake.domain.GetStatsSummary
 import io.bloco.snowflake.models.AppConfig
-import io.bloco.snowflake.models.StatsSummary
+import io.bloco.snowflake.models.DayStats
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +21,7 @@ class HomeViewModel(
     getAppConfig: () -> Flow<AppConfig>,
     setIsEnabled: suspend (Boolean) -> Unit,
     isIgnoringBatteryOptimizations: () -> Flow<Boolean>,
-    getStatsSummary: () -> Flow<StatsSummary>,
+    getTodayStats: () -> Flow<DayStats>,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(State())
@@ -44,8 +43,8 @@ class HomeViewModel(
             .onEach { _state.update { state -> state.copy(isIgnoringBatteryOptimizations = it) } }
             .launchIn(viewModelScope)
 
-        getStatsSummary()
-            .onEach { _state.update { state -> state.copy(statsSummary = it) } }
+        getTodayStats()
+            .onEach { _state.update { state -> state.copy(stats = it) } }
             .launchIn(viewModelScope)
 
         events
@@ -67,7 +66,7 @@ class HomeViewModel(
     data class State(
         val snowflakeState: SnowflakeManager.State = SnowflakeManager.State.Stopped,
         val config: AppConfig? = null,
-        val statsSummary: StatsSummary? = null,
+        val stats: DayStats = DayStats(),
         val isIgnoringBatteryOptimizations: Boolean? = null,
     )
 

@@ -13,10 +13,10 @@
         <item quantity="other">Helping %d persons</item>
     </plurals>
     <string name="snowflake_learn_more">Learn more about Snowflake</string>
-    <string name="snowflake_stats_title">In the last 24 hours you have:</string>
+    <string name="snowflake_stats_title">Today:</string>
     <string name="snowflake_stats_connections">%d connections</string>
-    <string name="snowflake_stats_inbound">Received %s %s</string>
-    <string name="snowflake_stats_outbound">Sent %s %s</string>
+    <string name="snowflake_stats_inbound">Received %s</string>
+    <string name="snowflake_stats_outbound">Sent %s</string>
 
     <string name="battery_optimizations_text">Please disable battery optimizations for this app so it can run in the background successfully</string>
     <string name="battery_optimizations_action">Continue</string>

@@ -1,5 +1,6 @@
 package io.bloco.snowflake.ui.home
 
+import android.text.format.Formatter
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -146,23 +147,21 @@ fun HomeScreen(
         Text(
             text = stringResource(
                 R.string.snowflake_stats_connections,
-                state.statsSummary?.clientConnections ?: 0L
+                state.stats.connections,
             ),
             style = MaterialTheme.typography.labelMedium,
         )
         Text(
             text = stringResource(
                 R.string.snowflake_stats_inbound,
-                state.statsSummary?.inboundBytes ?: 0L,
-                state.statsSummary?.inboundUnit ?: "B"
+                Formatter.formatShortFileSize(activity, state.stats.inboundBytes),
             ),
             style = MaterialTheme.typography.labelMedium,
         )
         Text(
             text = stringResource(
                 R.string.snowflake_stats_outbound,
-                state.statsSummary?.outboundBytes ?: 0L,
-                state.statsSummary?.outboundUnit ?: "B"
+                Formatter.formatShortFileSize(activity, state.stats.outboundBytes),
             ),
             style = MaterialTheme.typography.labelMedium,
         )

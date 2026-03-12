@@ -8,13 +8,14 @@ import androidx.core.content.getSystemService
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.room.Room
 import io.bloco.snowflake.background.BatteryOptimization
 import io.bloco.snowflake.background.SnowflakeManager
 import io.bloco.snowflake.data.AppDataStore
 import io.bloco.snowflake.data.FetchStunServers
 import io.bloco.snowflake.data.StatsStore
+import io.bloco.snowflake.data.database.AppDatabase
 import io.bloco.snowflake.domain.GetSnowflakeConfig
-import io.bloco.snowflake.domain.GetStatsSummary
 import io.bloco.snowflake.domain.RefreshStunServers
 import io.bloco.snowflake.ui.home.HomeViewModel
 import io.bloco.snowflake.ui.settings.SettingsViewModel
@@ -43,10 +44,21 @@ class Dependencies(app: Application) {
             }
         }
     }
+    private val appDatabase by lazy {
+        Room.databaseBuilder(app, AppDatabase::class.java, "snowflake").build()
+    }
+    private val statsDao by lazy { appDatabase.statsDao() }
+
+    // Data Stores
 
     val appDataStore by lazy { AppDataStore(dataStoreProvider) }
     val fetchStunServers by lazy { FetchStunServers(::httpClientProvider) }
-    private val statsStore by lazy { StatsStore() }
+    private val statsStore by lazy {
+        StatsStore(
+            getStatsByDate = statsDao::getByDate,
+            storeStats = statsDao::insertOrUpdate
+        )
+    }
 
     // Background
 
@@ -59,8 +71,8 @@ class Dependencies(app: Application) {
             snowflakeProxyProvider = { snowflakeProxy },
             backgroundContext = backgroundContext,
             getSnowflakeConfig = getSnowflakeConfig::invoke,
-            storeStatsInstant = statsStore::storeInstant,
-            storeClientConnection = statsStore::storeConnection,
+            storeStatsInstant = statsStore::incrementInstant,
+            storeClientConnection = statsStore::incrementConnections,
         )
     }
 
@@ -70,12 +82,6 @@ class Dependencies(app: Application) {
         GetSnowflakeConfig(
             getCapacity = appDataStore::capacity,
             getStunServers = appDataStore::stunServers,
-        )
-    }
-    private val getStatsSummary by lazy {
-        GetStatsSummary(
-            getStatsInstants = statsStore::instants,
-            getClientConnections = statsStore::clientConnections,
         )
     }
     val refreshStunServers by lazy {
@@ -99,7 +105,7 @@ class Dependencies(app: Application) {
         getAppConfig = appDataStore::appConfig,
         setIsEnabled = appDataStore::setSnowflakeEnabled,
         isIgnoringBatteryOptimizations = batteryOptimization::isIgnoring,
-        getStatsSummary = getStatsSummary::invoke,
+        getTodayStats = statsStore::today,
     )
 
     fun settingsViewModel(
