@@ -18,9 +18,8 @@ import kotlinx.coroutines.flow.map
 import kotlin.time.Instant
 
 class AppDataStore(
-    private val dataStoreProvider: () -> DataStore<Preferences>
+    private val dataStoreProvider: () -> DataStore<Preferences>,
 ) {
-
     // App Config
 
     val appConfig: Flow<AppConfig> =
@@ -34,67 +33,61 @@ class AppDataStore(
                         chargingOnly = it[CHARGING_ONLY] ?: false,
                     )
                 }
-            }
-            .distinctUntilChanged()
+            }.distinctUntilChanged()
 
-    suspend fun setSnowflakeEnabled(value: Boolean) =
-        dataStore().edit { it[SNOWFLAKE_ENABLED] = value }
+    suspend fun setSnowflakeEnabled(value: Boolean) = dataStore().edit { it[SNOWFLAKE_ENABLED] = value }
 
-    suspend fun setBackground(value: Boolean) =
-        dataStore().edit { it[BACKGROUND] = value }
+    suspend fun setBackground(value: Boolean) = dataStore().edit { it[BACKGROUND] = value }
 
-    suspend fun setUnmeteredOnly(value: Boolean) =
-        dataStore().edit { it[UNMETERED_ONLY] = value }
+    suspend fun setUnmeteredOnly(value: Boolean) = dataStore().edit { it[UNMETERED_ONLY] = value }
 
-    suspend fun setChargingOnly(value: Boolean) =
-        dataStore().edit { it[CHARGING_ONLY] = value }
+    suspend fun setChargingOnly(value: Boolean) = dataStore().edit { it[CHARGING_ONLY] = value }
 
     // Capacity
 
     val capacity
-        get() = dataStoreFlow()
-            .flatMapLatest { dataStore -> dataStore.data.map { Capacity.fromValue(it[CAPACITY]) } }
-            .distinctUntilChanged()
+        get() =
+            dataStoreFlow()
+                .flatMapLatest { dataStore -> dataStore.data.map { Capacity.fromValue(it[CAPACITY]) } }
+                .distinctUntilChanged()
 
-    suspend fun setCapacity(capacity: Capacity) =
-        dataStore().edit { it[CAPACITY] = capacity.value }
+    suspend fun setCapacity(capacity: Capacity) = dataStore().edit { it[CAPACITY] = capacity.value }
 
     // STUN Servers
 
     val stunServers
-        get() = dataStoreFlow()
-            .flatMapLatest { dataStore -> dataStore.data.map { it[STUN_SERVERS]?.toList() } }
-            .distinctUntilChanged()
+        get() =
+            dataStoreFlow()
+                .flatMapLatest { dataStore -> dataStore.data.map { it[STUN_SERVERS]?.toList() } }
+                .distinctUntilChanged()
 
-    suspend fun setStunServers(stunServers: List<String>) =
-        dataStore().edit { it[STUN_SERVERS] = stunServers.toSet() }
+    suspend fun setStunServers(stunServers: List<String>) = dataStore().edit { it[STUN_SERVERS] = stunServers.toSet() }
 
     val stunServersDate
-        get() = dataStoreFlow()
-            .flatMapLatest { dataStore ->
-                dataStore.data.map { data ->
-                    data[STUN_SERVERS_DATE]?.let { Instant.fromEpochSeconds(it) }
-                }
-            }
-            .distinctUntilChanged()
+        get() =
+            dataStoreFlow()
+                .flatMapLatest { dataStore ->
+                    dataStore.data.map { data ->
+                        data[STUN_SERVERS_DATE]?.let { Instant.fromEpochSeconds(it) }
+                    }
+                }.distinctUntilChanged()
 
-    suspend fun setStunServersDate(date: Instant) =
-        dataStore().edit { it[STUN_SERVERS_DATE] = date.epochSeconds }
+    suspend fun setStunServersDate(date: Instant) = dataStore().edit { it[STUN_SERVERS_DATE] = date.epochSeconds }
 
     // Internal
 
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _dataStore: DataStore<Preferences>? = null
 
-    private fun dataStoreFlow(): Flow<DataStore<Preferences>> {
-        return _dataStore
+    private fun dataStoreFlow(): Flow<DataStore<Preferences>> =
+        _dataStore
             ?.let(::flowOf)
             ?: flow {
                 emit(
                     dataStoreProvider()
-                        .also { this@AppDataStore._dataStore = it }
+                        .also { this@AppDataStore._dataStore = it },
                 )
             }
-    }
 
     private suspend fun dataStore() = dataStoreFlow().first()
 

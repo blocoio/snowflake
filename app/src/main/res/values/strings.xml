@@ -3,8 +3,8 @@
 
     <string name="close">Close</string>
 
-    <string name="snowflake_disabled">Snowflake is disabled</string>
-    <string name="snowflake_enabled">Snowflake is enabled</string>
+    <string name="snowflake_disabled">Enable Snowflake. Help others bypass censorship.</string>
+    <string name="snowflake_enabled">Snowflake is Active. You’re helping bypass censorship.</string>
     <string name="snowflake_running">Running</string>
     <string name="snowflake_stopped">Stopped</string>
     <string name="snowflake_looking_to_help">Looking for someone to help…</string>
@@ -44,4 +44,7 @@
     <string name="notification_channel">Snowflake</string>
     <string name="notification_text">Your Snowflake is ready to help users circumvent censorship.</string>
     <string name="notification_text_connected">Your Snowflake is currently helping someone circumvent censorship.</string>
+
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
 </resources>

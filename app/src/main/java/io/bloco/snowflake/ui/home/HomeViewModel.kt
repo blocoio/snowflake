@@ -23,11 +23,11 @@ class HomeViewModel(
     isIgnoringBatteryOptimizations: () -> Flow<Boolean>,
     getTodayStats: () -> Flow<DayStats>,
 ) : ViewModel() {
-
     private val _state = MutableStateFlow(State())
     val state = _state.asStateFlow()
 
     private val events = PublishFlow<Event>()
+
     fun onEvent(event: Event) = events.tryEmit(event)
 
     init {
@@ -71,8 +71,12 @@ class HomeViewModel(
     )
 
     sealed interface Event {
-        data class EnabledChange(val value: Boolean) : Event
+        data class EnabledChange(
+            val value: Boolean,
+        ) : Event
+
         data object AboutClick : Event
+
         data object SettingsClick : Event
     }
 }

@@ -22,15 +22,16 @@ fun Navigation(
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         composable(Screen.Home.route) {
-            val viewModel = viewModel {
-                dependencies.homeViewModel(
-                    openAbout = { navController.navigate(Screen.About.route) },
-                    openSettings = { navController.navigate(Screen.Settings.route) },
-                )
-            }
+            val viewModel =
+                viewModel {
+                    dependencies.homeViewModel(
+                        openAbout = { navController.navigate(Screen.About.route) },
+                        openSettings = { navController.navigate(Screen.Settings.route) },
+                    )
+                }
             val state by viewModel.state.collectAsStateWithLifecycle()
             HomeScreen(
                 state = state,
@@ -41,16 +42,17 @@ fun Navigation(
 
         composable(Screen.About.route) {
             AboutScreen(
-                goBack = { navController.popBackStack() }
+                goBack = { navController.popBackStack() },
             )
         }
 
         composable(Screen.Settings.route) {
-            val viewModel = viewModel {
-                dependencies.settingsViewModel(
-                    goBack = { navController.popBackStack() }
-                )
-            }
+            val viewModel =
+                viewModel {
+                    dependencies.settingsViewModel(
+                        goBack = { navController.popBackStack() },
+                    )
+                }
             val state by viewModel.state.collectAsStateWithLifecycle()
             SettingsScreen(
                 state = state,

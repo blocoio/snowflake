@@ -11,23 +11,26 @@ class FetchStunServers(
     private val httpClientProvider: () -> HttpClient,
 ) {
     suspend operator fun invoke(): List<String>? {
-        val response = try {
-            httpClientProvider().get(URL).body<Response>()
-        } catch (e: Exception) {
-            Timber.w(e, "Could not fetch STUN servers")
-            return null
-        }
+        val response =
+            try {
+                httpClientProvider().get(URL).body<Response>()
+            } catch (e: Exception) {
+                Timber.w(e, "Could not fetch STUN servers")
+                return null
+            }
 
-        val entry = response.snowflake.firstOrNull() ?: run {
-            Timber.w("Could not fetch STUN servers: empty response")
-            return null
-        }
+        val entry =
+            response.snowflake.firstOrNull() ?: run {
+                Timber.w("Could not fetch STUN servers: empty response")
+                return null
+            }
 
         val params = entry.split(Regex("\\s"))
-        val ice = params.firstOrNull { it.startsWith(ICE_PREFIX) }?.drop(ICE_PREFIX.length) ?: run {
-            Timber.w("Could not fetch STUN servers: ice param not found")
-            return null
-        }
+        val ice =
+            params.firstOrNull { it.startsWith(ICE_PREFIX) }?.drop(ICE_PREFIX.length) ?: run {
+                Timber.w("Could not fetch STUN servers: ice param not found")
+                return null
+            }
 
         val urls = ice.split(",").filter { it.startsWith(STUN_PREFIX) }
 

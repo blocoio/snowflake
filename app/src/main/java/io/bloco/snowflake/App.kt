@@ -51,12 +51,12 @@ class App : Application() {
             workManager.enqueueUniquePeriodicWork(
                 uniqueWorkName = WORK_NAME_BACKGROUND,
                 existingPeriodicWorkPolicy = ExistingPeriodicWorkPolicy.KEEP,
-                request = PeriodicWorkRequestBuilder<SnowflakeWorker>(
-                    repeatInterval = PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
-                    repeatIntervalTimeUnit = TimeUnit.MILLISECONDS
-                )
-                    .setConstraints(constraints)
-                    .build(),
+                request =
+                    PeriodicWorkRequestBuilder<SnowflakeWorker>(
+                        repeatInterval = PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
+                        repeatIntervalTimeUnit = TimeUnit.MILLISECONDS,
+                    ).setConstraints(constraints)
+                        .build(),
             )
         } else {
             workManager.cancelUniqueWork(WORK_NAME_BACKGROUND)
@@ -66,9 +66,10 @@ class App : Application() {
             workManager.enqueueUniqueWork(
                 uniqueWorkName = WORK_NAME_ONE_OFF,
                 existingWorkPolicy = ExistingWorkPolicy.KEEP,
-                request = OneTimeWorkRequestBuilder<SnowflakeWorker>()
-                    .setConstraints(constraints)
-                    .build(),
+                request =
+                    OneTimeWorkRequestBuilder<SnowflakeWorker>()
+                        .setConstraints(constraints)
+                        .build(),
             )
         } else {
             workManager.cancelUniqueWork(WORK_NAME_ONE_OFF)
@@ -76,7 +77,8 @@ class App : Application() {
     }
 
     private fun AppConfig.toConstraints() =
-        Constraints.Builder()
+        Constraints
+            .Builder()
             .run { setRequiredNetworkType(if (unmeteredOnly) NetworkType.UNMETERED else NetworkType.CONNECTED) }
             .setRequiresCharging(chargingOnly)
             .build()

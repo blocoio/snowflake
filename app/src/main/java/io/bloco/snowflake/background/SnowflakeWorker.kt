@@ -29,7 +29,6 @@ class SnowflakeWorker(
     private val appContext: Context,
     workerParams: WorkerParameters,
 ) : CoroutineWorker(appContext, workerParams) {
-
     private val dependencies by lazy { (appContext as App).dependencies }
     private val userPreferences by lazy { dependencies.appDataStore }
     private val snowflakeManager by lazy { dependencies.snowflakeManager }
@@ -87,8 +86,7 @@ class SnowflakeWorker(
                     hasStarted = true
                     notificationManager?.notify(NOTIFICATION_ID, buildNotification(it))
                 }
-            }
-            .takeWhile { !hasStarted || it is SnowflakeManager.State.Running }
+            }.takeWhile { !hasStarted || it is SnowflakeManager.State.Running }
             .collect()
     }
 
@@ -128,10 +126,9 @@ class SnowflakeWorker(
                         R.string.notification_text_connected
                     } else {
                         R.string.notification_text
-                    }
-                )
-            )
-            .setAutoCancel(false)
+                    },
+                ),
+            ).setAutoCancel(false)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setSound(null)
@@ -144,10 +141,9 @@ class SnowflakeWorker(
                     0,
                     Intent(appContext, MainActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK),
-                    PendingIntent.FLAG_IMMUTABLE
-                )
-            )
-            .build()
+                    PendingIntent.FLAG_IMMUTABLE,
+                ),
+            ).build()
 
     companion object {
         private const val NOTIFICATION_CHANNEL_ID = "snowflake"

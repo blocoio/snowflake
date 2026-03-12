@@ -18,7 +18,7 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "2.3.5" }
 room = { id = "androidx.room", version.ref = "room" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "14.1.0" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version = "14.2.0" }
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

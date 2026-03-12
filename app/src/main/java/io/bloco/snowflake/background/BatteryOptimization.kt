@@ -10,7 +10,6 @@ class BatteryOptimization(
     private val powerManager: PowerManager,
     private val context: Context,
 ) {
-
     private val _isIgnoring = MutableStateFlow(false)
     val isIgnoring get() = _isIgnoring.asStateFlow()
 

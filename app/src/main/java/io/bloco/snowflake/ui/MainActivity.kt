@@ -23,21 +23,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.core.net.toUri
 import androidx.navigation.compose.rememberNavController
-import androidx.work.Constraints
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingWorkPolicy
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.PeriodicWorkRequest
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import io.bloco.snowflake.App
-import io.bloco.snowflake.background.SnowflakeWorker
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
-import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
-
     private val dependencies by lazy { (applicationContext as App).dependencies }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,12 +44,12 @@ class MainActivity : ComponentActivity() {
                     SnowflakeTheme {
                         Scaffold(
                             snackbarHost = { SnackbarHost(snackbarHostState) },
-                            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+                            modifier = Modifier.background(MaterialTheme.colorScheme.background),
                         ) {
                             Box(
                                 Modifier
                                     .fillMaxSize()
-                                    .padding(bottom = it.calculateBottomPadding())
+                                    .padding(bottom = it.calculateBottomPadding()),
                             ) {
                                 Navigation(
                                     navController = navController,
@@ -79,19 +68,21 @@ class MainActivity : ComponentActivity() {
     private var ignoreBatteryOptimizationCallback: (() -> Unit)? = null
 
     private val ignoreBatteryOptimizationContract =
-        registerForActivityResult(object : ActivityResultContract<Unit, Unit>() {
-            @SuppressLint("BatteryLife")
-            override fun createIntent(
-                context: Context,
-                input: Unit,
-            ) = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
-                .setData("package:$packageName".toUri())
+        registerForActivityResult(
+            object : ActivityResultContract<Unit, Unit>() {
+                @SuppressLint("BatteryLife")
+                override fun createIntent(
+                    context: Context,
+                    input: Unit,
+                ) = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+                    .setData("package:$packageName".toUri())
 
-            override fun parseResult(
-                resultCode: Int,
-                intent: Intent?,
-            ) {}
-        }) { ignoreBatteryOptimizationCallback?.invoke() }
+                override fun parseResult(
+                    resultCode: Int,
+                    intent: Intent?,
+                ) {}
+            },
+        ) { ignoreBatteryOptimizationCallback?.invoke() }
 
     fun requestIgnoreBatteryOptimization(callback: () -> Unit) {
         ignoreBatteryOptimizationCallback = callback

@@ -3,10 +3,8 @@ package io.bloco.snowflake.data
 import io.bloco.snowflake.models.DayStats
 import io.bloco.snowflake.models.StatsInstant
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.update
 import java.time.LocalDate
 
 class StatsStore(
@@ -17,19 +15,21 @@ class StatsStore(
 
     suspend fun incrementInstant(instant: StatsInstant) {
         val previousValue = today().first()
-        val newValue = previousValue.copy(
-            failedConnections = previousValue.failedConnections + instant.failedConnectionCount,
-            inboundBytes = previousValue.inboundBytes + instant.inboundBytes,
-            outboundBytes = previousValue.outboundBytes + instant.outboundBytes,
-        )
+        val newValue =
+            previousValue.copy(
+                failedConnections = previousValue.failedConnections + instant.failedConnectionCount,
+                inboundBytes = previousValue.inboundBytes + instant.inboundBytes,
+                outboundBytes = previousValue.outboundBytes + instant.outboundBytes,
+            )
         storeStats(newValue)
     }
 
     suspend fun incrementConnections() {
         val previousValue = today().first()
-        val newValue = previousValue.copy(
-            failedConnections = previousValue.connections + 1,
-        )
+        val newValue =
+            previousValue.copy(
+                connections = previousValue.connections + 1,
+            )
         storeStats(newValue)
     }
 }

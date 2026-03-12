@@ -26,7 +26,9 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
 
-class Dependencies(app: Application) {
+class Dependencies(
+    app: Application,
+) {
     private val backgroundContext = Dispatchers.IO
     private val powerManager = app.getSystemService<PowerManager>()!!
 
@@ -37,10 +39,12 @@ class Dependencies(app: Application) {
     private val httpClientProvider by lazy {
         HttpClient(CIO) {
             install(ContentNegotiation) {
-                json(Json {
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                })
+                json(
+                    Json {
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    },
+                )
             }
         }
     }
@@ -56,7 +60,7 @@ class Dependencies(app: Application) {
     private val statsStore by lazy {
         StatsStore(
             getStatsByDate = statsDao::getByDate,
-            storeStats = statsDao::insertOrUpdate
+            storeStats = statsDao::insertOrUpdate,
         )
     }
 
@@ -108,14 +112,13 @@ class Dependencies(app: Application) {
         getTodayStats = statsStore::today,
     )
 
-    fun settingsViewModel(
-        goBack: () -> Unit,
-    ) = SettingsViewModel(
-        goBack = goBack,
-        getAppConfig = appDataStore::appConfig,
-        getCapacity = appDataStore::capacity,
-        setUnmeteredOnly = appDataStore::setUnmeteredOnly,
-        setChargingOnly = appDataStore::setChargingOnly,
-        setCapacity = appDataStore::setCapacity,
-    )
+    fun settingsViewModel(goBack: () -> Unit) =
+        SettingsViewModel(
+            goBack = goBack,
+            getAppConfig = appDataStore::appConfig,
+            getCapacity = appDataStore::capacity,
+            setUnmeteredOnly = appDataStore::setUnmeteredOnly,
+            setChargingOnly = appDataStore::setChargingOnly,
+            setCapacity = appDataStore::setCapacity,
+        )
 }

@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.first
 import timber.log.Timber
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.days
-import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
 
 class RefreshStunServers(

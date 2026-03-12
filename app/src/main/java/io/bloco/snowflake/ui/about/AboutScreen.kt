@@ -19,9 +19,7 @@ import io.bloco.snowflake.R
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
 
 @Composable
-fun AboutScreen(
-    goBack: () -> Unit,
-) {
+fun AboutScreen(goBack: () -> Unit) {
     Column {
         CenterAlignedTopAppBar(
             title = { Text(stringResource(R.string.about)) },
@@ -29,16 +27,17 @@ fun AboutScreen(
                 IconButton(onClick = goBack) {
                     Icon(
                         painterResource(R.drawable.ic_close),
-                        contentDescription = stringResource(R.string.close)
+                        contentDescription = stringResource(R.string.close),
                     )
                 }
-            }
+            },
         )
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(16.dp)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp),
         ) {
             Text(stringResource(R.string.about_text))
         }

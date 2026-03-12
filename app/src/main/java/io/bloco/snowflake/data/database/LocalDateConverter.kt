@@ -6,12 +6,8 @@ import java.time.format.DateTimeFormatter
 
 class LocalDateConverter {
     @TypeConverter
-    fun toLocalDate(days: String): LocalDate {
-        return LocalDate.parse(days)
-    }
+    fun toLocalDate(days: String): LocalDate = LocalDate.parse(days)
 
     @TypeConverter
-    fun fromLocalDate(date: LocalDate): String {
-        return date.format(DateTimeFormatter.ISO_LOCAL_DATE)
-    }
+    fun fromLocalDate(date: LocalDate): String = date.format(DateTimeFormatter.ISO_LOCAL_DATE)
 }

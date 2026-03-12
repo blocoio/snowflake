@@ -56,6 +56,13 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+    lint {
+        disable += listOf("VectorRaster", "VectorPath", "ObsoleteLintCustomCheck")
+        warningsAsErrors = true
+    }
+    ktlint {
+        additionalEditorconfig.put("ktlint_function_naming_ignore_when_annotated_with", "Composable")
+    }
 }
 
 dependencies {

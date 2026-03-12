@@ -23,7 +23,6 @@ class SnowflakeManager(
     private val storeStatsInstant: suspend (StatsInstant) -> Unit,
     private val storeClientConnection: suspend () -> Unit,
 ) {
-
     private val _state = MutableStateFlow<State>(State.Stopped)
     val state get() = _state.asStateFlow()
     private val snowflakeProxy by lazy(snowflakeProxyProvider)
@@ -67,74 +66,83 @@ class SnowflakeManager(
         proxyTypeIdentifier = config.proxyTypeIdentifier
     }
 
-    private val clientEvents = object : SnowflakeClientEvents {
-        override fun connected() {
-            Timber.i("connected")
-            _state.update {
-                if (it is State.Running) {
-                    it.copy(clientsConnected = it.clientsConnected + 1)
-                } else it
+    private val clientEvents =
+        object : SnowflakeClientEvents {
+            override fun connected() {
+                Timber.i("connected")
+                _state.update {
+                    if (it is State.Running) {
+                        it.copy(clientsConnected = it.clientsConnected + 1)
+                    } else {
+                        it
+                    }
+                }
+                CoroutineScope(backgroundContext).launch {
+                    storeClientConnection()
+                }
             }
-            CoroutineScope(backgroundContext).launch {
-                storeClientConnection()
+
+            override fun connectionFailed() {
+                Timber.i("connectionFailed")
             }
-        }
 
-        override fun connectionFailed() {
-            Timber.i("connectionFailed")
-        }
+            override fun disconnected(country: String?) {
+                Timber.i("disconnected $country")
+                _state.update {
+                    if (it is State.Running) {
+                        it.copy(
+                            clientsConnected =
+                                (it.clientsConnected - 1)
+                                    .coerceAtLeast(0),
+                        )
+                    } else {
+                        it
+                    }
+                }
+            }
 
-        override fun disconnected(country: String?) {
-            Timber.i("disconnected $country")
-            _state.update {
-                if (it is State.Running) {
-                    it.copy(
-                        clientsConnected = (it.clientsConnected - 1)
-                            .coerceAtLeast(0)
+            override fun stats(
+                connectionCount: Long,
+                failedConnectionCount: Long,
+                inboundBytes: Long,
+                outboundBytes: Long,
+                inboundUnit: String?,
+                outboundUnit: String?,
+                summaryInterval: Long,
+            ) {
+                if (summaryInterval == 0L) return
+                if (inboundBytes == 0L && outboundBytes == 0L && failedConnectionCount == 0L) return
+
+                CoroutineScope(backgroundContext).launch {
+                    storeStatsInstant(
+                        StatsInstant(
+                            failedConnectionCount = failedConnectionCount,
+                            inboundBytes = convertToBytes(inboundBytes, inboundUnit),
+                            outboundBytes = convertToBytes(outboundBytes, outboundUnit),
+                        ),
                     )
-                } else it
-            }
-        }
+                }
 
-        override fun stats(
-            connectionCount: Long,
-            failedConnectionCount: Long,
-            inboundBytes: Long,
-            outboundBytes: Long,
-            inboundUnit: String?,
-            outboundUnit: String?,
-            summaryInterval: Long,
-        ) {
-            if (summaryInterval == 0L) return
-            if (inboundBytes == 0L && outboundBytes == 0L && failedConnectionCount == 0L) return
-
-            CoroutineScope(backgroundContext).launch {
-                storeStatsInstant(
-                    StatsInstant(
-                        failedConnectionCount = failedConnectionCount,
-                        inboundBytes = convertToBytes(inboundBytes, inboundUnit),
-                        outboundBytes = convertToBytes(outboundBytes, outboundUnit),
-                    )
+                Timber.i(
+                    """
+                    stats
+                    connectionCount = $connectionCount
+                    failedConnectionCount = $failedConnectionCount
+                    inboundBytes = $inboundBytes
+                    outboundBytes = $outboundBytes
+                    inboundUnit = $inboundUnit
+                    outboundUnit = $outboundUnit
+                    summaryInterval = $summaryInterval
+                    """.trimIndent(),
                 )
             }
-
-            Timber.i(
-                """
-                            stats
-                            connectionCount = $connectionCount
-                            failedConnectionCount = $failedConnectionCount
-                            inboundBytes = $inboundBytes
-                            outboundBytes = $outboundBytes
-                            inboundUnit = $inboundUnit
-                            outboundUnit = $outboundUnit
-                            summaryInterval = $summaryInterval
-                            """.trimIndent()
-            )
         }
-    }
 
     sealed interface State {
-        data class Running(val clientsConnected: Int = 0) : State
+        data class Running(
+            val clientsConnected: Int = 0,
+        ) : State
+
         data object Stopped : State
     }
 
