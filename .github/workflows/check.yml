@@ -1,0 +1,43 @@
+name: Check
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+
+jobs:
+    android-lint:
+        name: Android Lint
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Set up JDK
+                uses: actions/setup-java@v5
+                with:
+                    java-version: 21
+                    distribution: 'temurin'
+
+            -   name: Gradle cache
+                uses: gradle/actions/setup-gradle@v3
+
+            -   name: Run Lint
+                run: ./gradlew lint
+
+    kotlin-lint:
+        name: Kotlin Lint
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Set up JDK
+                uses: actions/setup-java@v5
+                with:
+                    java-version: 21
+                    distribution: 'temurin'
+
+            -   name: Gradle cache
+                uses: gradle/actions/setup-gradle@v3
+
+            -   name: Run Lint
+                run: ./gradlew ktlintCheck
