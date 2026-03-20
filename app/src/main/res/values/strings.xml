@@ -21,9 +21,27 @@
     <string name="battery_optimizations_action">Continue</string>
 
     <string name="about">About</string>
-    <string name="about_text">Help people in censored countries bypass censorship by running this app.
-        \n\nThe only prerequisite to install this app is that the Internet in your country is not heavily censored already.
-        \n\nThere is no need to worry about which websites people are accessing through your Snowflake app Their visible browsing IP address will match their Tor exit node not yours since you’re an entrypoint.
+    <string name="about_title1">What is Snowflake?</string>
+    <string name="about_text1">
+        Snowflake allows people to connect to the Tor network in places where Tor is blocked by routing your connection through volunteer proxies located in uncensored countries.
+        \n\nSimilar to VPNs, which help users bypass Internet censorship, Snowflake disguises your Internet activity as though they’re making a video or voice call, making you less detectable to Internet censors.
+    </string>
+    <string name="about_title2">How does Snowflake work?</string>
+    <string name="about_text2">
+        Snowflake uses a technology called WebRTC, which is commonly employed by videoconferencing software. This helps mask your use of Tor from censors by making it appear as though you’re on an audio or video call instead.
+        \n\nLearn more at https://snowflake.torproject.org
+    </string>
+    <string name="about_title3">Is this safe for me?</string>
+    <string name="about_text3">
+        There is no need to worry about which websites people are accessing through your Snowflake app. Their visible browsing IP address will match their Tor exit node, not yours (since you’re an entrypoint).
+    </string>
+    <string name="about_title4">Can I circumvent censorship using this app?</string>
+    <string name="about_text4">
+        No. If you want to circumvent censorship, you need to download a Tor-powered app such as Tor Browser or Orbot and select Snowflake on the app’s settings.
+    </string>
+    <string name="about_title5">Who made this app?</string>
+    <string name="about_text5">
+        This app was made by Bloco, an Android studio based in Portugal. It was built upon great work by the Tor and Guardian Project teams.
     </string>
 
     <string name="settings">Settings</string>

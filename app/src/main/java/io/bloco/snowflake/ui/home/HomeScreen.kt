@@ -75,7 +75,7 @@ fun HomeScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 8.dp),
         ) {
             Image(
                 painterResource(R.drawable.logo),
@@ -112,7 +112,7 @@ fun HomeScreen(
             }
         }
 
-        Spacer(Modifier.weight(3f))
+        Spacer(Modifier.weight(2f))
 
         Text(
             text =
