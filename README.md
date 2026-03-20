@@ -4,6 +4,8 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
 
 **Help people in censored countries access the Internet without restrictions.**
 
+[![Checks](https://github.com/blocoio/snowflake/actions/workflows/check.yml/badge.svg)](https://github.com/blocoio/snowflake/actions/workflows/check.yml)
+
 ## Screenshots
 
 <img src="assets/screenshot_home.png" height="500" alt="Home screen"/><img src="assets/screenshot_about.png" height="500" alt="About screen"/><img src="assets/screenshot_settings.png" height="500" alt="Settings screen"/>
