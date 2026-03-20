@@ -5,18 +5,17 @@
 
     <string name="snowflake_disabled">Enable Snowflake. Help others bypass censorship.</string>
     <string name="snowflake_enabled">Snowflake is Active. You’re helping bypass censorship.</string>
-    <string name="snowflake_running">Running</string>
     <string name="snowflake_stopped">Stopped</string>
     <string name="snowflake_looking_to_help">Looking for someone to help…</string>
-    <plurals name="snowflake_helping">
-        <item quantity="one">Helping %d person</item>
-        <item quantity="other">Helping %d persons</item>
+    <string name="snowflake_helping">Helping</string>
+    <plurals name="persons">
+        <item quantity="one">%d person</item>
+        <item quantity="other">%d persons</item>
     </plurals>
-    <string name="snowflake_learn_more">Learn more about Snowflake</string>
-    <string name="snowflake_stats_title">Today:</string>
-    <string name="snowflake_stats_connections">%d connections</string>
-    <string name="snowflake_stats_inbound">Received %s</string>
-    <string name="snowflake_stats_outbound">Sent %s</string>
+    <string name="today">today</string>
+    <string name="snowflake_stats_connections">Connections</string>
+    <string name="snowflake_stats_inbound">Received</string>
+    <string name="snowflake_stats_outbound">Sent</string>
 
     <string name="battery_optimizations_text">Please disable battery optimizations for this app so it can run in the background successfully</string>
     <string name="battery_optimizations_action">Continue</string>

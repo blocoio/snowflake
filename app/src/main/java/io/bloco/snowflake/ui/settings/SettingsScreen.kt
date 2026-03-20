@@ -2,8 +2,11 @@ package io.bloco.snowflake.ui.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
@@ -15,9 +18,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -33,18 +38,20 @@ import io.bloco.snowflake.ui.theme.SnowflakeTheme
 fun SettingsScreen(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
+    goBack: () -> Unit,
 ) {
     Column {
         CenterAlignedTopAppBar(
             title = { Text("Settings") },
             navigationIcon = {
-                IconButton(onClick = { onEvent(SettingsViewModel.Event.BackClick) }) {
+                IconButton(onClick = { goBack() }) {
                     Icon(
                         painterResource(R.drawable.ic_close),
                         contentDescription = stringResource(R.string.close),
                     )
                 }
             },
+            colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
         )
 
         Column(
@@ -52,7 +59,8 @@ fun SettingsScreen(
                 Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
-                    .padding(vertical = 16.dp),
+                    .padding(WindowInsets.navigationBars.asPaddingValues())
+                    .padding(top = 16.dp, bottom = 32.dp),
         ) {
             val background = state.config?.background == true
             Row(
@@ -215,6 +223,7 @@ private fun SettingsScreenPreview() {
                     capacity = Capacity.Specific(2),
                 ),
             onEvent = {},
+            goBack = {},
         )
     }
 }

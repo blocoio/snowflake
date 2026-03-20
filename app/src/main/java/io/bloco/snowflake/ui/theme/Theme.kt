@@ -4,9 +4,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import com.materialkolor.PaletteStyle
-import com.materialkolor.dynamiccolor.ColorSpec
 import com.materialkolor.rememberDynamicColorScheme
 
 @Composable
@@ -25,11 +23,9 @@ fun SnowflakeTheme(
 @Composable
 private fun getColorScheme(darkTheme: Boolean): ColorScheme =
     rememberDynamicColorScheme(
-        seedColor = PrimaryColor,
+        seedColor = SeedColor,
         style = PaletteStyle.TonalSpot,
-        specVersion = ColorSpec.SpecVersion.SPEC_2025,
+        // specVersion = ColorSpec.SpecVersion.SPEC_2025,
         isDark = darkTheme,
         isAmoled = true,
     )
-
-val PrimaryColor = Color(0xFF2B5C62)

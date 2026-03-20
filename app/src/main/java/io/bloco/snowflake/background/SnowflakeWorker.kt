@@ -17,7 +17,7 @@ import androidx.work.WorkerParameters
 import io.bloco.snowflake.App
 import io.bloco.snowflake.R
 import io.bloco.snowflake.ui.MainActivity
-import io.bloco.snowflake.ui.theme.PrimaryColor
+import io.bloco.snowflake.ui.theme.SeedColor
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.onEach
@@ -118,7 +118,7 @@ class SnowflakeWorker(
         NotificationCompat
             .Builder(applicationContext, NOTIFICATION_CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_snowflake)
-            .setColor(PrimaryColor.toArgb())
+            .setColor(SeedColor.toArgb())
             .setContentTitle(resources.getString(R.string.notification_channel))
             .setContentText(
                 resources.getString(

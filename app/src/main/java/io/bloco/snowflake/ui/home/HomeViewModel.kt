@@ -15,8 +15,6 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 
 class HomeViewModel(
-    openAbout: () -> Unit,
-    openSettings: () -> Unit,
     getSnowflakeState: () -> Flow<SnowflakeManager.State>,
     getAppConfig: () -> Flow<AppConfig>,
     setIsEnabled: suspend (Boolean) -> Unit,
@@ -51,16 +49,6 @@ class HomeViewModel(
             .filterIsInstance<Event.EnabledChange>()
             .onEach { setIsEnabled(it.value) }
             .launchIn(viewModelScope)
-
-        events
-            .filterIsInstance<Event.AboutClick>()
-            .onEach { openAbout() }
-            .launchIn(viewModelScope)
-
-        events
-            .filterIsInstance<Event.SettingsClick>()
-            .onEach { openSettings() }
-            .launchIn(viewModelScope)
     }
 
     data class State(
@@ -74,9 +62,5 @@ class HomeViewModel(
         data class EnabledChange(
             val value: Boolean,
         ) : Event
-
-        data object AboutClick : Event
-
-        data object SettingsClick : Event
     }
 }

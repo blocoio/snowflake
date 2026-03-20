@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 
 class SettingsViewModel(
-    goBack: () -> Unit,
     getAppConfig: () -> Flow<AppConfig>,
     getCapacity: () -> Flow<Capacity>,
     setUnmeteredOnly: suspend (Boolean) -> Unit,
@@ -38,11 +37,6 @@ class SettingsViewModel(
             .launchIn(viewModelScope)
 
         events
-            .filterIsInstance<Event.BackClick>()
-            .onEach { goBack() }
-            .launchIn(viewModelScope)
-
-        events
             .filterIsInstance<Event.UnmeteredOnlyChange>()
             .onEach { setUnmeteredOnly(it.value) }
             .launchIn(viewModelScope)
@@ -63,8 +57,6 @@ class SettingsViewModel(
     )
 
     sealed interface Event {
-        data object BackClick : Event
-
         data class UnmeteredOnlyChange(
             val value: Boolean,
         ) : Event

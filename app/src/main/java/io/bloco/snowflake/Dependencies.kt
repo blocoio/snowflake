@@ -17,6 +17,7 @@ import io.bloco.snowflake.data.StatsStore
 import io.bloco.snowflake.data.database.AppDatabase
 import io.bloco.snowflake.domain.GetSnowflakeConfig
 import io.bloco.snowflake.domain.RefreshStunServers
+import io.bloco.snowflake.ui.MainViewModel
 import io.bloco.snowflake.ui.home.HomeViewModel
 import io.bloco.snowflake.ui.settings.SettingsViewModel
 import io.ktor.client.HttpClient
@@ -99,22 +100,21 @@ class Dependencies(
 
     // View Models
 
-    fun homeViewModel(
-        openAbout: () -> Unit,
-        openSettings: () -> Unit,
-    ) = HomeViewModel(
-        openAbout = openAbout,
-        openSettings = openSettings,
-        getSnowflakeState = snowflakeManager::state,
-        getAppConfig = appDataStore::appConfig,
-        setIsEnabled = appDataStore::setSnowflakeEnabled,
-        isIgnoringBatteryOptimizations = batteryOptimization::isIgnoring,
-        getTodayStats = statsStore::today,
-    )
+    val mainViewModel by lazy {
+        MainViewModel(getAppConfig = appDataStore::appConfig)
+    }
 
-    fun settingsViewModel(goBack: () -> Unit) =
+    fun homeViewModel() =
+        HomeViewModel(
+            getSnowflakeState = snowflakeManager::state,
+            getAppConfig = appDataStore::appConfig,
+            setIsEnabled = appDataStore::setSnowflakeEnabled,
+            isIgnoringBatteryOptimizations = batteryOptimization::isIgnoring,
+            getTodayStats = statsStore::today,
+        )
+
+    fun settingsViewModel() =
         SettingsViewModel(
-            goBack = goBack,
             getAppConfig = appDataStore::appConfig,
             getCapacity = appDataStore::capacity,
             setUnmeteredOnly = appDataStore::setUnmeteredOnly,

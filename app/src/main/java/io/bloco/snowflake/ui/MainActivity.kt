@@ -9,8 +9,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -19,12 +20,17 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.core.net.toUri
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import io.bloco.snowflake.App
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
+import io.bloco.snowflake.ui.theme.appBackground
 
 class MainActivity : ComponentActivity() {
     private val dependencies by lazy { (applicationContext as App).dependencies }
@@ -34,6 +40,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
+            val viewModel = viewModel { dependencies.mainViewModel }
+            val state by viewModel.state.collectAsStateWithLifecycle()
+
             SnowflakeTheme {
                 val navController = rememberNavController()
                 val snackbarHostState = remember { SnackbarHostState() }
@@ -44,12 +53,15 @@ class MainActivity : ComponentActivity() {
                     SnowflakeTheme {
                         Scaffold(
                             snackbarHost = { SnackbarHost(snackbarHostState) },
-                            modifier = Modifier.background(MaterialTheme.colorScheme.background),
+                            containerColor = MaterialTheme.colorScheme.appBackground(state.isEnabled),
                         ) {
                             Box(
                                 Modifier
                                     .fillMaxSize()
-                                    .padding(bottom = it.calculateBottomPadding()),
+                                    .padding(
+                                        start = it.calculateStartPadding(LocalLayoutDirection.current),
+                                        end = it.calculateEndPadding(LocalLayoutDirection.current),
+                                    ),
                             ) {
                                 Navigation(
                                     navController = navController,
@@ -80,7 +92,8 @@ class MainActivity : ComponentActivity() {
                 override fun parseResult(
                     resultCode: Int,
                     intent: Intent?,
-                ) {}
+                ) {
+                }
             },
         ) { ignoreBatteryOptimizationCallback?.invoke() }
 
