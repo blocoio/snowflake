@@ -50,6 +50,11 @@ class SnowflakeWorker(
             return Result.failure()
         }
 
+        if (snowflakeManager.state.value is SnowflakeManager.State.Running) {
+            Timber.i("SnowflakeWorker: already running")
+            return Result.success()
+        }
+
         try {
             work()
         } catch (e: CancellationException) {
@@ -73,11 +78,6 @@ class SnowflakeWorker(
     private suspend fun work() {
         if (!userPreferences.appConfig.first().isEnabled) {
             Timber.i("SnowflakeWorker: not enabled")
-            return
-        }
-
-        if (snowflakeManager.state.value is SnowflakeManager.State.Running) {
-            Timber.i("SnowflakeWorker: already running")
             return
         }
 

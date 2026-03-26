@@ -28,16 +28,15 @@ class App : Application() {
 
         // Configure workers
 
-        dependencies
-            .appDataStore
-            .appConfig
-            .onEach(dependencies.configureWorkers::background)
-            .launchIn(appScope)
+        onAppOpen()
+            .flatMapLatest {
+                dependencies
+                    .appDataStore
+                    .appConfig
+                    .onEach(dependencies.configureWorkers::background)
+            }.launchIn(appScope)
 
-        dependencies
-            .monitorAppOpen
-            .state
-            .filter { it }
+        onAppOpen()
             .flatMapLatest {
                 dependencies
                     .appDataStore
@@ -45,4 +44,10 @@ class App : Application() {
                     .onEach(dependencies.configureWorkers::foreground)
             }.launchIn(appScope)
     }
+
+    private fun onAppOpen() =
+        dependencies
+            .monitorAppOpen
+            .state
+            .filter { it }
 }
