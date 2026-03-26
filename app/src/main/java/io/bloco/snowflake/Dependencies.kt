@@ -9,7 +9,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
+import androidx.work.WorkManager
 import io.bloco.snowflake.background.BatteryOptimization
+import io.bloco.snowflake.background.ConfigureWorkers
+import io.bloco.snowflake.background.MonitorAppOpen
 import io.bloco.snowflake.background.SnowflakeManager
 import io.bloco.snowflake.data.AppDataStore
 import io.bloco.snowflake.data.FetchStunServers
@@ -32,6 +35,7 @@ class Dependencies(
 ) {
     private val backgroundContext = Dispatchers.IO
     private val powerManager = app.getSystemService<PowerManager>()!!
+    private val workManager by lazy { WorkManager.getInstance(app) }
 
     // Data
 
@@ -68,7 +72,8 @@ class Dependencies(
     // Background
 
     val batteryOptimization by lazy { BatteryOptimization(powerManager, app) }
-
+    val configureWorkers by lazy { ConfigureWorkers(workManager) }
+    val monitorAppOpen by lazy { MonitorAppOpen() }
     private val snowflakeProxy: SnowflakeProxy by lazy { SnowflakeProxy() }
 
     val snowflakeManager by lazy {
@@ -101,7 +106,10 @@ class Dependencies(
     // View Models
 
     val mainViewModel by lazy {
-        MainViewModel(getAppConfig = appDataStore::appConfig)
+        MainViewModel(
+            getAppConfig = appDataStore::appConfig,
+            markAppAsOpened = monitorAppOpen::markAppAsOpened,
+        )
     }
 
     fun homeViewModel() =

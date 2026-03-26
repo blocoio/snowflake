@@ -76,6 +76,11 @@ class SnowflakeWorker(
             return
         }
 
+        if (snowflakeManager.state.value is SnowflakeManager.State.Running) {
+            Timber.i("SnowflakeWorker: already running")
+            return
+        }
+
         snowflakeManager.start()
 
         var hasStarted = false

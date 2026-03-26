@@ -12,11 +12,14 @@ import kotlinx.coroutines.flow.update
 
 class MainViewModel(
     getAppConfig: () -> Flow<AppConfig>,
+    markAppAsOpened: () -> Unit,
 ) : ViewModel() {
     private val _state = MutableStateFlow(State())
     val state = _state.asStateFlow()
 
     init {
+        markAppAsOpened()
+
         getAppConfig()
             .onEach { _state.update { state -> state.copy(isEnabled = it.isEnabled) } }
             .launchIn(viewModelScope)
