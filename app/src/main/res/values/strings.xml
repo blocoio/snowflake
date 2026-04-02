@@ -51,7 +51,7 @@
     <string name="settings_unmetered_context">Only run if connected to an unmetered network like WiFi</string>
     <string name="settings_charging">Charging only</string>
     <string name="settings_charging_context">Only run if the device battery is charging</string>
-    <string name="settings_capacity">Only run if the device battery is charging</string>
+    <string name="settings_capacity">How many people to help at the same time</string>
     <plurals name="settings_capacity_specific">
         <item quantity="one">Help %d person at the same time</item>
         <item quantity="other">Help %d persons at the same time</item>
