@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Snowflake</string>
+    <string name="close">Fechar</string>
+    <string name="snowflake_disabled">Ativar Snowflake. Ajude outros a contornar a censura.</string>
+    <string name="snowflake_enabled">Snowflake Ativo. Está a ajudar a contornar a censura.</string>
+    <string name="snowflake_stopped">Parado</string>
+    <string name="snowflake_looking_to_help">À procura de alguém para ajudar…</string>
+    <string name="snowflake_helping">Ajudando</string>
+    <plurals name="persons">
+        <item quantity="one">%d pessoa</item>
+        <item quantity="many">%d de pessoas</item>
+        <item quantity="other">%d pessoas</item>
+    </plurals>
+    <string name="today">hoje</string>
+    <string name="snowflake_stats_connections">Ligações</string>
+    <string name="snowflake_stats_inbound">Recebido</string>
+    <string name="snowflake_stats_outbound">Enviado</string>
+    <string name="battery_optimizations_text">Por favor, desligue a optimização de bateria para que este aplicativo corra em segundo plano com sucesso</string>
+    <string name="battery_optimizations_action">Continuar</string>
+    <string name="about">Sobre</string>
+    <string name="about_title1">O que é Snowflake?</string>
+    <string name="about_text1">O Snowflake permite que você se conecte à rede Tor em locais onde o Tor é bloqueado, roteando sua conexão por meio de proxies voluntários localizados em países sem censura.\n\nDe forma semelhante às VPNs, que ajudam os usuários a contornar a censura na Internet, o Snowflake disfarça sua atividade online como se você estivesse fazendo uma chamada de vídeo ou voz, tornando você menos detectável para os censores da Internet.</string>
+    <string name="about_title2">Como funciona o Snowflake?</string>
+    <string name="about_text2">Snowflake usa uma tecnologia chamada WebRTC, comumente utilizada por softwares de videoconferência. Isso ajuda a mascarar seu uso do Tor contra censores, fazendo parecer que você está em uma chamada de áudio ou vídeo.\n\nSaiba mais em https://snowflake.torproject.org</string>
+    <string name="about_title3">É seguro para mim?</string>
+    <string name="about_text3">Não necessita de se preocupar com que websites pessoas acedem através do seu aplicativo Snowflake. O IP visível de navegação deles irá corresponder ao nó de saída Tor, e não ao seu (apenas é um ponto de entrada).</string>
+    <string name="about_title4">Posso contornar a censura usando a extensão do navegador?</string>
+    <string name="about_text4">Não. Se quiser contornar a censura, precisa de baixar um aplicativo com suporte para o Tor como o Navegador Tor ou o Orbot e selecionar Snowflake nas configurações do aplicativo.</string>
+    <string name="about_title5">Quem criou este aplicativo?</string>
+    <string name="about_text5">Este aplicativo foi feito pelo Bloco, um estúdio de Android sediado em Portugal. Foi criado graças ao trabalho prévio das equipas do Tor e do Guardian Project.</string>
+    <string name="settings">Configurações</string>
+    <string name="settings_background">Correr em segundo plano</string>
+    <string name="settings_background_context">Pediremos ao Android para correr o aplicativo em segundo plano</string>
+    <string name="settings_unmetered">Apenas redes ilimitadas</string>
+    <string name="settings_unmetered_context">Apenas correr se estiver ligado a uma rede ilimitada como o WiFi</string>
+    <string name="settings_charging">Apenas em carregamento</string>
+    <string name="settings_charging_context">Apenas correr se a bateria do dispositivo estiver a carregar</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Ajudar %d pessoa ao mesmo tempo</item>
+        <item quantity="many">Ajudar %d de pessoas ao mesmo tempo</item>
+        <item quantity="other">Ajudar %d pessoas ao mesmo tempo</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Ajuda um número ilimitado de pessoas</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">O seu Snowflake está pronto para ajudar outros a contornar a censura.</string>
+    <string name="notification_text_connected">O seu Snowflake está neste momento a ajudar alguém contornar a censura.</string>
+    <string name="enabled">Ativado</string>
+    <string name="disabled">Desativado</string>
+    <string name="settings_capacity">Quantas pessoas ajudar ao mesmo tempo</string>
+</resources>
