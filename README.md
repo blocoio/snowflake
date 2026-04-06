@@ -5,6 +5,7 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
 **Help people in censored countries access the Internet without restrictions.**
 
 [![Checks](https://github.com/blocoio/snowflake/actions/workflows/check.yml/badge.svg)](https://github.com/blocoio/snowflake/actions/workflows/check.yml)
+<a href="https://hosted.weblate.org/engage/snowflake-volunteers/"><img src="https://hosted.weblate.org/widget/snowflake-volunteers/svg-badge.svg" alt="Translation status" /></a>
 
 <a href="https://play.google.com/store/apps/details?id=io.bloco.snowflake">
     <img src="assets/google_play.svg" alt="Get it on Google Play" width="250"/>
