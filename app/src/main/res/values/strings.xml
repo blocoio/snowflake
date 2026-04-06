@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Snowflake</string>
+    <string name="app_name" translatable="false">Snowflake</string>
 
     <string name="close">Close</string>
 
