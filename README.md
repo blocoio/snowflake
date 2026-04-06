@@ -6,6 +6,10 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
 
 [![Checks](https://github.com/blocoio/snowflake/actions/workflows/check.yml/badge.svg)](https://github.com/blocoio/snowflake/actions/workflows/check.yml)
 
+<a href="https://play.google.com/store/apps/details?id=io.bloco.snowflake">
+    <img src="assets/google_play.svg" alt="Get it on Google Play" width="250"/>
+</a>
+
 ## Screenshots
 
 <img src="assets/screenshot_home.png" height="500" alt="Home screen"/><img src="assets/screenshot_about.png" height="500" alt="About screen"/><img src="assets/screenshot_settings.png" height="500" alt="Settings screen"/>
