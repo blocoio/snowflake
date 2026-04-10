@@ -29,28 +29,19 @@ class SnowflakeManager(
 
     suspend fun start() {
         withContext(backgroundContext) {
-            if (_state.value != State.Stopped) return@withContext
+            if (_state.value != State.Stopped || snowflakeProxy.isRunning) return@withContext
 
-            if (DUMMY_MODE) {
-                _state.value = State.Running()
-                return@withContext
-            }
-
-            if (!snowflakeProxy.isRunning) {
-                snowflakeProxy.applyConfig(getSnowflakeConfig().first())
-                snowflakeProxy.clientEvents = clientEvents
-                snowflakeProxy.start()
-                _state.value = State.Running()
-            }
+            snowflakeProxy.applyConfig(getSnowflakeConfig().first())
+            snowflakeProxy.clientEvents = clientEvents
+            snowflakeProxy.start()
+            _state.value = State.Running()
         }
     }
 
     fun stop() {
         if (_state.value !is State.Running) return
-        if (!DUMMY_MODE) {
-            if (snowflakeProxy.isRunning) {
-                snowflakeProxy.stop()
-            }
+        if (snowflakeProxy.isRunning) {
+            snowflakeProxy.stop()
         }
         _state.value = State.Stopped
     }
@@ -64,6 +55,7 @@ class SnowflakeManager(
         pollInterval = config.pollInterval.inWholeSeconds
         summaryInterval = config.summaryInterval.inWholeSeconds
         proxyTypeIdentifier = config.proxyTypeIdentifier
+        covertDTLSConfig = config.covertDTLSConfig
     }
 
     private val clientEvents =
@@ -144,9 +136,5 @@ class SnowflakeManager(
         ) : State
 
         data object Stopped : State
-    }
-
-    companion object {
-        private const val DUMMY_MODE = false
     }
 }
