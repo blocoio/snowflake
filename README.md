@@ -11,7 +11,9 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
     <img src="assets/google_play.svg" alt="Get it on Google Play" width="250"/>
 </a>
 
-Soon on F-droid as well.
+[![Get it on Google Play](assets/logo.svg)](https://play.google.com/store/apps/details?id=io.bloco.snowflake)
+
+Soon on F-Droid as well.
 
 ## Screenshots
 

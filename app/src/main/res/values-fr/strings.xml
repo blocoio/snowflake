@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="close">Fermer</string>
+    <string name="today">aujourd\'hui</string>
+    <string name="snowflake_stats_connections">Connexions</string>
+    <string name="about">À propos</string>
+    <string name="settings">Réglages</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="enabled">Activé</string>
+    <string name="disabled">Désactivé</string>
+    <string name="about_title1">C\'est quoi Snowflake ?</string>
+    <plurals name="persons">
+        <item quantity="one"></item>
+        <item quantity="many">%d personne</item>
+        <item quantity="other">%d personnes</item>
+    </plurals>
+    <string name="about_title5">Qui a fait cette application ?</string>
+    <string name="settings_background">Lancer en arrière-plan</string>
+    <string name="snowflake_disabled">Activez Snowflake. Aidez les autres à contourner la censure.</string>
+    <string name="settings_capacity_unlimited">Aidez un nombre illimité de personnes</string>
+    <string name="snowflake_enabled">Snowflake est actif. Vous participez à aider à contourner la censure.</string>
+</resources>
