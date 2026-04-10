@@ -5,7 +5,7 @@
     <string name="snowflake_disabled">Ativar Snowflake. Ajude outros a contornar a censura.</string>
     <string name="snowflake_enabled">Snowflake Ativo. Está a ajudar a contornar a censura.</string>
     <string name="snowflake_stopped">Parado</string>
-    <string name="snowflake_looking_to_help">À procura de alguém para ajudar…</string>
+    <string name="snowflake_looking_to_help">À procura de alguém…</string>
     <string name="snowflake_helping">A ajudar</string>
     <plurals name="persons">
         <item quantity="one">%d pessoa</item>
