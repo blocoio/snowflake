@@ -12,4 +12,5 @@ data class SnowflakeConfig(
     val pollInterval: Duration = 120.seconds,
     val summaryInterval: Duration = 10.seconds,
     val proxyTypeIdentifier: String = "bloco",
+    val covertDTLSConfig: String = "randomizemimic",
 )

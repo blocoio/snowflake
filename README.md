@@ -11,6 +11,8 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
     <img src="assets/google_play.svg" alt="Get it on Google Play" width="250"/>
 </a>
 
+Soon on F-droid as well.
+
 ## Screenshots
 
 <img src="assets/screenshot_home.png" height="500" alt="Home screen"/><img src="assets/screenshot_about.png" height="500" alt="About screen"/><img src="assets/screenshot_settings.png" height="500" alt="Settings screen"/>

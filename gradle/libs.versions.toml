@@ -42,7 +42,7 @@ androidx-work = { group = "androidx.work", name = "work-runtime-ktx", version = 
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version = "1.2.1" }
 
 permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version = "0.37.3" }
-iptp-proxy = { group = "com.netzarchitekten", name = "IPtProxy", version = "5.3.0" }
+iptp-proxy = { group = "com.netzarchitekten", name = "IPtProxy", version = "5.4.0" }
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
 material-kolor = { module = "com.materialkolor:material-kolor", version = "4.1.1" }
 ktor = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
