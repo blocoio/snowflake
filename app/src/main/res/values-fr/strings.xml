@@ -10,7 +10,7 @@
     <string name="disabled">Désactivé</string>
     <string name="about_title1">C\'est quoi Snowflake ?</string>
     <plurals name="persons">
-        <item quantity="one"></item>
+        <item quantity="one">%d personne</item>
         <item quantity="many">%d personne</item>
         <item quantity="other">%d personnes</item>
     </plurals>

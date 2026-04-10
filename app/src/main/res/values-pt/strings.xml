@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Snowflake</string>
     <string name="close">Fechar</string>
     <string name="snowflake_disabled">Ativar Snowflake. Ajude outros a contornar a censura.</string>
     <string name="snowflake_enabled">Snowflake Ativo. Está a ajudar a contornar a censura.</string>

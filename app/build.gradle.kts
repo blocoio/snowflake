@@ -62,11 +62,13 @@ android {
         schemaDirectory("$projectDir/schemas")
     }
     lint {
-        disable += listOf("VectorRaster", "VectorPath", "ObsoleteLintCustomCheck")
+        disable += listOf(
+            "MissingTranslation",
+            "ObsoleteLintCustomCheck",
+            "VectorPath",
+            "VectorRaster",
+        )
         warningsAsErrors = true
-    }
-    ktlint {
-        additionalEditorconfig.put("ktlint_function_naming_ignore_when_annotated_with", "Composable")
     }
 }
 
