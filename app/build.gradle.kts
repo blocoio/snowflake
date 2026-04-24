@@ -1,3 +1,4 @@
+import com.android.build.api.variant.FilterConfiguration
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -19,7 +20,7 @@ android {
         applicationId = "io.bloco.snowflake"
         minSdk = 26
         targetSdk = 37
-        versionCode = 6
+        versionCode = 10 // Increment by 5 to account for ABI split
         versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -37,6 +38,43 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            splits {
+                abi {
+                    // Detect app bundle and conditionally disable split abis
+                    // This is needed due to a "Sequence contains more than one matching element" error
+                    // present since AGP 8.9.0, for more info see:
+                    // https://issuetracker.google.com/issues/402800800
+
+                    // AppBundle tasks usually contain "bundle" in their name
+                    val isBuildingBundle = gradle.startParameter.taskNames.any { it.lowercase().contains("bundle") }
+
+                    // Disable split abis when building appBundle
+                    isEnable = !isBuildingBundle
+
+                    reset()
+                    // Specifies a list of ABIs supported by probe-engine.
+                    include("x86", "x86_64", "armeabi-v7a", "arm64-v8a")
+                    // Specifies that you don't want to also generate a universal APK that includes all ABIs.
+                    isUniversalApk = true
+                }
+            }
+
+            // Map for the version code that gives each ABI a value.
+            val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86" to 3, "x86_64" to 4)
+
+            androidComponents {
+                onVariants { variant ->
+                    variant.outputs.forEach { output ->
+                        val name = output.filters.find { it.filterType == FilterConfiguration.FilterType.ABI }?.identifier
+                        val baseAbiCode = abiCodes[name]
+                        if (baseAbiCode != null) {
+                            output.versionCode.set(
+                                baseAbiCode + (output.versionCode.get() ?: 0),
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
     compileOptions {
