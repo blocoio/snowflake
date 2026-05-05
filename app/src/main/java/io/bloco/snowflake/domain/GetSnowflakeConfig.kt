@@ -34,9 +34,10 @@ class GetSnowflakeConfig(
                 "stun.uls.co.za:3478",
                 "stun.voipgate.com:3478",
                 "stun.mixvoip.com:3478",
-                "stun.nextcloud.com:3478",
-                "stun.bethesda.net:3478",
-                "stun.nextcloud.com:443",
+                "stun.telnyx.com:3478",
+                "stun.hot-chilli.net:3478",
+                "stun.fitauto.ru:3478",
+                "stun.m-online.net:3478",
             )
     }
 }
