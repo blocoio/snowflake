@@ -128,6 +128,10 @@ class SnowflakeManager(
                     """.trimIndent(),
                 )
             }
+
+            override fun natTypeUpdated(natType: String?) {
+                Timber.i("natTypeUpdated $natType")
+            }
         }
 
     sealed interface State {

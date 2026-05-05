@@ -13,7 +13,7 @@ plugins {
 android {
     namespace = "io.bloco.snowflake"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
@@ -24,7 +24,7 @@ android {
         versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        androidResources.localeFilters += listOf("en", "pt", "fr")
+        androidResources.localeFilters += listOf("en", "fr", "ja", "pt")
     }
 
     buildTypes {
@@ -101,14 +101,18 @@ android {
     }
     lint {
         disable += listOf(
+            "MissingTranslation",
+        )
+        informational += listOf(
             "AndroidGradlePluginVersion",
             "GradleDependency",
-            "MissingTranslation",
             "NewerVersionAvailable",
             "ObsoleteLintCustomCheck",
             "VectorPath",
             "VectorRaster",
         )
+        checkTestSources = true
+        showAll = true
         warningsAsErrors = true
     }
 }
