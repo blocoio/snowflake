@@ -220,7 +220,7 @@ private fun Stats(
             title = when {
                 running == null -> stringResource(R.string.snowflake_stopped)
                 running.clientsConnected > 0 -> stringResource(R.string.snowflake_helping)
-                else -> stringResource(R.string.snowflake_looking_to_help)
+                else -> null
             },
             text = if (running != null && running.clientsConnected > 0) {
                 pluralStringResource(
@@ -229,7 +229,7 @@ private fun Stats(
                     running.clientsConnected,
                 )
             } else {
-                null
+                stringResource(R.string.snowflake_looking_to_help)
             },
         )
         StatsCell(
@@ -266,7 +266,7 @@ fun FlowRowScope.StatsCell(
                 MaterialTheme.colorScheme.surfaceContainerLowest,
                 MaterialTheme.shapes.small,
             ).defaultMinSize(minHeight = 72.dp)
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .weight(1f),
     ) {
         title?.let {
