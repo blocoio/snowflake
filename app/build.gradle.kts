@@ -101,7 +101,10 @@ android {
     }
     lint {
         disable += listOf(
+            "AndroidGradlePluginVersion",
+            "GradleDependency",
             "MissingTranslation",
+            "NewerVersionAvailable",
             "ObsoleteLintCustomCheck",
             "VectorPath",
             "VectorRaster",

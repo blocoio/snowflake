@@ -26,4 +26,3 @@ your connection through volunteer proxies located in uncensored countries.
 Similar to VPNs, which help users bypass Internet censorship, Snowflake disguises your Internet
 activity as though you’re making a video or voice call, making you less detectable to Internet
 censors.
-
