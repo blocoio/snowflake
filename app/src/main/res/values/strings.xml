@@ -66,6 +66,9 @@
         <item quantity="other">Helping %d persons circumvent censorship</item>
     </plurals>
 
+    <string name="quick_settings_looking">Looking…</string>
+    <string name="quick_settings_helping">Helping %d</string>
+
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
 </resources>

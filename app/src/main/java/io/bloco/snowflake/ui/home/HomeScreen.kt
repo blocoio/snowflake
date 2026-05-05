@@ -266,7 +266,7 @@ fun FlowRowScope.StatsCell(
                 MaterialTheme.colorScheme.surfaceContainerLowest,
                 MaterialTheme.shapes.small,
             ).defaultMinSize(minHeight = 72.dp)
-            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .padding(horizontal = 8.dp, vertical = 4.dp)
             .weight(1f),
     ) {
         title?.let {

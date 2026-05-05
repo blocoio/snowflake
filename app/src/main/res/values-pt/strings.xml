@@ -41,6 +41,7 @@
         <item quantity="other">Ajudar %d pessoas ao mesmo tempo</item>
     </plurals>
     <string name="settings_capacity_unlimited">Ajuda um número ilimitado de pessoas</string>
+    <string name="settings_capacity_warning">Alterações aplicadas apenas no reinício do serviço</string>
     <string name="notification_channel">Snowflake</string>
     <string name="notification_text">À procura de alguém para ajudar contornar a censura…</string>
     <plurals name="notification_text_connected">
@@ -48,6 +49,8 @@
         <item quantity="many">A ajudar %d de pessoas contornar a censura</item>
         <item quantity="other">A ajudar %d pessoas contornar a censura</item>
     </plurals>
+    <string name="quick_settings_looking">À procura…</string>
+    <string name="quick_settings_helping">A ajudar %d</string>
     <string name="enabled">Ativado</string>
     <string name="disabled">Desativado</string>
     <string name="settings_capacity">Quantas pessoas ajudar ao mesmo tempo</string>
