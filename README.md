@@ -8,11 +8,9 @@ Android app for [Tor Snowflake](https://snowflake.torproject.org) volunteers.
 <a href="https://hosted.weblate.org/engage/snowflake-volunteers/"><img src="https://hosted.weblate.org/widget/snowflake-volunteers/svg-badge.svg" alt="Translation status" /></a>
 [![release](https://img.shields.io/github/v/release/blocoio/snowflake)](https://github.com/blocoio/snowflake/releases/latest)
 
-<a href="https://play.google.com/store/apps/details?id=io.bloco.snowflake">
-    <img src="assets/google_play.svg" alt="Get it on Google Play" width="200"/>
-</a>
-
-Soon available on F-Droid.
+<a href="https://play.google.com/store/apps/details?id=io.bloco.snowflake"><img src="assets/google_play.svg" alt="Get it on Google Play" height="60"/></a>
+&nbsp;&nbsp;
+<a href="https://f-droid.org/packages/io.bloco.snowflake"><img src="assets/fdroid.svg" alt="Get it on F-Droid" height="60"/></a>
 
 ## Screenshots
 
