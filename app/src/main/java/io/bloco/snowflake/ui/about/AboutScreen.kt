@@ -92,7 +92,7 @@ private fun AboutText(textRes: Int) {
                 addLink(
                     url = LinkAnnotation.Url(result.value),
                     start = result.range.first,
-                    end = result.range.last,
+                    end = result.range.last + 1,
                 )
             }
         }
