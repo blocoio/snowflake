@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="close">Fechar</string>
-    <string name="snowflake_disabled">Ativar Snowflake. Ajude outros a contornar a censura.</string>
-    <string name="snowflake_enabled">Snowflake Ativo. Está a ajudar a contornar a censura.</string>
+    <string name="snowflake_disabled">Ativar Snowflake. Ajude outros contornar a censura.</string>
+    <string name="snowflake_enabled">Snowflake Ativo. Está a ajudar contornar a censura.</string>
     <string name="snowflake_stopped">Parado</string>
-    <string name="snowflake_looking_to_help">À procura de alguém…</string>
+    <string name="snowflake_looking_to_help">À procura de alguém para ajudar…</string>
     <string name="snowflake_helping">A ajudar</string>
     <plurals name="persons">
         <item quantity="one">%d pessoa</item>
@@ -42,8 +42,12 @@
     </plurals>
     <string name="settings_capacity_unlimited">Ajuda um número ilimitado de pessoas</string>
     <string name="notification_channel">Snowflake</string>
-    <string name="notification_text">O seu Snowflake está pronto para ajudar outros a contornar a censura.</string>
-    <string name="notification_text_connected">O seu Snowflake está neste momento a ajudar alguém contornar a censura.</string>
+    <string name="notification_text">À procura de alguém para ajudar contornar a censura…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">A ajudar %d pessoa contornar a censura</item>
+        <item quantity="many">A ajudar %d de pessoas contornar a censura</item>
+        <item quantity="other">A ajudar %d pessoas contornar a censura</item>
+    </plurals>
     <string name="enabled">Ativado</string>
     <string name="disabled">Desativado</string>
     <string name="settings_capacity">Quantas pessoas ajudar ao mesmo tempo</string>

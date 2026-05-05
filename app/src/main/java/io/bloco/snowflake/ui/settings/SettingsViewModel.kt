@@ -45,15 +45,19 @@ class SettingsViewModel(
             .filterIsInstance<Event.ChargingOnlyChange>()
             .onEach { setChargingOnly(it.value) }
             .launchIn(viewModelScope)
+
         events
             .filterIsInstance<Event.CapacityChange>()
-            .onEach { setCapacity(it.value) }
-            .launchIn(viewModelScope)
+            .onEach {
+                setCapacity(it.value)
+                _state.update { state -> state.copy(capacityWasChanged = true) }
+            }.launchIn(viewModelScope)
     }
 
     data class State(
         val config: AppConfig? = null,
         val capacity: Capacity? = null,
+        val capacityWasChanged: Boolean = false,
     )
 
     sealed interface Event {

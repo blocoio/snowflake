@@ -126,13 +126,15 @@ class SnowflakeWorker(
             .setColor(SeedColor.toArgb())
             .setContentTitle(resources.getString(R.string.notification_channel))
             .setContentText(
-                resources.getString(
-                    if (state.clientsConnected > 0) {
-                        R.string.notification_text_connected
-                    } else {
-                        R.string.notification_text
-                    },
-                ),
+                if (state.clientsConnected > 0) {
+                    resources.getQuantityString(
+                        R.plurals.notification_text_connected,
+                        state.clientsConnected,
+                        state.clientsConnected,
+                    )
+                } else {
+                    resources.getString(R.string.notification_text)
+                },
             ).setAutoCancel(false)
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_LOW)

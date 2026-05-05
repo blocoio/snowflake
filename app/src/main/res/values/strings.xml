@@ -57,10 +57,14 @@
         <item quantity="other">Help %d persons at the same time</item>
     </plurals>
     <string name="settings_capacity_unlimited">Help an unlimited number of persons</string>
+    <string name="settings_capacity_warning">Changes only apply on service restart</string>
 
     <string name="notification_channel">Snowflake</string>
-    <string name="notification_text">Your Snowflake is ready to help users circumvent censorship.</string>
-    <string name="notification_text_connected">Your Snowflake is currently helping someone circumvent censorship.</string>
+    <string name="notification_text">Looking for someone to help circumvent censorship…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">Helping %d person circumvent censorship</item>
+        <item quantity="other">Helping %d persons circumvent censorship</item>
+    </plurals>
 
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>

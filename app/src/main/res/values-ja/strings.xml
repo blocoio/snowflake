@@ -40,7 +40,6 @@
     <string name="settings_capacity_unlimited">人数に制限なく支援します</string>
     <string name="notification_channel">Snowflake</string>
     <string name="notification_text">Snowflake は他のユーザーが検閲を回避するのを支援する準備ができています。</string>
-    <string name="notification_text_connected">Snowflake は他のユーザーが検閲を回避できるよう支援しています。</string>
     <string name="enabled">有効</string>
     <string name="disabled">無効</string>
 </resources>

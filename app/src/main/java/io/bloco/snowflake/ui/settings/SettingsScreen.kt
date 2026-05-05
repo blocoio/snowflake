@@ -199,6 +199,16 @@ fun SettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
             )
+            if (state.capacityWasChanged) {
+                Text(
+                    text = stringResource(R.string.settings_capacity_warning),
+                    style = MaterialTheme.typography.labelMedium,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp, horizontal = 16.dp),
+                )
+            }
         }
     }
 }
