@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="close">閉じる</string>
+    <string name="snowflake_disabled">Snowflake を有効にして、他のユーザーが検閲を回避できるようにしましょう。</string>
+    <string name="snowflake_enabled">Snowflake は有効です。他のユーザーが検閲を回避できるようにしています。</string>
+    <string name="snowflake_stopped">停止中</string>
+    <string name="snowflake_looking_to_help">手助けを必要とするユーザーを探しています…</string>
+    <string name="snowflake_helping">支援中</string>
+    <plurals name="persons">
+        <item quantity="other">%d 人</item>
+    </plurals>
+    <string name="today">(今日)</string>
+    <string name="snowflake_stats_connections">接続数</string>
+    <string name="snowflake_stats_inbound">受信データ量</string>
+    <string name="snowflake_stats_outbound">送信データ量</string>
+    <string name="battery_optimizations_text">このアプリがバックグラウンドで正常に動作するように、バッテリーの最適化を無効にしてください</string>
+    <string name="battery_optimizations_action">続行</string>
+    <string name="about">製品情報</string>
+    <string name="about_title1">Snowflake とは何ですか？</string>
+    <string name="about_text1">Snowflake は、検閲のない国にあるボランティアのプロキシーを経由して接続をルーティングすることで、Tor がブロックされている場所でもユーザーが Tor ネットワークに接続できるようにします。 \n\nインターネット検閲を回避するのに役立つ VPN と同様に、Snowflake はユーザーのインターネットアクティビティをあたかもビデオ通話や音声通話をしているかのようにカモフラージュし、検閲当局に検知されにくくします。</string>
+    <string name="about_title2">Snowflake はどのように機能しますか？</string>
+    <string name="about_text2">Snowflake は、ビデオ会議ソフトウェアで広く採用されている WebRTC と呼ばれる技術を使用しています。これにより、音声通話やビデオ通話をしているように見せかけることで、Tor を使用していることを検閲当局から隠すことができます。\n\n詳細は https://snowflake.torproject.org/ja/ をご覧ください。</string>
+    <string name="about_title3">これは安全ですか？</string>
+    <string name="about_text3">Snowflake アプリを通じてユーザーがアクセスするウェブサイトについて心配する必要はありません。ユーザーがブラウジングする際の IP アドレスは、あなたの IP アドレスではなく、Tor の出口ノードの IP アドレスになります (あなたのデバイスは入口ノードとして機能します) 。</string>
+    <string name="about_title4">このアプリを使って検閲を回避できますか？</string>
+    <string name="about_text4">いいえ。検閲を回避したい場合は、Tor Browser や Orbot などの Tor 搭載アプリをダウンロードし、アプリの設定で Snowflake を選択する必要があります。</string>
+    <string name="about_title5">このアプリを開発したのは誰ですか？</string>
+    <string name="about_text5">このアプリは、ポルトガルの Android 開発チームである Bloco によって開発されました。Tor Project および Guardian Project による素晴らしい技術を基にしています。</string>
+    <string name="settings">設定</string>
+    <string name="settings_background">バックグラウンドで実行する</string>
+    <string name="settings_background_context">Android がアプリをバックグラウンドで起動するようにします</string>
+    <string name="settings_unmetered">データ無制限のネットワークのみ</string>
+    <string name="settings_unmetered_context">Wi-Fi などのデータ無制限のネットワークに接続されている場合のみ実行します</string>
+    <string name="settings_charging">充電中のみ</string>
+    <string name="settings_charging_context">デバイスのバッテリーが充電中の場合のみ実行します</string>
+    <string name="settings_capacity">同時に支援するユーザー数</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="other">同時に %d 人を支援します</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">人数に制限なく支援します</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Snowflake は他のユーザーが検閲を回避するのを支援する準備ができています。</string>
+    <string name="notification_text_connected">Snowflake は他のユーザーが検閲を回避できるよう支援しています。</string>
+    <string name="enabled">有効</string>
+    <string name="disabled">無効</string>
+</resources>
