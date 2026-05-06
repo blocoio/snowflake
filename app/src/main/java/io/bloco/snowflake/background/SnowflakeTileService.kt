@@ -1,13 +1,10 @@
 package io.bloco.snowflake.background
 
-import android.app.PendingIntent
-import android.content.Intent
 import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import io.bloco.snowflake.App
 import io.bloco.snowflake.R
-import io.bloco.snowflake.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -29,15 +26,6 @@ class SnowflakeTileService : TileService() {
         this.coroutineScope = coroutineScope
 
         qsTile.label = getString(R.string.app_name)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            qsTile.activityLaunchForClick = PendingIntent.getActivity(
-                applicationContext,
-                0,
-                Intent(applicationContext, MainActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK),
-                PendingIntent.FLAG_IMMUTABLE,
-            )
-        }
         qsTile.updateTile()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
