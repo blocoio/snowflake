@@ -4,7 +4,7 @@
     <string name="snowflake_disabled">Snowflake を有効にして、他のユーザーが検閲を回避できるようにしましょう。</string>
     <string name="snowflake_enabled">Snowflake は有効です。他のユーザーが検閲を回避できるようにしています。</string>
     <string name="snowflake_stopped">停止中</string>
-    <string name="snowflake_looking_to_help">手助けを必要とするユーザーを探しています…</string>
+    <string name="snowflake_looking_to_help">支援が必要なユーザーを探しています…</string>
     <string name="snowflake_helping">支援中</string>
     <plurals name="persons">
         <item quantity="other">%d 人</item>
@@ -39,7 +39,13 @@
     </plurals>
     <string name="settings_capacity_unlimited">人数に制限なく支援します</string>
     <string name="notification_channel">Snowflake</string>
-    <string name="notification_text">Snowflake は他のユーザーが検閲を回避するのを支援する準備ができています。</string>
+    <string name="notification_text">検閲を回避したいユーザーを探しています…</string>
     <string name="enabled">有効</string>
     <string name="disabled">無効</string>
+    <string name="settings_capacity_warning">変更を適用するには再起動が必要です</string>
+    <plurals name="notification_text_connected">
+        <item quantity="other">%d 人が検閲を回避するのを支援しています</item>
+    </plurals>
+    <string name="quick_settings_looking">探しています…</string>
+    <string name="quick_settings_helping">支援中: %d</string>
 </resources>
