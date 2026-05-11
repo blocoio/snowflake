@@ -1,0 +1,21 @@
+Sansürlü ülkelerdeki insanların internete kısıtlamasız erişmesine yardım et.
+
+Snowflake nedir?
+
+Snowflake, Tor'un engellendiği yerlerde Tor Ağı'na bağlantının Tor'a erişime sahip olan ülkelerde olan vekil sunucularda yönlendirilerek insanların Tor Ağı'na bağlanmasını sağlar.
+
+VPN'lere benzer olarak yani kullanıcıların İnternet erişim engelini aşan şekilde Snowflake İnternet aktiviteni sanki bir görüntülü aramada yada sesli aramadaymış gibi gizler bu da sebi İnternet sensörlerine daha az yakalanabilir yapıyor.
+
+Snowflake nasıl çalışır?
+
+Snowflake, WebRTC adlı, ve genelde video konferans uygulamaları tarafından kullanılan bir teknoloji kullanrı. Bu senin Tor kullanımını sanki sen sesli yada video aramasındaymışsın gibi göstererek maskeler.
+
+Daha fazla öğrenmek için: https://snowflake.torproject.org
+
+Bu benim için güvenli mi?
+
+Senin Snowflake uygulamasının yoluyla insanların ne tarz websitelere eriştiği hakkında endişelenmeye gerek yok. Onların görünür gezinim IP adresleri onların Tor çıkış düğümleriyle eşleşir, seninkiyle değil (sen bir giriş noktası olduğun için).
+
+Bu uygulamayı kullanarak sansürden kaçınabilirmiyim?
+
+Hayır, eğer sansürden kaçınmak istiyorsanız Tor Browser gibi Tor yada Orbot'la güçlendirilmiş bir uygulama yüklemeniz gereklidir ve uygulama ayarlarından Snowflake'i seçmeniz gerek.
