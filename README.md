@@ -24,3 +24,10 @@ your connection through volunteer proxies located in uncensored countries.
 Similar to VPNs, which help users bypass Internet censorship, Snowflake disguises your Internet
 activity as though you’re making a video or voice call, making you less detectable to Internet
 censors.
+
+## Panic Kit Support
+
+This app responds to "Panic Button" apps such as [Ripple](https://github.com/guardianproject/ripple).
+If the panic button is triggered, the app will delete all data, reset user preferences, and hide
+itself has an app called "Plants" 🪴. If you open that Plants app, the app's name and icon will be
+restored.

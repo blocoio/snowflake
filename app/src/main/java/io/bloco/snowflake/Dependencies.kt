@@ -53,7 +53,7 @@ class Dependencies(
             }
         }
     }
-    private val appDatabase by lazy {
+    val appDatabase by lazy {
         Room.databaseBuilder(app, AppDatabase::class.java, "snowflake").build()
     }
     private val statsDao by lazy { appDatabase.statsDao() }

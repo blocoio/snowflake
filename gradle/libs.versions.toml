@@ -53,6 +53,7 @@ ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = 
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+panic = { module = "info.guardianproject.panic:panic", version = "1.0" }
 
 [bundles]
 kotlin = [
@@ -89,6 +90,7 @@ app = [
     "ktor-json",
     "room-runtime",
     "room-ktx",
+    "panic",
 ]
 ksp = [
     "room-compiler",

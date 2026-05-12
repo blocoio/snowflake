@@ -74,6 +74,12 @@ class AppDataStore(
 
     suspend fun setStunServersDate(date: Instant) = dataStore().edit { it[STUN_SERVERS_DATE] = date.epochSeconds }
 
+    // Clear
+
+    suspend fun clear() {
+        dataStoreFlow().first().edit { it.clear() }
+    }
+
     // Internal
 
     @Suppress("ktlint:standard:backing-property-naming")

@@ -40,6 +40,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setLauncher(DefaultLauncher)
 
         setContent {
             val viewModel = viewModel { dependencies.mainViewModel }
