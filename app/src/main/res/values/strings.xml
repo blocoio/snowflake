@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Snowflake</string>
 
+    <!-- Safe-looking name to hide the app if a panic button is triggered -->
     <string name="hidden_app_name">Plants</string>
+
     <string name="close">Close</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
