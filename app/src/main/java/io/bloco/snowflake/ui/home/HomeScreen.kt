@@ -232,7 +232,9 @@ private fun Stats(
                 } else {
                     stringResource(R.string.snowflake_looking_to_help)
                 }
-            } else null,
+            } else {
+                null
+            },
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_connections),

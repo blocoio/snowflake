@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Snowflake.Splash" parent="Theme.SplashScreen.IconBackground">
-        <item name="windowSplashScreenBackground">#FFF5EDDD</item>
+        <item name="windowSplashScreenBackground">#FF000000</item>
         <item name="postSplashScreenTheme">@style/Theme.Snowflake</item>
     </style>
-    <style name="Theme.Snowflake" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Snowflake" parent="android:Theme.Material.NoActionBar" />
 </resources>
