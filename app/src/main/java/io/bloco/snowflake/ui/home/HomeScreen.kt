@@ -222,15 +222,17 @@ private fun Stats(
                 running.clientsConnected > 0 -> stringResource(R.string.snowflake_helping)
                 else -> null
             },
-            text = if (running != null && running.clientsConnected > 0) {
-                pluralStringResource(
-                    R.plurals.persons,
-                    running.clientsConnected,
-                    running.clientsConnected,
-                )
-            } else {
-                stringResource(R.string.snowflake_looking_to_help)
-            },
+            text = if (running != null) {
+                if (running.clientsConnected > 0) {
+                    pluralStringResource(
+                        R.plurals.persons,
+                        running.clientsConnected,
+                        running.clientsConnected,
+                    )
+                } else {
+                    stringResource(R.string.snowflake_looking_to_help)
+                }
+            } else null,
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_connections),
