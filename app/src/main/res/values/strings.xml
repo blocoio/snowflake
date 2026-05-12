@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">Snowflake</string>
 
+    <string name="hidden_app_name">Plants</string>
     <string name="close">Close</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
 
     <string name="snowflake_disabled">Enable Snowflake. Help others bypass censorship.</string>
     <string name="snowflake_enabled">Snowflake is Active. You’re helping bypass censorship.</string>
@@ -68,7 +71,4 @@
 
     <string name="quick_settings_looking">Looking…</string>
     <string name="quick_settings_helping">Helping %d</string>
-
-    <string name="enabled">Enabled</string>
-    <string name="disabled">Disabled</string>
 </resources>
