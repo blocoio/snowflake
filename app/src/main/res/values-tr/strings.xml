@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="close">Kapat</string>
+    <string name="snowflake_disabled">Snowflake\'i Aktive et. Diğerlerinin sensörleri aşmasına yardım et.</string>
+    <string name="snowflake_enabled">Snowflake Aktif. Sensörlerine aşılmasında yardımcı oluyorsun.</string>
+    <string name="snowflake_stopped">Durduruldu</string>
+    <string name="snowflake_looking_to_help">Yardım edilecek biri aranıyor…</string>
+    <string name="snowflake_helping">Yardım ediliyor</string>
+    <plurals name="persons">
+        <item quantity="one">%d kişi</item>
+        <item quantity="other">%d kişiler</item>
+    </plurals>
+    <string name="today">bugün</string>
+    <string name="snowflake_stats_connections">Bağlantılar</string>
+    <string name="snowflake_stats_inbound">Alındı</string>
+    <string name="snowflake_stats_outbound">Gönderildi</string>
+    <string name="battery_optimizations_text">Lütfen pil optimizasyonunu kapatın ki uygulama arkada başarıyla çalışsın</string>
+    <string name="battery_optimizations_action">Devam et</string>
+    <string name="about">Hakkında</string>
+    <string name="about_title1">Snowflake nedir?</string>
+    <string name="about_text1">Snowflake, Tor\'un engellendiği yerlerde Tor Ağı\'na bağlantının Tor\'a erişime sahip olan ülkelerde olan vekil sunucularda yönlendirilerek insanların Tor Ağı\'na bağlanmasını sağlar.\n\nVPN\'lere benzer olarak yani kullanıcıların İnternet erişim engelini aşan şekilde Snowflake İnternet aktiviteni sanki bir görüntülü aramada ya da sesli aramadaymış gibi gizler bu da sebi İnternet sensörlerine daha az yakalanabilir yapıyor.</string>
+    <string name="about_title2">Snowflake nasıl çalışır?</string>
+    <string name="about_text2">Snowflake, WebRTC adlı, ve genelde video konferans uygulamaları tarafından kullanılan bir teknoloji kullanrı. Bu senin Tor kullanımını sanki sen sesli ya da video aramasındaymışsın gibi göstererek maskeler.\n\nDaha fazla öğrenmek için: https://snowflake.torproject.org</string>
+    <string name="about_title3">Bu benim için güvenli mi?</string>
+    <string name="about_text3">Senin Snowflake uygulamasının yoluyla insanların ne tarz websitelere eriştiği hakkında endişelenmeye gerek yok. Onların görünür gezinim IP adresleri onların Tor çıkış düğümleriyle eşleşir, seninkiyle değil (sen bir giriş noktası olduğun için).</string>
+    <string name="about_title4">Bu uygulamayla sansürden kaçınabilirmiyim?</string>
+    <string name="about_text4">Hayır, eğer sansürden kaçınmak istiyorsanız Tor Browser gibi Tor ya da Orbot\'la güçlendirilmiş bir uygulama yüklemeniz gereklidir ve uygulama ayarlarından Snowflake\'i seçmeniz gerek.</string>
+    <string name="about_title5">Bu uygulamayı kim yaptı?</string>
+    <string name="about_text5">Bu uygulama, Portekiz bazlı bir Android stüdyosu olan Bloco tarafından yapıldı. Tor ve Guardian projesinin ekiplerinin büyük emekleriyle yapıldı.</string>
+    <string name="settings">Ayarlar</string>
+    <string name="settings_background">Arkada çalış</string>
+    <string name="settings_background_context">Android\'e uygulamayı arkada çalışması için izin isteyeceğiz</string>
+    <string name="settings_unmetered">Sadece limitsiz ağlar için</string>
+    <string name="settings_unmetered_context">Sadece WiFi gibi sınırsız bir ağ bağlanırsa çalışır</string>
+    <string name="settings_charging">Sadece şarj</string>
+    <string name="settings_charging_context">Sadece cihaz şarj oluyorsa çalıştırın</string>
+    <string name="settings_capacity">Aynı zamanda kaç kişiye yardım edilecek</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">%d insana aynı anda yardım et</item>
+        <item quantity="other">%d insanlara aynı anda yardım et</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Sınırsız sayıda insana yardım et</string>
+    <string name="settings_capacity_warning">Değişiklikler ancak servis tekrar başlamasından uygulanır</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Sansürlerden sıyrılmak için biri aranıyor…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">%d kadar insan sansürlerden sıyrılmak için yardımcı ediyor</item>
+        <item quantity="other">%d insanlar sansürlerden sıyrılmak için yardımcı ediyor</item>
+    </plurals>
+    <string name="quick_settings_looking">Aranıyor…</string>
+    <string name="quick_settings_helping">Yardım ediliyor%d</string>
+    <string name="enabled">Aktif Edildi</string>
+    <string name="disabled">Deaktive Edildi</string>
+</resources>
