@@ -54,4 +54,5 @@
     <string name="enabled">Ativado</string>
     <string name="disabled">Desativado</string>
     <string name="settings_capacity">Quantas pessoas ajudar ao mesmo tempo</string>
+    <string name="hidden_app_name">Plantas</string>
 </resources>
