@@ -25,6 +25,18 @@ Similar to VPNs, which help users bypass Internet censorship, Snowflake disguise
 activity as though you’re making a video or voice call, making you less detectable to Internet
 censors.
 
+## Contribute
+
+### Bugs & Ideas
+
+Create a [new issue](https://github.com/blocoio/snowflake/issues/new) here in this repository with
+your bug reports and ideas for the app.
+
+### Translations
+
+Help us translate the app! We're using [Weblate](https://hosted.weblate.org/projects/snowflake-volunteers/)
+to manage the translations. If you can't find your language there, feel free to add it.
+
 ## Panic Kit Support
 
 This app responds to "Panic Button" apps such as [Ripple](https://github.com/guardianproject/ripple).
