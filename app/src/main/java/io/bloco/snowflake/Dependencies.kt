@@ -125,6 +125,7 @@ class Dependencies(
         SettingsViewModel(
             getAppConfig = appDataStore::appConfig,
             getCapacity = appDataStore::capacity,
+            setBackground = appDataStore::setBackground,
             setUnmeteredOnly = appDataStore::setUnmeteredOnly,
             setChargingOnly = appDataStore::setChargingOnly,
             setCapacity = appDataStore::setCapacity,

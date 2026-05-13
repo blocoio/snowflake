@@ -62,154 +62,183 @@ fun SettingsScreen(
                     .padding(WindowInsets.navigationBars.asPaddingValues())
                     .padding(top = 16.dp, bottom = 32.dp),
         ) {
-            val background = state.config?.background == true
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier =
-                    Modifier
-                        .selectable(
-                            selected = background,
-                            role = Role.Switch,
-                            onClick = { onEvent(SettingsViewModel.Event.UnmeteredOnlyChange(!background)) },
-                        ).padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.settings_background),
-                    style = MaterialTheme.typography.titleMediumEmphasized,
-                    modifier = Modifier.weight(1f),
-                )
-                Switch(
-                    checked = background,
-                    onCheckedChange = null,
-                )
-            }
-            Text(
-                text = stringResource(R.string.settings_background_context),
-                style = MaterialTheme.typography.labelLarge,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 28.dp),
-            )
-
-            val unmeteredOnly = state.config?.unmeteredOnly == true
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier =
-                    Modifier
-                        .selectable(
-                            selected = unmeteredOnly,
-                            role = Role.Switch,
-                            onClick = { onEvent(SettingsViewModel.Event.UnmeteredOnlyChange(!unmeteredOnly)) },
-                        ).padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.settings_unmetered),
-                    style = MaterialTheme.typography.titleMediumEmphasized,
-                    modifier = Modifier.weight(1f),
-                )
-                Switch(
-                    checked = unmeteredOnly,
-                    onCheckedChange = null,
-                )
-            }
-            Text(
-                text = stringResource(R.string.settings_unmetered_context),
-                style = MaterialTheme.typography.labelLarge,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 28.dp),
-            )
-
-            val chargingOnly = state.config?.chargingOnly == true
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier =
-                    Modifier
-                        .selectable(
-                            selected = chargingOnly,
-                            role = Role.Switch,
-                            onClick = { onEvent(SettingsViewModel.Event.ChargingOnlyChange(!chargingOnly)) },
-                        ).padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.settings_charging),
-                    style = MaterialTheme.typography.titleMediumEmphasized,
-                    modifier = Modifier.weight(1f),
-                )
-                Switch(
-                    checked = chargingOnly,
-                    onCheckedChange = null,
-                )
-            }
-            Text(
-                text = stringResource(R.string.settings_charging_context),
-                style = MaterialTheme.typography.labelLarge,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 28.dp),
-            )
-
-            Text(
-                text = stringResource(R.string.settings_capacity),
-                style = MaterialTheme.typography.titleMediumEmphasized,
-                modifier =
-                    Modifier
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-            )
-            Slider(
-                value =
-                    CAPACITY_RANGE_VALUES.entries
-                        .firstOrNull { it.value == state.capacity }
-                        ?.key
-                        ?: CAPACITY_RANGE_VALUES.keys.first(),
-                onValueChange = {
-                    val cap = CAPACITY_RANGE_VALUES[it] ?: CAPACITY_RANGE_VALUES.values.first()
-                    onEvent(SettingsViewModel.Event.CapacityChange(cap))
-                },
-                valueRange = CAPACITY_RANGE_VALUES.keys.let { it.first()..it.last() },
-                steps = CAPACITY_RANGE_VALUES.size - 2,
-                modifier =
-                    Modifier
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 8.dp),
-            )
-            Text(
-                text =
-                    when (state.capacity) {
-                        is Capacity.Specific ->
-                            pluralStringResource(
-                                R.plurals.settings_capacity_specific,
-                                state.capacity.value.toInt(),
-                                state.capacity.value,
-                            )
-
-                        Capacity.Unlimited -> stringResource(R.string.settings_capacity_unlimited)
-                        null -> ""
-                    },
-                textAlign = TextAlign.End,
-                style = MaterialTheme.typography.labelLarge,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-            )
-            if (state.capacityWasChanged) {
-                Text(
-                    text = stringResource(R.string.settings_capacity_warning),
-                    style = MaterialTheme.typography.labelMedium,
-                    textAlign = TextAlign.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp, horizontal = 16.dp),
-                )
-            }
+            BackgroundSetting(state, onEvent)
+            UnmeteredSetting(state, onEvent)
+            ChargingSetting(state, onEvent)
+            CapacitySetting(state, onEvent)
         }
+    }
+}
+
+@Composable
+private fun BackgroundSetting(
+    state: SettingsViewModel.State,
+    onEvent: (SettingsViewModel.Event) -> Unit,
+) {
+    val background = state.config?.background == true
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier =
+            Modifier
+                .selectable(
+                    selected = background,
+                    role = Role.Switch,
+                    onClick = { onEvent(SettingsViewModel.Event.BackgroundChange(!background)) },
+                ).padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.settings_background),
+            style = MaterialTheme.typography.titleMediumEmphasized,
+            modifier = Modifier.weight(1f),
+        )
+        Switch(
+            checked = background,
+            onCheckedChange = null,
+        )
+    }
+    Text(
+        text = stringResource(R.string.settings_background_context),
+        style = MaterialTheme.typography.labelLarge,
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 28.dp),
+    )
+}
+
+@Composable
+private fun UnmeteredSetting(
+    state: SettingsViewModel.State,
+    onEvent: (SettingsViewModel.Event) -> Unit,
+) {
+    val unmeteredOnly = state.config?.unmeteredOnly == true
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier =
+            Modifier
+                .selectable(
+                    selected = unmeteredOnly,
+                    role = Role.Switch,
+                    onClick = { onEvent(SettingsViewModel.Event.UnmeteredOnlyChange(!unmeteredOnly)) },
+                ).padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.settings_unmetered),
+            style = MaterialTheme.typography.titleMediumEmphasized,
+            modifier = Modifier.weight(1f),
+        )
+        Switch(
+            checked = unmeteredOnly,
+            onCheckedChange = null,
+        )
+    }
+    Text(
+        text = stringResource(R.string.settings_unmetered_context),
+        style = MaterialTheme.typography.labelLarge,
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 28.dp),
+    )
+}
+
+@Composable
+private fun ChargingSetting(
+    state: SettingsViewModel.State,
+    onEvent: (SettingsViewModel.Event) -> Unit,
+) {
+    val chargingOnly = state.config?.chargingOnly == true
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier =
+            Modifier
+                .selectable(
+                    selected = chargingOnly,
+                    role = Role.Switch,
+                    onClick = { onEvent(SettingsViewModel.Event.ChargingOnlyChange(!chargingOnly)) },
+                ).padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.settings_charging),
+            style = MaterialTheme.typography.titleMediumEmphasized,
+            modifier = Modifier.weight(1f),
+        )
+        Switch(
+            checked = chargingOnly,
+            onCheckedChange = null,
+        )
+    }
+    Text(
+        text = stringResource(R.string.settings_charging_context),
+        style = MaterialTheme.typography.labelLarge,
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 28.dp),
+    )
+}
+
+@Composable
+private fun CapacitySetting(
+    state: SettingsViewModel.State,
+    onEvent: (SettingsViewModel.Event) -> Unit,
+) {
+    Text(
+        text = stringResource(R.string.settings_capacity),
+        style = MaterialTheme.typography.titleMediumEmphasized,
+        modifier =
+            Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+    )
+    Slider(
+        value =
+            CAPACITY_RANGE_VALUES.entries
+                .firstOrNull { it.value == state.capacity }
+                ?.key
+                ?: CAPACITY_RANGE_VALUES.keys.first(),
+        onValueChange = {
+            val cap = CAPACITY_RANGE_VALUES[it] ?: CAPACITY_RANGE_VALUES.values.first()
+            onEvent(SettingsViewModel.Event.CapacityChange(cap))
+        },
+        valueRange = CAPACITY_RANGE_VALUES.keys.let { it.first()..it.last() },
+        steps = CAPACITY_RANGE_VALUES.size - 2,
+        modifier =
+            Modifier
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 8.dp),
+    )
+    Text(
+        text =
+            when (state.capacity) {
+                is Capacity.Specific ->
+                    pluralStringResource(
+                        R.plurals.settings_capacity_specific,
+                        state.capacity.value.toInt(),
+                        state.capacity.value,
+                    )
+
+                Capacity.Unlimited -> stringResource(R.string.settings_capacity_unlimited)
+                null -> ""
+            },
+        textAlign = TextAlign.End,
+        style = MaterialTheme.typography.labelLarge,
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+    )
+    if (state.capacityWasChanged) {
+        Text(
+            text = stringResource(R.string.settings_capacity_warning),
+            style = MaterialTheme.typography.labelMedium,
+            textAlign = TextAlign.End,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp, horizontal = 16.dp),
+        )
     }
 }
 

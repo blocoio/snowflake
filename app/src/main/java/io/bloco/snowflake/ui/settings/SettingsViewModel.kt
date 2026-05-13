@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.update
 class SettingsViewModel(
     getAppConfig: () -> Flow<AppConfig>,
     getCapacity: () -> Flow<Capacity>,
+    setBackground: suspend (Boolean) -> Unit,
     setUnmeteredOnly: suspend (Boolean) -> Unit,
     setChargingOnly: suspend (Boolean) -> Unit,
     setCapacity: suspend (Capacity) -> Unit,
@@ -34,6 +35,11 @@ class SettingsViewModel(
 
         getCapacity()
             .onEach { _state.update { state -> state.copy(capacity = it) } }
+            .launchIn(viewModelScope)
+
+        events
+            .filterIsInstance<Event.BackgroundChange>()
+            .onEach { setBackground(it.value) }
             .launchIn(viewModelScope)
 
         events
@@ -61,6 +67,10 @@ class SettingsViewModel(
     )
 
     sealed interface Event {
+        data class BackgroundChange(
+            val value: Boolean,
+        ) : Event
+
         data class UnmeteredOnlyChange(
             val value: Boolean,
         ) : Event
