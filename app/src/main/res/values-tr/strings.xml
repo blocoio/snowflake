@@ -51,4 +51,5 @@
     <string name="quick_settings_helping">Yardım ediliyor%d</string>
     <string name="enabled">Aktif Edildi</string>
     <string name="disabled">Deaktive Edildi</string>
+    <string name="hidden_app_name">Hesap makinesi</string>
 </resources>
