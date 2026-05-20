@@ -25,7 +25,6 @@ private fun getColorScheme(darkTheme: Boolean): ColorScheme =
     rememberDynamicColorScheme(
         seedColor = SeedColor,
         style = PaletteStyle.TonalSpot,
-        // specVersion = ColorSpec.SpecVersion.SPEC_2025,
         isDark = darkTheme,
         isAmoled = true,
     )

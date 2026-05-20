@@ -20,7 +20,7 @@ android {
         applicationId = "io.bloco.snowflake"
         minSdk = 26
         targetSdk = 37
-        versionCode = 30 // Increment by 5 to account for ABI split
+        versionCode = 35 // Increment by 5 to account for ABI split
         versionName = "1.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

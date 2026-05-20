@@ -2,6 +2,9 @@ package io.bloco.snowflake.ui.home
 
 import android.text.format.Formatter
 import androidx.activity.compose.LocalActivity
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,6 +54,7 @@ import io.bloco.snowflake.models.AppConfig
 import io.bloco.snowflake.models.DayStats
 import io.bloco.snowflake.ui.MainActivity
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
+import io.bloco.snowflake.ui.theme.enabledTransitionSpec
 
 @Composable
 fun HomeScreen(
@@ -60,6 +65,7 @@ fun HomeScreen(
     openSettings: () -> Unit,
 ) {
     val isEnabled = state.config?.isEnabled == true
+    val enabledTransition = updateTransition(isEnabled, label = "enabled")
     val sizeClass = currentWindowAdaptiveInfo().windowSizeClass
     val isShortHeight =
         !sizeClass.isHeightAtLeastBreakpoint(WindowSizeClass.HEIGHT_DP_MEDIUM_LOWER_BOUND)
@@ -132,9 +138,13 @@ fun HomeScreen(
                     .padding(horizontal = 16.dp),
         )
 
-        val isEnabled = state.config?.isEnabled == true
+        val surfaceColor by enabledTransition.animateColor(
+            transitionSpec = { enabledTransitionSpec() },
+        ) {
+            if (it) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainer
+        }
         Surface(
-            color = if (isEnabled) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainer,
+            color = surfaceColor,
             modifier =
                 Modifier
                     .fillMaxWidth()
@@ -178,14 +188,13 @@ fun HomeScreen(
         if (!isShortHeight) {
             Spacer(Modifier.weight(2f))
 
+            val saturation by enabledTransition.animateFloat(
+                transitionSpec = { enabledTransitionSpec() },
+            ) { if (it) 1f else 0f }
             Image(
                 painter = painterResource(R.drawable.home_mobile),
                 contentDescription = null,
-                colorFilter = if (!isEnabled) {
-                    ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
-                } else {
-                    null
-                },
+                colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(saturation) }),
                 modifier = Modifier.height(96.dp),
             )
         }
