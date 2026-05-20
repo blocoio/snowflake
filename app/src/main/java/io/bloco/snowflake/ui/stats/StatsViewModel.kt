@@ -20,32 +20,35 @@ class StatsViewModel(
 
     init {
         getAllStats()
-            .map { stats ->
-                val today = LocalDate.now()
-                val firstDate = stats.firstOrNull()?.date ?: today
-                val days = (0..LAST_N_DAYS)
-                    .map { today.minusDays(it) }
-                    .filter { it >= firstDate }
-                    .map { day -> stats.firstOrNull { it.date == day } ?: DayStats(date = day) }
-                val months = stats
-                    .filter { it.date >= today.withDayOfMonth(1).minusMonths(LAST_N_MONTHS) }
-                    .groupBy { it.date.withDayOfMonth(1) }
-                    .map { (month, stats) ->
-                        (stats.sum() ?: DayStats()).copy(date = month)
-                    }
-                val years = stats
-                    .groupBy { it.date.withDayOfYear(1) }
-                    .map { (year, stats) ->
-                        (stats.sum() ?: DayStats()).copy(date = year)
-                    }
-                State(
-                    days = days,
-                    months = months,
-                    years = years,
-                    total = stats.sum() ?: DayStats(),
-                )
-            }.onEach { _state.value = it }
+            .map(::buildState)
+            .onEach { _state.value = it }
             .launchIn(viewModelScope)
+    }
+
+    private fun buildState(stats: List<DayStats>): State {
+        val today = LocalDate.now()
+        val firstDate = stats.firstOrNull()?.date ?: today
+        val days = (0.until(LAST_N_DAYS))
+            .map { today.minusDays(it) }
+            .filter { it >= firstDate }
+            .map { day -> stats.firstOrNull { it.date == day } ?: DayStats(date = day) }
+        val months = stats
+            .filter { it.date >= today.withDayOfMonth(1).minusMonths(LAST_N_MONTHS) }
+            .groupBy { it.date.withDayOfMonth(1) }
+            .map { (month, stats) ->
+                (stats.sum() ?: DayStats()).copy(date = month)
+            }
+        val years = stats
+            .groupBy { it.date.withDayOfYear(1) }
+            .map { (year, stats) ->
+                (stats.sum() ?: DayStats()).copy(date = year)
+            }
+        return State(
+            days = days,
+            months = months,
+            years = years,
+            total = stats.sum() ?: DayStats(),
+        )
     }
 
     data class State(
