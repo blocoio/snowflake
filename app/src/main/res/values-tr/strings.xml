@@ -10,7 +10,7 @@
         <item quantity="one">%d kişi</item>
         <item quantity="other">%d kişiler</item>
     </plurals>
-    <string name="today">bugün</string>
+    <string name="today">Bugün</string>
     <string name="snowflake_stats_connections">Bağlantılar</string>
     <string name="snowflake_stats_inbound">Alındı</string>
     <string name="snowflake_stats_outbound">Gönderildi</string>

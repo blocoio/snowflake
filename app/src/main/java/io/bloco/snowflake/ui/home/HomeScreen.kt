@@ -63,6 +63,7 @@ fun HomeScreen(
     requestBatteryOptimization: (MainActivity) -> Unit,
     openAbout: () -> Unit,
     openSettings: () -> Unit,
+    openStats: () -> Unit,
 ) {
     val isEnabled = state.config?.isEnabled == true
     val enabledTransition = updateTransition(isEnabled, label = "enabled")
@@ -105,6 +106,14 @@ fun HomeScreen(
                     Icon(
                         painter = painterResource(R.drawable.ic_about),
                         contentDescription = stringResource(R.string.about),
+                    )
+                }
+                IconButton(
+                    onClick = { openStats() },
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_stats),
+                        contentDescription = stringResource(R.string.stats),
                     )
                 }
                 IconButton(
@@ -247,21 +256,21 @@ private fun Stats(
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_connections),
-            text = state.stats.connections.toString() + " " + stringResource(R.string.today),
+            text = state.stats.connections.toString() + " " + stringResource(R.string.today).lowercase(),
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_inbound),
             text = Formatter.formatShortFileSize(
                 activity,
                 state.stats.inboundBytes,
-            ) + " " + stringResource(R.string.today),
+            ) + " " + stringResource(R.string.today).lowercase(),
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_outbound),
             text = Formatter.formatShortFileSize(
                 activity,
                 state.stats.outboundBytes,
-            ) + " " + stringResource(R.string.today),
+            ) + " " + stringResource(R.string.today).lowercase(),
         )
     }
 }
@@ -367,6 +376,7 @@ private fun HomeScreenPreview() {
             requestBatteryOptimization = {},
             openAbout = {},
             openSettings = {},
+            openStats = {},
         )
     }
 }
@@ -392,6 +402,7 @@ private fun HomeScreenDisabledPreview() {
             requestBatteryOptimization = {},
             openAbout = {},
             openSettings = {},
+            openStats = {},
         )
     }
 }

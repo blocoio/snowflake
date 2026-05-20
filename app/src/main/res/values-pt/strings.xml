@@ -11,7 +11,7 @@
         <item quantity="many">%d de pessoas</item>
         <item quantity="other">%d pessoas</item>
     </plurals>
-    <string name="today">hoje</string>
+    <string name="today">Hoje</string>
     <string name="snowflake_stats_connections">Ligações</string>
     <string name="snowflake_stats_inbound">Recebido</string>
     <string name="snowflake_stats_outbound">Enviado</string>
@@ -49,6 +49,8 @@
         <item quantity="many">A ajudar %d de pessoas contornar a censura</item>
         <item quantity="other">A ajudar %d pessoas contornar a censura</item>
     </plurals>
+    <string name="stats">Estatísticas</string>
+    <string name="stats_total">Total</string>
     <string name="quick_settings_looking">À procura…</string>
     <string name="quick_settings_helping">A ajudar %d</string>
     <string name="enabled">Ativado</string>

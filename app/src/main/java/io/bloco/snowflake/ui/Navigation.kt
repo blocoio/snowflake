@@ -13,6 +13,7 @@ import io.bloco.snowflake.Dependencies
 import io.bloco.snowflake.ui.about.AboutScreen
 import io.bloco.snowflake.ui.home.HomeScreen
 import io.bloco.snowflake.ui.settings.SettingsScreen
+import io.bloco.snowflake.ui.stats.StatsScreen
 
 @Composable
 fun Navigation(
@@ -33,6 +34,7 @@ fun Navigation(
                 requestBatteryOptimization = dependencies.batteryOptimization::requestIgnore,
                 openAbout = { navController.navigate(Screen.About.route) },
                 openSettings = { navController.navigate(Screen.Settings.route) },
+                openStats = { navController.navigate(Screen.Stats.route) },
             )
         }
 
@@ -48,6 +50,15 @@ fun Navigation(
             SettingsScreen(
                 state = state,
                 onEvent = viewModel::onEvent,
+                goBack = { navController.popBackStack() },
+            )
+        }
+
+        composable(Screen.Stats.route) {
+            val viewModel = viewModel { dependencies.statsViewModel() }
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            StatsScreen(
+                state = state,
                 goBack = { navController.popBackStack() },
             )
         }

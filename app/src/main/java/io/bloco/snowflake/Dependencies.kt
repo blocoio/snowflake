@@ -23,6 +23,7 @@ import io.bloco.snowflake.domain.RefreshStunServers
 import io.bloco.snowflake.ui.MainViewModel
 import io.bloco.snowflake.ui.home.HomeViewModel
 import io.bloco.snowflake.ui.settings.SettingsViewModel
+import io.bloco.snowflake.ui.stats.StatsViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -64,8 +65,9 @@ class Dependencies(
     val fetchStunServers by lazy { FetchStunServers(::httpClientProvider) }
     private val statsStore by lazy {
         StatsStore(
-            getStatsByDate = statsDao::getByDate,
-            storeStats = statsDao::insertOrUpdate,
+            getLastDayStats = statsDao::getLastDate,
+            updateStats = statsDao::insertOrUpdate,
+            getAllStats = statsDao::getAll,
         )
     }
 
@@ -129,5 +131,10 @@ class Dependencies(
             setUnmeteredOnly = appDataStore::setUnmeteredOnly,
             setChargingOnly = appDataStore::setChargingOnly,
             setCapacity = appDataStore::setCapacity,
+        )
+
+    fun statsViewModel() =
+        StatsViewModel(
+            getAllStats = statsStore::all,
         )
 }

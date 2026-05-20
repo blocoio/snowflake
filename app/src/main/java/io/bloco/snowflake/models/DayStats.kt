@@ -13,3 +13,16 @@ data class DayStats(
     @ColumnInfo(name = "inbound") val inboundBytes: Long = 0L,
     @ColumnInfo(name = "outbound") val outboundBytes: Long = 0L,
 )
+
+fun List<DayStats>.sum(): DayStats? =
+    if (isEmpty()) {
+        null
+    } else {
+        DayStats(
+            date = first().date,
+            connections = sumOf { it.connections },
+            failedConnections = sumOf { it.failedConnections },
+            inboundBytes = sumOf { it.inboundBytes },
+            outboundBytes = sumOf { it.outboundBytes },
+        )
+    }

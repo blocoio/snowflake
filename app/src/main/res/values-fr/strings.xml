@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="close">Fermer</string>
-    <string name="today">aujourd\'hui</string>
+    <string name="today">Aujourd\'hui</string>
     <string name="snowflake_stats_connections">Connexions</string>
     <string name="about">À propos</string>
     <string name="settings">Réglages</string>
