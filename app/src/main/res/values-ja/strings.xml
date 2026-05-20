@@ -48,4 +48,5 @@
     </plurals>
     <string name="quick_settings_looking">探しています…</string>
     <string name="quick_settings_helping">支援中: %d</string>
+    <string name="hidden_app_name">Plants</string>
 </resources>
