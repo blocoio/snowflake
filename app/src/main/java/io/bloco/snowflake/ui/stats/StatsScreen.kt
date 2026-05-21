@@ -28,10 +28,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bloco.snowflake.R
+import io.bloco.snowflake.models.DayStats
+import io.bloco.snowflake.ui.theme.SnowflakeTheme
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -147,6 +150,7 @@ private fun RowScope.StatsCell(
         textAlign = if (isLabel) TextAlign.Start else TextAlign.End,
         fontSize = 14.sp,
         fontWeight = if (isLabel) FontWeight.Bold else FontWeight.Normal,
+        maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         modifier = Modifier
             .weight(1f)
@@ -169,3 +173,16 @@ private fun Long.humanBytes() =
 
 private val DAY_FORMAT = DateTimeFormatter.ofPattern("dd MMM")
 private val MONTH_FORMAT = DateTimeFormatter.ofPattern("MMM yyyy")
+
+@Composable
+@Preview
+private fun StatsScreenPreview() {
+    SnowflakeTheme {
+        StatsScreen(
+            state = StatsViewModel.State(
+                total = DayStats(LocalDate.now(), 100, 0, 1000, 1000),
+            ),
+            goBack = { },
+        )
+    }
+}

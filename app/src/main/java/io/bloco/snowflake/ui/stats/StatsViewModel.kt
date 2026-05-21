@@ -37,12 +37,12 @@ class StatsViewModel(
             .groupBy { it.date.withDayOfMonth(1) }
             .map { (month, stats) ->
                 (stats.sum() ?: DayStats()).copy(date = month)
-            }
+            }.sortedByDescending { it.date }
         val years = stats
             .groupBy { it.date.withDayOfYear(1) }
             .map { (year, stats) ->
                 (stats.sum() ?: DayStats()).copy(date = year)
-            }
+            }.sortedByDescending { it.date }
         return State(
             days = days,
             months = months,
@@ -60,6 +60,6 @@ class StatsViewModel(
 
     companion object {
         private const val LAST_N_DAYS = 5L
-        private const val LAST_N_MONTHS = 12L
+        private const val LAST_N_MONTHS = 6L
     }
 }
