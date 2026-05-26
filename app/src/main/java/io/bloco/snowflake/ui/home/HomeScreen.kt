@@ -203,7 +203,11 @@ fun HomeScreen(
             Image(
                 painter = painterResource(R.drawable.home_mobile),
                 contentDescription = null,
-                colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(saturation) }),
+                colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                    setToSaturation(
+                        saturation
+                    )
+                }),
                 modifier = Modifier.height(96.dp),
             )
         }
@@ -256,21 +260,23 @@ private fun Stats(
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_connections),
-            text = state.stats.connections.toString() + " " + stringResource(R.string.today).lowercase(),
+            text = state.stats.connections.toString()
+                + " "
+                + stringResource(R.string.today_after_value),
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_inbound),
             text = Formatter.formatShortFileSize(
                 activity,
                 state.stats.inboundBytes,
-            ) + " " + stringResource(R.string.today).lowercase(),
+            ) + " " + stringResource(R.string.today_after_value),
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_outbound),
             text = Formatter.formatShortFileSize(
                 activity,
                 state.stats.outboundBytes,
-            ) + " " + stringResource(R.string.today).lowercase(),
+            ) + " " + stringResource(R.string.today_after_value),
         )
     }
 }
@@ -287,7 +293,8 @@ fun FlowRowScope.StatsCell(
             .background(
                 MaterialTheme.colorScheme.surfaceContainerLowest,
                 MaterialTheme.shapes.small,
-            ).defaultMinSize(minHeight = 72.dp)
+            )
+            .defaultMinSize(minHeight = 72.dp)
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .weight(1f),
     ) {

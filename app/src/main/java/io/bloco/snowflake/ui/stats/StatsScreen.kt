@@ -85,7 +85,7 @@ fun StatsScreen(
                 Row {
                     StatsCell(
                         if (it.date == LocalDate.now()) {
-                            stringResource(R.string.today)
+                            stringResource(R.string.stats_today)
                         } else {
                             it.date.format(DAY_FORMAT)
                         },
