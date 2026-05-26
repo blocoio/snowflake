@@ -49,4 +49,6 @@
     <string name="quick_settings_looking">探しています…</string>
     <string name="quick_settings_helping">支援中: %d</string>
     <string name="hidden_app_name">Plants</string>
+    <string name="stats">統計</string>
+    <string name="stats_total">合計</string>
 </resources>
