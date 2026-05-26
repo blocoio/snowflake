@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_app_name">Unaufälliger Name um die App zu verstecken, sobald panic button ausgelöst wurde</string>
+    <string name="close">schließen</string>
+    <string name="enabled">aktiv</string>
+    <string name="disabled">deaktiviert</string>
+    <string name="snowflake_disabled">Aktiviere Snowflake. Helfe anderen Zenzur zu umgehen.</string>
+    <string name="snowflake_enabled">Snowflake ist aktiv. Du hilft dabei Menschen Zugang zum freien Internet zu geben.</string>
+    <string name="snowflake_stopped">Angehalten</string>
+    <string name="snowflake_looking_to_help">Suche nach Hilfe…</string>
+    <string name="snowflake_helping">helfen</string>
+    <plurals name="persons">
+        <item quantity="one">%d Person</item>
+        <item quantity="other">%d Personen</item>
+    </plurals>
+    <string name="today">Heute</string>
+    <string name="snowflake_stats_connections">Verbindungen</string>
+    <string name="snowflake_stats_inbound">Erhalten</string>
+    <string name="snowflake_stats_outbound">gesendet</string>
+    <string name="battery_optimizations_text">Bitte deaktiviere die Batterieoptimierung für diese App um diese auch im Hintergrund aktiv zu halten</string>
+    <string name="battery_optimizations_action">Fortfahren</string>
+    <string name="about">Über</string>
+    <string name="about_title1">Was ist Snowflake?</string>
+    <string name="about_text1">Snowflake ermöglicht es Menschen, sich an Orten, an denen Tor blockiert ist, mit dem Tor-Netzwerk zu verbinden, indem deine Verbindung über freiwillige Proxys in Ländern ohne Internetzensur geleitet wird.\n\nÄhnlich wie VPNs, die Nutzern helfen, Internetzensur zu umgehen, tarnt Snowflake deine Internetaktivitäten so, als würdest du einen Video- oder Sprachanruf tätigen, wodurch du für Internetzensoren weniger leicht zu erkennen bist.</string>
+    <string name="about_title2">Wie Snowflake funktioniert?</string>
+    <string name="about_text2">Snowflake nutzt eine Technologie namens WebRTC, die häufig von Videokonferenzsoftware verwendet wird. Dies hilft dabei, Ihre Nutzung von Tor vor Zensoren zu verbergen, indem es so aussieht, als würden Sie stattdessen einen Audio- oder Videoanruf tätigen.\n\nErfahren Sie mehr unter https://snowflake.torproject.org</string>
+    <string name="about_title3">Ist das für mich sicher?</string>
+    <string name="about_text3">Es gibt keinen Grund zur Sorge wenn andere deine Verbindung nutzen. Die sichtbare IP-Adresse stimmt mit dem exit-node des Nutzers überein, nicht deine (da du nur einen entrynode betreibst).</string>
+    <string name="about_title4">Kann ich mit dieser App Zensur umgehen?</string>
+    <string name="about_text4">Nein. Dafür braucht es Tor-basierte App wie den Tor Browser oder Orbot herunterladen und in den Einstellungen der App „Snowflake“ auswählen.</string>
+    <string name="about_title5">Wer hat die App Entwickelt?</string>
+    <string name="about_text5">Die App wurde durch Bloco entwickelt, ein Android Studio aus Portugal. Aufgebaut ist das Projekt auf das Tor und Guardian Project Team.</string>
+    <string name="settings">Einstellung</string>
+    <string name="settings_background">Im Hintergrund ausführen</string>
+    <string name="settings_background_context">Wir fragen Android um die Nutzung der Hintergrunddienste ab</string>
+    <string name="settings_unmetered">Nur \"Ohne Datenlimit\"</string>
+    <string name="settings_unmetered_context">Startet nur, wenn die Verbindung zu einem Netzwerk besteht, welches keine weiteren Gebühren braucht wie zum Beispiel WLAN-Netzwerke</string>
+    <string name="settings_charging">Nur beim Aufladen</string>
+    <string name="settings_charging_context">Startet nur, wenn das Gerät am Laden ist</string>
+    <string name="settings_capacity">Wie viele Menschen gleichzeitig geholfen wurde</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Helfe %d Person zur gleichen Zeit</item>
+        <item quantity="other">Helfe %d Personen zur gleichen Zeit</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Helfe unendlich vielen Menschen</string>
+    <string name="settings_capacity_warning">Änderungen erst nach Neustart aktiv</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Ausschau halten um jemanden zu helfen, Zensur zu umgehen…</string>
+    <string name="stats">Statistik</string>
+    <string name="stats_total">Gesamt</string>
+    <string name="quick_settings_looking">Suche…</string>
+    <string name="quick_settings_helping">Helfen %d</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">Helfe %d Person Zensur zu umgehen</item>
+        <item quantity="other">Helfe %d Personen Zensur zu umgehen</item>
+    </plurals>
+</resources>
