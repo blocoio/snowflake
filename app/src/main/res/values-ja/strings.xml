@@ -9,7 +9,7 @@
     <plurals name="persons">
         <item quantity="other">%d 人</item>
     </plurals>
-    <string name="today">(今日)</string>
+    <string name="today_after_value">(今日)</string>
     <string name="snowflake_stats_connections">接続数</string>
     <string name="snowflake_stats_inbound">受信データ量</string>
     <string name="snowflake_stats_outbound">送信データ量</string>
@@ -50,5 +50,6 @@
     <string name="quick_settings_helping">支援中: %d</string>
     <string name="hidden_app_name">Plants</string>
     <string name="stats">統計</string>
+    <string name="stats_today">(今日)</string>
     <string name="stats_total">合計</string>
 </resources>

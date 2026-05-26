@@ -1,5 +1,6 @@
 package io.bloco.snowflake.ui.stats
 
+import android.text.format.DateFormat
 import android.text.format.Formatter
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,6 +45,14 @@ fun StatsScreen(
     state: StatsViewModel.State,
     goBack: () -> Unit,
 ) {
+    val locale = Locale.current
+    val dayPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "dd MMM")
+    val dayFormatter = DateTimeFormatter.ofPattern(dayPattern)
+    val monthPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "MMM YYYY")
+    val monthFormatter = DateTimeFormatter.ofPattern(monthPattern)
+    val yearPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "YYYY")
+    val yearFormatter = DateTimeFormatter.ofPattern(yearPattern)
+
     Column {
         CenterAlignedTopAppBar(
             title = { Text(stringResource(R.string.stats)) },
@@ -87,7 +97,7 @@ fun StatsScreen(
                         if (it.date == LocalDate.now()) {
                             stringResource(R.string.stats_today)
                         } else {
-                            it.date.format(DAY_FORMAT)
+                            it.date.format(dayFormatter)
                         },
                         isLabel = true,
                     )
@@ -102,7 +112,7 @@ fun StatsScreen(
             if (state.months.size > 1) {
                 items(state.months, key = { "month_${it.date}" }) {
                     Row {
-                        StatsCell(it.date.format(MONTH_FORMAT), isLabel = true)
+                        StatsCell(it.date.format(monthFormatter), isLabel = true)
                         StatsCell(it.connections.toString())
                         StatsCell(it.inboundBytes.humanBytes())
                         StatsCell(it.outboundBytes.humanBytes())
@@ -115,7 +125,7 @@ fun StatsScreen(
             if (state.years.size > 1) {
                 items(state.years, key = { "year_${it.date.year}" }) {
                     Row {
-                        StatsCell(it.date.year.toString(), isLabel = true)
+                        StatsCell(it.date.format(yearFormatter), isLabel = true)
                         StatsCell(it.connections.toString())
                         StatsCell(it.inboundBytes.humanBytes())
                         StatsCell(it.outboundBytes.humanBytes())
@@ -148,14 +158,14 @@ private fun RowScope.StatsCell(
     Text(
         text = text,
         textAlign = if (isLabel) TextAlign.Start else TextAlign.End,
-        fontSize = 14.sp,
+        fontSize = 13.sp,
         fontWeight = if (isLabel) FontWeight.Bold else FontWeight.Normal,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         modifier = Modifier
             .weight(1f)
             .padding(vertical = 6.dp)
-            .padding(end = 4.dp),
+            .padding(end = 2.dp),
     )
 }
 
@@ -171,9 +181,6 @@ private fun Long.humanBytes() =
         this,
     )
 
-private val DAY_FORMAT = DateTimeFormatter.ofPattern("dd MMM")
-private val MONTH_FORMAT = DateTimeFormatter.ofPattern("MMM yyyy")
-
 @Composable
 @Preview
 private fun StatsScreenPreview() {
@@ -181,6 +188,9 @@ private fun StatsScreenPreview() {
         StatsScreen(
             state = StatsViewModel.State(
                 total = DayStats(LocalDate.now(), 100, 0, 1000, 1000),
+                days = listOf(
+                    DayStats(LocalDate.now().minusDays(1), 2, 0, 1, 1),
+                ),
             ),
             goBack = { },
         )

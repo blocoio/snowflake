@@ -10,7 +10,7 @@
         <item quantity="one">%d kişi</item>
         <item quantity="other">%d kişiler</item>
     </plurals>
-    <string name="today">Bugün</string>
+    <string name="today_after_value">bugün</string>
     <string name="snowflake_stats_connections">Bağlantılar</string>
     <string name="snowflake_stats_inbound">Alındı</string>
     <string name="snowflake_stats_outbound">Gönderildi</string>
@@ -52,4 +52,5 @@
     <string name="enabled">Aktif Edildi</string>
     <string name="disabled">Deaktive Edildi</string>
     <string name="hidden_app_name">Hesap makinesi</string>
+    <string name="stats_today">Bugün</string>
 </resources>

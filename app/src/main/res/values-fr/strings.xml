@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="close">Fermer</string>
-    <string name="today">Aujourd\'hui</string>
+    <string name="today_after_value">aujourd\'hui</string>
     <string name="snowflake_stats_connections">Connexions</string>
     <string name="about">À propos</string>
     <string name="settings">Réglages</string>
@@ -19,4 +19,5 @@
     <string name="snowflake_disabled">Activez Snowflake. Aidez les autres à contourner la censure.</string>
     <string name="settings_capacity_unlimited">Aidez un nombre illimité de personnes</string>
     <string name="snowflake_enabled">Snowflake est actif. Vous participez à aider à contourner la censure.</string>
+    <string name="stats_today">Aujourd\'hui</string>
 </resources>
