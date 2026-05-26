@@ -69,7 +69,7 @@ android {
                         val baseAbiCode = abiCodes[name]
                         if (baseAbiCode != null) {
                             output.versionCode.set(
-                                baseAbiCode + (output.versionCode.get() ?: 0),
+                                baseAbiCode + output.versionCode.get(),
                             )
                         }
                     }
