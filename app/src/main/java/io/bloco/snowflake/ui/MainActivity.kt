@@ -45,32 +45,29 @@ class MainActivity : ComponentActivity() {
         setContent {
             val viewModel = viewModel { dependencies.mainViewModel }
             val state by viewModel.state.collectAsStateWithLifecycle()
+            val navController = rememberNavController()
+            val snackbarHostState = remember { SnackbarHostState() }
 
-            SnowflakeTheme {
-                val navController = rememberNavController()
-                val snackbarHostState = remember { SnackbarHostState() }
-
-                CompositionLocalProvider(
-                    values = arrayOf(LocalSnackbarHostState provides snackbarHostState),
-                ) {
-                    SnowflakeTheme {
-                        Scaffold(
-                            snackbarHost = { SnackbarHost(snackbarHostState) },
-                            containerColor = MaterialTheme.colorScheme.appBackground(state.isEnabled),
+            CompositionLocalProvider(
+                values = arrayOf(LocalSnackbarHostState provides snackbarHostState),
+            ) {
+                SnowflakeTheme {
+                    Scaffold(
+                        snackbarHost = { SnackbarHost(snackbarHostState) },
+                        containerColor = MaterialTheme.colorScheme.appBackground(state.isEnabled),
+                    ) {
+                        Box(
+                            Modifier
+                                .fillMaxSize()
+                                .padding(
+                                    start = it.calculateStartPadding(LocalLayoutDirection.current),
+                                    end = it.calculateEndPadding(LocalLayoutDirection.current),
+                                ),
                         ) {
-                            Box(
-                                Modifier
-                                    .fillMaxSize()
-                                    .padding(
-                                        start = it.calculateStartPadding(LocalLayoutDirection.current),
-                                        end = it.calculateEndPadding(LocalLayoutDirection.current),
-                                    ),
-                            ) {
-                                Navigation(
-                                    navController = navController,
-                                    dependencies = dependencies,
-                                )
-                            }
+                            Navigation(
+                                navController = navController,
+                                dependencies = dependencies,
+                            )
                         }
                     }
                 }
