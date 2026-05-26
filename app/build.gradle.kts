@@ -24,7 +24,7 @@ android {
         versionName = "1.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        androidResources.localeFilters += listOf("en", "fr", "ja", "pt", "tr")
+        androidResources.localeFilters += listOf("de", "en", "fr", "ja", "pt", "tr")
     }
 
     buildTypes {
