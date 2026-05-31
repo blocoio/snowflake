@@ -50,6 +50,6 @@
     <string name="quick_settings_helping">支援中: %d</string>
     <string name="hidden_app_name">Plants</string>
     <string name="stats">統計</string>
-    <string name="stats_today">(今日)</string>
+    <string name="stats_today">今日</string>
     <string name="stats_total">合計</string>
 </resources>
