@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_app_name">植物</string>
+    <string name="close">关闭</string>
+    <string name="enabled">已启用</string>
+    <string name="disabled">已禁用</string>
+    <string name="snowflake_disabled">启用 Snowflake。帮助他人规避审查。</string>
+    <string name="snowflake_enabled">Snowflake 已启用。您正在帮助他人规避审查。</string>
+    <string name="snowflake_stopped">已停止</string>
+    <string name="snowflake_looking_to_help">等待帮助别人中……</string>
+    <string name="snowflake_helping">帮助中</string>
+    <plurals name="persons">
+        <item quantity="other">%d 人</item>
+    </plurals>
+    <string name="today_after_value">今天</string>
+    <string name="snowflake_stats_connections">连接数</string>
+    <string name="snowflake_stats_inbound">已接收</string>
+    <string name="snowflake_stats_outbound">已发送</string>
+    <string name="battery_optimizations_text">请禁用此应用的电池优化功能，以便其能在后台顺利运行</string>
+    <string name="about">关于</string>
+    <string name="about_title1">什么是 Snowflake？</string>
+    <string name="about_text1">Snowflake 允许用户在 Tor 网络被屏蔽的地区连接到 Tor 网络，其原理是通过位于未受审查国家的志愿者代理服务器路由连接。\n\n与 VPN 类似，Snowflake 可以帮助用户绕过网络审查，它会将您的网络活动伪装成视频或语音通话，从而降低被网络审查者发现的风险。</string>
+    <string name="about_title2">Snowflake 如何工作？</string>
+    <string name="about_text2">Snowflake 使用名为 WebRTC 的技术，该技术常用于视频会议软件。它能让您使用 Tor 的行为伪装成音频或视频通话，从而帮助您躲避审查。\n\n了解更多信息，请访问 https://snowflake.torproject.org</string>
+    <string name="about_title3">这对我安全吗？</string>
+    <string name="about_text3">您无需担心用户通过您的 Snowflake 应用访问哪些网站。他们可见的浏览 IP 地址将与他们的 Tor 出口节点匹配，而不是您的（因为您是入口点）。</string>
+    <string name="about_title4">我可以使用此应用程序绕过审查吗？</string>
+    <string name="about_text4">不可以。如果您想绕过审查，您需要下载一个基于 Tor 的应用程序，例如 Tor 浏览器或 Orbot，并在应用程序的设置中选择 Snowflake。</string>
+    <string name="about_title5">这个应用是谁开发的？</string>
+    <string name="about_text5">这款应用由位于葡萄牙的安卓工作室 Bloco 开发，基于 Tor 和 Guardian 项目团队的出色工作。</string>
+    <string name="settings">设置</string>
+    <string name="settings_background">在后台运行</string>
+    <string name="settings_background_context">我们将要求 Android 在后台启动该应用</string>
+    <string name="settings_unmetered">仅非计量网络</string>
+    <string name="settings_unmetered_context">仅当连接到非计量流量的网络（例如 WiFi）时才可运行</string>
+    <string name="settings_charging">仅充电时</string>
+    <string name="settings_charging_context">仅当设备电池正在充电时运行</string>
+    <string name="settings_capacity">允许同时帮助多少人</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="other">同时帮助%d 人</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">不限制帮助人数</string>
+    <string name="settings_capacity_warning">更改仅在服务重启后生效</string>
+    <string name="notification_channel">雪花</string>
+    <string name="notification_text">等待帮助他人中……</string>
+    <plurals name="notification_text_connected">
+        <item quantity="other">正在帮助 %d 人规避审查</item>
+    </plurals>
+    <string name="stats">统计</string>
+    <string name="stats_today">今天</string>
+    <string name="stats_total">总计</string>
+    <string name="quick_settings_looking">查找……</string>
+    <string name="quick_settings_helping">正在帮助 %d</string>
+    <string name="battery_optimizations_action">持续</string>
+</resources>
