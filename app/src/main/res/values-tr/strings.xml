@@ -53,4 +53,6 @@
     <string name="disabled">Deaktive Edildi</string>
     <string name="hidden_app_name">Hesap makinesi</string>
     <string name="stats_today">Bugün</string>
+    <string name="stats">İstatistikler</string>
+    <string name="stats_total">Toplam</string>
 </resources>
