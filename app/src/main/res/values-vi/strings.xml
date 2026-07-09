@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_app_name">Cây cối</string>
+    <string name="close">Đóng</string>
+    <string name="enabled">Đã bật</string>
+    <string name="disabled">Đã tắt</string>
+    <string name="snowflake_disabled">Bật Snowflake. Giúp đỡ người khác vượt qua kiểm duyệt.</string>
+    <string name="snowflake_enabled">Snowflake đang hoạt động. Bạn đang giúp đỡ vượt qua kiểm duyệt.</string>
+    <string name="snowflake_stopped">Đã dừng</string>
+    <string name="snowflake_looking_to_help">Đang tìm kiếm ai đó để giúp…</string>
+    <string name="snowflake_helping">Đang giúp đỡ</string>
+    <plurals name="persons">
+        <item quantity="other">%d người</item>
+    </plurals>
+    <string name="today_after_value">hôm nay</string>
+    <string name="snowflake_stats_connections">Số kết nối</string>
+    <string name="snowflake_stats_inbound">Đã nhận</string>
+    <string name="snowflake_stats_outbound">Đã gửi</string>
+    <string name="battery_optimizations_text">Vui lòng tắt tối ưu hóa pin cho ứng dụng này để nó có thể chạy dưới nền</string>
+    <string name="battery_optimizations_action">Tiếp tục</string>
+    <string name="about">Về</string>
+    <string name="about_title1">Snowflake là gì?</string>
+    <string name="about_text1">Snowflake cho phép mọi người kết nối tới mạng Tor ở nơi mà Tor bị chặn bằng cách định tuyến kết nối của bạn qua các proxy của tình nguyện viên ở các quốc gia không bị kiểm duyệt.\n\nTương tự như VPNs, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.</string>
+    <string name="about_title2">Snowflake hoạt động như thế nào?</string>
+    <string name="about_text2">Snowflake dùng một công nghệ gọi là WebRTC, thứ thường có trong các phần mềm hội nghị truyền hình. Nó giúp che giấu việc sử dụng Tor của bạn đối với kiểm duyệt viên bằng cách làm nó trông như bạn đang nghe audio hoặc cuộc gọi thoại.\n\nTìm hiểu thêm tại https://snowflake.torproject.org</string>
+    <string name="about_title3">Cái này có an toàn với tôi không?</string>
+    <string name="about_text3">Không cần lo lắng về các trang web mà người dùng truy cập qua ứng dụng Snowflake của bạn. Địa chỉ IP của họ được thấy là IP của nút ra, không phải của bạn (vì bạn là điểm vào).</string>
+    <string name="about_title4">Tôi có thể dùng ứng dụng này để vượt thoát kiểm duyệt không?</string>
+    <string name="about_text4">Không. Nếu bạn muốn vượt thoát kiểm duyệt, bạn cần tải về ứng dụng vận hành mạng Tor như Trình duyệt Tor hoặc Orbot và chọn Snowflake trong cài đặt của ứng dụng.</string>
+    <string name="about_title5">Ai tạo ra ứng dụng này?</string>
+    <string name="about_text5">Ứng dụng này được làm ra bởi Bloco, một studio Android ở Bồ Đào Nha. Nó được xây dựng nhờ công lớn của đội ngũ Dự án Tor và Guardian.</string>
+    <string name="settings">Cài đặt</string>
+    <string name="settings_background">Chạy dưới nền</string>
+    <string name="settings_background_context">Chúng tôi sẽ yêu cầu Android để bắt đầu chạy ứng dụng dưới nền</string>
+    <string name="settings_unmetered">Chỉ trên mạng không giới hạn</string>
+    <string name="settings_unmetered_context">Chỉ chạy nếu đã kết nối tới một mạng không giới hạn như WiFi</string>
+    <string name="settings_charging">Chỉ khi đang sạc</string>
+    <string name="settings_charging_context">Chỉ chạy nếu thiết bị đang được sạc pin</string>
+    <string name="settings_capacity">Bao nhiêu người được giúp đỡ cùng lúc</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="other">Giúp đỡ %d người cùng lúc</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Giúp đỡ số người không giới hạn</string>
+    <string name="settings_capacity_warning">Thay đổi chỉ được áp dụng khi khởi động lại dịch vụ</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Đang tìm kiếm ai đó để giúp vượt thoát kiểm duyệt…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="other">Đang giúp %d người vượt thoát kiểm duyệt</item>
+    </plurals>
+    <string name="stats">Thống kê</string>
+    <string name="stats_today">Hôm nay</string>
+    <string name="stats_total">Tổng</string>
+    <string name="quick_settings_looking">Đang tìm kiếm…</string>
+    <string name="quick_settings_helping">Đang giúp %d</string>
+</resources>

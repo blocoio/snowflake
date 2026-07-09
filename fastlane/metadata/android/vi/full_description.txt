@@ -1,0 +1,21 @@
+Giúp đỡ người ở nơi bị kiểm duyệt truy cập Internet không bị hạn chế.
+
+Snowflake là gì?
+
+Snowflake cho phép mọi người kết nối tới mạng Tor ở nơi mà Tor bị chặn bằng cách định tuyến kết nối của bạn qua các proxy của tình nguyện viên ở các quốc gia không bị kiểm duyệt.
+
+Tương tự như VPNs, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.
+
+Snowflake hoạt động như thế nào?
+
+Snowflake dùng một công nghệ gọi là WebRTC, thứ thường có trong các phần mềm hội nghị truyền hình. Nó giúp che giấu việc sử dụng Tor của bạn đối với kiểm duyệt viên bằng cách làm nó trông như bạn đang nghe audio hoặc cuộc gọi thoại.
+
+Tìm hiểu thêm tại https://snowflake.torproject.org
+
+Cái này có an toàn với tôi không?
+
+Không cần lo lắng về các trang web mà người dùng truy cập qua ứng dụng Snowflake của bạn. Địa chỉ IP của họ được thấy là IP của nút ra, không phải của bạn (vì bạn là điểm vào).
+
+Tôi có thể dùng ứng dụng này để vượt thoát kiểm duyệt không?
+
+Không. Nếu bạn muốn vượt thoát kiểm duyệt, bạn cần tải về ứng dụng vận hành mạng Tor như Trình duyệt Tor hoặc Orbot và chọn Snowflake trong cài đặt của ứng dụng.
