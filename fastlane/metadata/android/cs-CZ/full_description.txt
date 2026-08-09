@@ -1,0 +1,21 @@
+Pomozte lidem v krajinách s cenzurou získat přístup k internetu bez omezení.
+
+Co je to Snowflake?
+
+Snowflake lidem umožňuje se připojit k síti Tor v místech, kde je Tor zablokován a to pomocí směrování připojení skrz proxy dobrovolníků v krajinách bez cenzury.
+
+Podobně jako VPN, které pomáhají uživatelům obejít internetovou cenzuru, Snowflake maskuje váš internetový provoz, aby vypadal, že provádíte audio/videohovor, čímž se stáváte méně odhalitelnými před cenzory.
+
+Jak Snowflake funguje?
+
+Snowflake používá technologii WebRTC, která se běžně používá v softwaru pro videokonference. To pomáhá skrýt vaše používání sítě Tor před cenzory tím, že provoz vypadá, jako byste prováděli audio/videohovor.
+
+Více informací na https://snowflake.torproject.org
+
+Je to pro mě bezpečné?
+
+Nemusíte se obávat, na jaké stránky budou lidé přes vaši Snowflake aplikaci chodit. Jejich viditelná IP adresa bude odpovídat adrese výstupního uzlu Tor, ne té vaší (protože jste vstupní bod).
+
+Mohu obejít cenzuru touto aplikací?
+
+Ne. Pokud chcete obejít cenzuru, musíte si stáhnout aplikaci využívající Tor, například Tor Browser nebo Orbot, a v nastavení aplikace vybrat připojení skrz Snowflake.

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_app_name">Rostliny</string>
+    <string name="close">Zavřít</string>
+    <string name="enabled">Povoleno</string>
+    <string name="disabled">Vypnuto</string>
+    <string name="snowflake_disabled">Povolte Snowflake. Pomozte ostatním obejít cenzuru.</string>
+    <string name="snowflake_enabled">Snowflake je Aktivní. Pomáháte obcházet cenzuru.</string>
+    <string name="snowflake_stopped">Zastaveno</string>
+    <string name="snowflake_looking_to_help">Hledání někoho, kdo chce pomoct…</string>
+    <string name="snowflake_helping">Pomáhá se</string>
+    <plurals name="persons">
+        <item quantity="one">%d osobě</item>
+        <item quantity="few">%d osobám</item>
+        <item quantity="many">%d osobám</item>
+        <item quantity="other">%d osobám</item>
+    </plurals>
+    <string name="today_after_value">dnes</string>
+    <string name="snowflake_stats_connections">Spojení</string>
+    <string name="snowflake_stats_inbound">Přijato</string>
+    <string name="snowflake_stats_outbound">Odesláno</string>
+    <string name="battery_optimizations_text">Vypněte prosím optimalizace baterie, aby mohla tato aplikace běžet bez problémů na pozadí</string>
+    <string name="battery_optimizations_action">Pokračovat</string>
+    <string name="about">O Snowflake</string>
+    <string name="about_title1">Co je to Snowflake?</string>
+    <string name="about_text1">Snowflake lidem umožňuje se připojit k síti Tor v místech, kde je Tor zablokován a to pomocí směrování připojení skrz proxy dobrovolníků v krajinách bez cenzury.\n\nPodobně jako VPN, které pomáhají uživatelům obejít internetovou cenzuru, Snowflake maskuje váš internetový provoz, aby vypadal, že provádíte audio/videohovor, čímž se stáváte méně odhalitelnými před cenzory.</string>
+    <string name="about_title2">Jak Snowflake funguje?</string>
+    <string name="about_text2">Snowflake používá technologii WebRTC, která se běžně používá v softwaru pro videokonference. To pomáhá skrýt vaše používání sítě Tor před cenzory tím, že provoz vypadá, jako byste prováděli audio/videohovor.\n\nVíce informací na https://snowflake.torproject.org</string>
+    <string name="about_title3">Je to pro mě bezpečné?</string>
+    <string name="about_text3">Nemusíte se obávat, na jaké stránky budou lidé přes vaši Snowflake aplikaci chodit. Jejich viditelná IP adresa bude odpovídat adrese výstupního uzlu Tor, ne té vaší (protože jste vstupní bod).</string>
+    <string name="about_title4">Mohu obejít cenzuru touto aplikací?</string>
+    <string name="about_text4">Ne. Pokud chcete obejít cenzuru, musíte si stáhnout aplikaci využívající Tor, například Tor Browser nebo Orbot, a v nastavení aplikace vybrat připojení skrz Snowflake.</string>
+    <string name="about_title5">Kdo vytvořil tuhle aplikaci?</string>
+    <string name="about_text5">Tuto aplikaci vytvořilo Bloco, Android studio z Portugalska. Byla vytvořena na základě skvělé práce týmů z Tor a Gurdian Project.</string>
+    <string name="settings">Nastavení</string>
+    <string name="settings_background">Běžet na pozadí</string>
+    <string name="settings_background_context">Požádáme Android, aby spustil aplikaci na pozadí</string>
+    <string name="settings_unmetered">Pouze neomezená síť</string>
+    <string name="settings_unmetered_context">Běžet pouze na neomezené síti, jako je WiFi</string>
+    <string name="settings_charging">Pouze při nabíjení</string>
+    <string name="settings_charging_context">Běžet pouze pokud se zařízení nabíjí</string>
+    <string name="settings_capacity">Kolika lidem pomáhat zároveň</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Pomáhat jen %d osobě</item>
+        <item quantity="few">Pomáhat %d osobám najednou</item>
+        <item quantity="many">Pomáhat %d osobám najednou</item>
+        <item quantity="other">Pomáhat %d osobám najednou</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Pomáhat neomezenému počtu lidí</string>
+    <string name="settings_capacity_warning">Změny se projeví po restartu aplikace</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Hledání někoho, komu pomůžeme obejít cenzuru…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">Pomáháme %d osobě obejít cenzuru</item>
+        <item quantity="few">Pomáháme %d osobám obejít cenzuru</item>
+        <item quantity="many">Pomáháme %d osobám obejít cenzuru</item>
+        <item quantity="other">Pomáháme %d osobám obejít cenzuru</item>
+    </plurals>
+    <string name="stats">Statistika</string>
+    <string name="stats_today">Dnes</string>
+    <string name="stats_total">Celkem</string>
+    <string name="quick_settings_looking">Hledání…</string>
+    <string name="quick_settings_helping">Pomáhá se %d</string>
+</resources>
