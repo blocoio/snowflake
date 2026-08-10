@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enabled">فعال</string>
+    <string name="disabled">غیر فعال</string>
+    <string name="snowflake_enabled">دانه برف فعال می باشد. شما در حال پشتیبانی از دور زدن سانسور می باشید.</string>
+    <string name="snowflake_stopped">متوقف شد</string>
+    <plurals name="persons">
+        <item quantity="one">%d نفر</item>
+        <item quantity="other">%d نفر</item>
+    </plurals>
+    <string name="battery_optimizations_text">لطفاً بهینه سازی باتری را برای این برنامه غیر فعال کنید تا بتواند در پس زمینه فعال باشد</string>
+    <string name="about_title1">دانه برف (Snowflake) چیست؟</string>
+    <string name="about_title2">دانه برف (Snowflake) چگونه کار می کند؟</string>
+    <string name="about_title3">آیا برای من خطری ایجاد می کند؟</string>
+</resources>
