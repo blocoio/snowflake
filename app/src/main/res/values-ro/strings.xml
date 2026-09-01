@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_app_name">Plante</string>
+    <string name="close">Închide</string>
+    <string name="enabled">Activat</string>
+    <string name="disabled">Dezactivat</string>
+    <string name="snowflake_disabled">Pornește Snowflake. Ajută-i pe alții să treacă peste cenzură.</string>
+    <string name="snowflake_enabled">Snowflake este activ. Ajuți oamenii să treacă peste cenzură.</string>
+    <string name="snowflake_stopped">Oprit</string>
+    <string name="snowflake_looking_to_help">Se caută oameni pe care să-i ajuți…</string>
+    <string name="snowflake_helping">Se ajută</string>
+    <plurals name="persons">
+        <item quantity="one">%d persoană</item>
+        <item quantity="few">%d persoane</item>
+        <item quantity="other">%d persoane</item>
+    </plurals>
+    <string name="today_after_value">astăzi</string>
+    <string name="snowflake_stats_connections">Conexiuni</string>
+    <string name="snowflake_stats_inbound">Date primite</string>
+    <string name="snowflake_stats_outbound">Date trimise</string>
+</resources>
