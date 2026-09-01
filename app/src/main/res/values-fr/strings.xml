@@ -8,16 +8,54 @@
     <string name="notification_channel">Snowflake</string>
     <string name="enabled">Activé</string>
     <string name="disabled">Désactivé</string>
-    <string name="about_title1">C\'est quoi Snowflake ?</string>
+    <string name="about_title1">Qu\'est ce que Snowflake ?</string>
     <plurals name="persons">
         <item quantity="one">%d personne</item>
-        <item quantity="many">%d personne</item>
+        <item quantity="many">%d personnes</item>
         <item quantity="other">%d personnes</item>
     </plurals>
-    <string name="about_title5">Qui a fait cette application ?</string>
+    <string name="about_title5">Qui a créé cette application ?</string>
     <string name="settings_background">Lancer en arrière-plan</string>
     <string name="snowflake_disabled">Activez Snowflake. Aidez les autres à contourner la censure.</string>
     <string name="settings_capacity_unlimited">Aidez un nombre illimité de personnes</string>
     <string name="snowflake_enabled">Snowflake est actif. Vous participez à aider à contourner la censure.</string>
     <string name="stats_today">Aujourd\'hui</string>
+    <string name="snowflake_stopped">Arrêté</string>
+    <string name="snowflake_looking_to_help">Je cherche quelqu\'un pour m\'aider…</string>
+    <string name="snowflake_helping">Aider</string>
+    <string name="snowflake_stats_inbound">Reçu</string>
+    <string name="snowflake_stats_outbound">Envoyé</string>
+    <string name="battery_optimizations_text">Veuillez désactiver les optimisations de batterie pour cette application afin qu\'elle puisse fonctionner correctement en arrière-plan</string>
+    <string name="battery_optimizations_action">Continu</string>
+    <string name="about_text1">Snowflake permet aux utilisateurs de se connecter au réseau Tor dans les endroits où celui-ci est bloqué, en acheminant leur connexion via des proxys gérés par des bénévoles situés dans des pays où il n\'y a pas de censure.\n\nÀ l\'instar des VPN, qui permettent aux utilisateurs de contourner la censure sur Internet, Snowflake masque votre activité en ligne en la faisant passer pour un appel vidéo ou vocal, ce qui vous rend moins repérable par les censeurs du Web.</string>
+    <string name="about_title2">Comment Snowflake fonctionne ?</string>
+    <string name="about_text2">Snowflake utilise une technologie appelée WebRTC, couramment employée par les logiciels de visioconférence. Cela permet de masquer votre utilisation de Tor aux yeux des censeurs en donnant l\'impression que vous êtes en appel audio ou vidéo.\n\nPour en savoir plus, rendez-vous sur https://snowflake.torproject.org</string>
+    <string name="about_title3">Est-ce sans danger pour moi ?</string>
+    <string name="about_text3">Vous n\'avez pas à vous soucier des sites web auxquels les utilisateurs accèdent via votre application Snowflake. L\'adresse IP visible lors de leur navigation correspondra à leur nœud de sortie Tor, et non à la vôtre (puisque vous n\'êtes qu\'un point d\'entrée).</string>
+    <string name="about_title4">Puis-je contourner la censure grâce à cette application ?</string>
+    <string name="about_text4">Non. Si vous souhaitez contourner la censure, vous devez télécharger une application utilisant le réseau Tor, telle que Tor Browser ou Orbot, puis sélectionner « Snowflake » dans les paramètres de l\'application.</string>
+    <string name="about_text5">Cette application a été développée par Bloco, un studio Android basé au Portugal. Elle s\'appuie sur l\'excellent travail réalisé par les équipes de Tor et du Guardian Project.</string>
+    <string name="settings_background_context">Nous allons demander à Android de lancer l\'application en arrière-plan</string>
+    <string name="settings_unmetered">Réseau sans limite de données uniquement</string>
+    <string name="settings_unmetered_context">À n\'utiliser que si vous êtes connecté à un réseau sans limite de données, comme le Wi-Fi</string>
+    <string name="settings_charging">Recharge uniquement</string>
+    <string name="settings_charging_context">Ne fonctionner que si la batterie de l\'appareil est en cours de recharge</string>
+    <string name="settings_capacity">Combien de personnes peut-on aider en même temps</string>
+    <string name="settings_capacity_warning">Les modifications ne s\'appliquent qu\'au redémarrage du service</string>
+    <string name="notification_text">Je cherche quelqu\'un pour m\'aider à contourner la censure…</string>
+    <string name="stats">Statistiques</string>
+    <string name="stats_total">Total</string>
+    <string name="quick_settings_looking">À la recherche de…</string>
+    <string name="quick_settings_helping">Aider %d</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Aider %d personne au même instant</item>
+        <item quantity="many">Aider %d personnes au même instant</item>
+        <item quantity="other">Aider %d personnes au même instant</item>
+    </plurals>
+    <plurals name="notification_text_connected">
+        <item quantity="one">Aider %d personne à contourner la censure</item>
+        <item quantity="many">Aider %d personnes à contourner la censure</item>
+        <item quantity="other">Aider %d personnes à contourner la censure</item>
+    </plurals>
+    <string name="hidden_app_name">Installation</string>
 </resources>
