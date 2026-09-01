@@ -4,11 +4,11 @@ Snowflake là gì?
 
 Snowflake cho phép mọi người kết nối tới mạng Tor ở nơi mà Tor bị chặn bằng cách định tuyến kết nối của bạn qua các proxy của tình nguyện viên ở các quốc gia không bị kiểm duyệt.
 
-Tương tự như VPNs, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.
+Tương tự như VPN, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.
 
 Snowflake hoạt động như thế nào?
 
-Snowflake dùng một công nghệ gọi là WebRTC, thứ thường có trong các phần mềm hội nghị truyền hình. Nó giúp che giấu việc sử dụng Tor của bạn đối với kiểm duyệt viên bằng cách làm nó trông như bạn đang nghe audio hoặc cuộc gọi thoại.
+Snowflake dùng một công nghệ gọi là WebRTC, thường có trong các phần mềm hội nghị truyền hình. Nó giúp che giấu việc sử dụng Tor của bạn đối với kiểm duyệt viên bằng cách làm nó trông như bạn đang nghe audio hoặc cuộc gọi thoại.
 
 Tìm hiểu thêm tại https://snowflake.torproject.org
 
