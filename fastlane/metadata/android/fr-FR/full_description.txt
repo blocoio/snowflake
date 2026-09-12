@@ -1,0 +1,21 @@
+Aider les habitants des pays soumis à la censure à accéder à Internet sans restriction.
+
+Qu'est ce que Snowflake ?
+
+Snowflake permet aux utilisateurs de se connecter au réseau Tor dans les endroits où celui-ci est bloqué, en acheminant leur connexion via des proxys gérés par des bénévoles situés dans des pays où il n'y a pas de censure.
+
+À l'instar des VPN, qui permettent aux utilisateurs de contourner la censure sur Internet, Snowflake masque votre activité en ligne en la faisant passer pour un appel vidéo ou vocal, ce qui vous rend moins repérable par les censeurs du Web.
+
+Comment Snowflake fonctionne ?
+
+Snowflake utilise une technologie appelée WebRTC, couramment employée par les logiciels de visioconférence. Cela permet de masquer votre utilisation de Tor aux yeux des censeurs en donnant l'impression que vous êtes en appel audio ou vidéo.
+
+Pour en savoir plus, rendez-vous sur https://snowflake.torproject.org
+
+Est-ce sans danger pour moi ?
+
+Vous n'avez pas à vous soucier des sites web auxquels les utilisateurs accèdent via votre application Snowflake. L'adresse IP visible lors de leur navigation correspondra à leur nœud de sortie Tor, et non à la vôtre (puisque vous n'êtes qu'un point d'entrée).
+
+Puis-je contourner la censure grâce à cette application ?
+
+Non. Si vous souhaitez contourner la censure, vous devez télécharger une application utilisant le réseau Tor, telle que Tor Browser ou Orbot, puis sélectionner « Snowflake » dans les paramètres de l'application.

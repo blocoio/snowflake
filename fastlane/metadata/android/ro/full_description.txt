@@ -1,0 +1,21 @@
+Ajută oamenii din țări cu internet cenzurat să acceseze internetul fără restricții.
+
+Ce este Snowflake?
+
+Snowflake ajută oamenii să se conecteze la rețeaua Tor unde acesta este blocat prin a ruta conexiunea ta printr-un proxy rulat de un voluntar ce se afla într-o țară necenzurată.
+
+Similar ca un VPN, care ajută utilizatorii să treacă peste cenzură, Snowflake îți ascunde activitatea Internetului ca și cum ai face un apel video/vocal, făcându-te mai puțin detectabil de cenzori.
+
+Cum funcționează Snowflake?
+
+Snowflake folosește o tehnologie numită WebRTC, care este utilizată în mare parte de aplicațiile ce te ajută să faci apeluri. Aceasta te ajută să ascunzi că folosești Tor și făcând să apară că ești într-un apel.
+
+Mai multe informații la: https://snowflake.torproject.org
+
+Este sigur pentru mine?
+
+Nu trebuie să îți faci griji despre ce websiteuri oamenii accesează folosind relayul tău Snowflake. IP-ul lor va fi identic cu Serverul de ieșire Tor, nu al tău (Tu ești doar un bridge/proxy).
+
+Pot trece peste cenzură folosind această aplicație?
+
+Nu. Daca doriți să treceți peste cenzură, trebuie să folosiți o aplicație bazată pe Tor (Cum ar fi Orbot sau Browseul Tor) și să selectați Snowflake din setările aplicației.

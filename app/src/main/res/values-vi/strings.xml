@@ -18,9 +18,9 @@
     <string name="snowflake_stats_outbound">Đã gửi</string>
     <string name="battery_optimizations_text">Vui lòng tắt tối ưu hóa pin cho ứng dụng này để nó có thể chạy dưới nền</string>
     <string name="battery_optimizations_action">Tiếp tục</string>
-    <string name="about">Về</string>
+    <string name="about">Giới thiệu</string>
     <string name="about_title1">Snowflake là gì?</string>
-    <string name="about_text1">Snowflake cho phép mọi người kết nối tới mạng Tor ở nơi mà Tor bị chặn bằng cách định tuyến kết nối của bạn qua các proxy của tình nguyện viên ở các quốc gia không bị kiểm duyệt.\n\nTương tự như VPNs, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.</string>
+    <string name="about_text1">Snowflake cho phép mọi người kết nối tới mạng Tor ở nơi mà Tor bị chặn bằng cách định tuyến kết nối của bạn qua các proxy của tình nguyện viên ở các quốc gia không bị kiểm duyệt.\n\nTương tự như VPN, giúp người dùng vượt kiểm duyệt Internet, Snowflake ngụy trang hoạt động Internet của bạn trông như là video hoặc cuộc gọi thoại, làm bạn khó bị phát hiện hơn bởi kiểm duyệt viên Internet.</string>
     <string name="about_title2">Snowflake hoạt động như thế nào?</string>
     <string name="about_text2">Snowflake dùng một công nghệ gọi là WebRTC, thứ thường có trong các phần mềm hội nghị truyền hình. Nó giúp che giấu việc sử dụng Tor của bạn đối với kiểm duyệt viên bằng cách làm nó trông như bạn đang nghe audio hoặc cuộc gọi thoại.\n\nTìm hiểu thêm tại https://snowflake.torproject.org</string>
     <string name="about_title3">Cái này có an toàn với tôi không?</string>
