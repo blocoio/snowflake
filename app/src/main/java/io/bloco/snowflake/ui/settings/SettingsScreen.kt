@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import io.bloco.snowflake.R
 import io.bloco.snowflake.models.Capacity
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
+import io.bloco.snowflake.ui.theme.titleMediumEmphasized
 
 @Composable
 fun SettingsScreen(

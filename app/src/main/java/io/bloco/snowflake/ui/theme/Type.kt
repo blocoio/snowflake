@@ -45,19 +45,7 @@ val Typography =
         labelLarge = default.labelLarge.copy(fontFamily = customFont),
         labelMedium = default.labelMedium.copy(fontFamily = customFont),
         labelSmall = default.labelSmall.copy(fontFamily = customFont),
-        displayLargeEmphasized = default.displayLargeEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        displayMediumEmphasized = default.displayMediumEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        displaySmallEmphasized = default.displaySmallEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        headlineLargeEmphasized = default.headlineLargeEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        headlineMediumEmphasized = default.headlineMediumEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        headlineSmallEmphasized = default.headlineSmallEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        titleLargeEmphasized = default.titleLargeEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        titleMediumEmphasized = default.titleMediumEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        titleSmallEmphasized = default.titleSmallEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        bodyLargeEmphasized = default.bodyLargeEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        bodyMediumEmphasized = default.bodyMediumEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        bodySmallEmphasized = default.bodySmallEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        labelLargeEmphasized = default.labelLargeEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        labelMediumEmphasized = default.labelMediumEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
-        labelSmallEmphasized = default.labelSmallEmphasized.copy(fontFamily = customFont, fontWeight = FontWeight.Bold),
     )
+
+val Typography.titleMediumEmphasized
+    get() = titleMedium.copy(fontWeight = FontWeight.Bold)
