@@ -48,7 +48,7 @@ fun Navigation(
 
         composable(Screen.About.route) {
             AboutScreen(
-                goBack = { navController.popBackStack() },
+                goBack = { navController.goBackToHome() },
                 modifier = defaultModifier,
             )
         }
@@ -59,7 +59,7 @@ fun Navigation(
             SettingsScreen(
                 state = state,
                 onEvent = viewModel::onEvent,
-                goBack = { navController.popBackStack() },
+                goBack = { navController.goBackToHome() },
                 modifier = defaultModifier,
             )
         }
@@ -69,8 +69,12 @@ fun Navigation(
             val state by viewModel.state.collectAsStateWithLifecycle()
             StatsScreen(
                 state = state,
-                goBack = { navController.popBackStack() },
+                goBack = { navController.goBackToHome() },
             )
         }
     }
+}
+
+private fun NavHostController.goBackToHome() {
+    popBackStack(Screen.Home.route, inclusive = false, saveState = false)
 }
