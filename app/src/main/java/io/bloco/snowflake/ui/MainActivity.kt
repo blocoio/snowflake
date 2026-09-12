@@ -47,6 +47,7 @@ class MainActivity : ComponentActivity() {
             val state by viewModel.state.collectAsStateWithLifecycle()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }
+            val containerColor = MaterialTheme.colorScheme.appBackground(state.isEnabled)
 
             CompositionLocalProvider(
                 values = arrayOf(LocalSnackbarHostState provides snackbarHostState),
@@ -54,7 +55,7 @@ class MainActivity : ComponentActivity() {
                 SnowflakeTheme {
                     Scaffold(
                         snackbarHost = { SnackbarHost(snackbarHostState) },
-                        containerColor = MaterialTheme.colorScheme.appBackground(state.isEnabled),
+                        containerColor = containerColor,
                     ) {
                         Box(
                             Modifier
@@ -67,6 +68,7 @@ class MainActivity : ComponentActivity() {
                             Navigation(
                                 navController = navController,
                                 dependencies = dependencies,
+                                screenBackgroundColor = containerColor,
                             )
                         }
                     }

@@ -30,8 +30,11 @@ import io.bloco.snowflake.R
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
 
 @Composable
-fun AboutScreen(goBack: () -> Unit) {
-    Column {
+fun AboutScreen(
+    goBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier) {
         CenterAlignedTopAppBar(
             title = { Text(stringResource(R.string.about)) },
             navigationIcon = {

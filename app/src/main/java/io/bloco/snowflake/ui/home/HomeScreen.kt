@@ -7,6 +7,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,6 +25,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,7 +33,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -40,11 +42,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
@@ -64,41 +68,44 @@ fun HomeScreen(
     openAbout: () -> Unit,
     openSettings: () -> Unit,
     openStats: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val isEnabled = state.config?.isEnabled == true
     val enabledTransition = updateTransition(isEnabled, label = "enabled")
-    val sizeClass = currentWindowAdaptiveInfo().windowSizeClass
+    val sizeClass = currentWindowAdaptiveInfoV2().windowSizeClass
     val isShortHeight =
         !sizeClass.isHeightAtLeastBreakpoint(WindowSizeClass.HEIGHT_DP_MEDIUM_LOWER_BOUND)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier =
-            Modifier
+            modifier
                 .fillMaxSize()
                 .padding(WindowInsets.systemBars.asPaddingValues()),
     ) {
-        Box(
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier =
                 Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),
         ) {
-            Image(
-                painterResource(R.drawable.logo),
-                contentDescription = stringResource(R.string.app_name),
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
-                modifier =
-                    Modifier
-                        .padding(horizontal = 20.dp)
-                        .align(Alignment.CenterStart),
-            )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 20.dp),
+            ) {
+                Image(
+                    painterResource(R.drawable.logo),
+                    contentDescription = stringResource(R.string.app_name),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
+                    contentScale = ContentScale.Inside,
+                    modifier = Modifier.align(Alignment.CenterStart),
+                )
+            }
 
             Row(
-                modifier =
-                    Modifier
-                        .align(Alignment.CenterEnd)
-                        .padding(8.dp),
+                modifier = Modifier.padding(8.dp),
             ) {
                 IconButton(
                     onClick = { openAbout() },
@@ -140,6 +147,8 @@ fun HomeScreen(
                 ),
             color = MaterialTheme.colorScheme.primary,
             style = MaterialTheme.typography.headlineSmall,
+            maxLines = 2,
+            autoSize = TextAutoSize.StepBased(),
             modifier =
                 Modifier
                     .fillMaxWidth()
@@ -259,6 +268,10 @@ private fun Stats(
             } else {
                 null
             },
+            maxTextLines = when {
+                running != null && running.clientsConnected > 0 -> 1
+                else -> 2
+            },
         )
         StatsCell(
             title = stringResource(R.string.snowflake_stats_connections),
@@ -287,6 +300,7 @@ private fun Stats(
 fun FlowRowScope.StatsCell(
     title: String? = null,
     text: String? = null,
+    maxTextLines: Int = 1,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -304,7 +318,10 @@ fun FlowRowScope.StatsCell(
                 text = title,
                 style = MaterialTheme.typography.titleSmall,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(bottom = if (text == null) 0.dp else 4.dp),
+                maxLines = 1,
+                modifier = Modifier
+                    .padding(bottom = if (text == null) 0.dp else 4.dp)
+                    .basicMarquee(),
             )
         }
         text?.let {
@@ -312,6 +329,12 @@ fun FlowRowScope.StatsCell(
                 text = text,
                 style = MaterialTheme.typography.labelLarge,
                 textAlign = TextAlign.Center,
+                maxLines = maxTextLines,
+                overflow = TextOverflow.Ellipsis,
+                modifier = when (maxTextLines) {
+                    1 -> Modifier.basicMarquee()
+                    else -> Modifier
+                },
             )
         }
     }

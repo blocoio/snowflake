@@ -3,6 +3,7 @@ package io.bloco.snowflake.ui.stats
 import android.text.format.DateFormat
 import android.text.format.Formatter
 import androidx.activity.compose.LocalActivity
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -72,19 +73,19 @@ fun StatsScreen(
             Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp)
-                .padding(horizontal = 16.dp),
+                .padding(start = 8.dp, end = 4.dp),
         ) {
             StatsCell("", isLabel = true)
             StatsCell(stringResource(R.string.snowflake_stats_connections))
             StatsCell(stringResource(R.string.snowflake_stats_inbound))
             StatsCell(stringResource(R.string.snowflake_stats_outbound))
         }
-        TableDivider(Modifier.padding(horizontal = 16.dp))
+        TableDivider(Modifier.padding(horizontal = 8.dp))
 
         LazyColumn(
             contentPadding = PaddingValues(
-                start = 16.dp,
-                end = 12.dp,
+                start = 8.dp,
+                end = 4.dp,
                 bottom = 32.dp +
                     WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding(),
             ),
@@ -165,7 +166,8 @@ private fun RowScope.StatsCell(
         modifier = Modifier
             .weight(1f)
             .padding(vertical = 6.dp)
-            .padding(end = 2.dp),
+            .padding(end = 4.dp)
+            .basicMarquee(),
     )
 }
 
@@ -192,7 +194,7 @@ private fun StatsScreenPreview() {
                     DayStats(LocalDate.now().minusDays(1), 2, 0, 1, 1),
                 ),
             ),
-            goBack = { },
+            goBack = {},
         )
     }
 }

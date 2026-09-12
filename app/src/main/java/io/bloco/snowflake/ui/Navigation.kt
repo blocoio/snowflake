@@ -1,9 +1,11 @@
 package io.bloco.snowflake.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -19,7 +21,12 @@ import io.bloco.snowflake.ui.stats.StatsScreen
 fun Navigation(
     navController: NavHostController,
     dependencies: Dependencies,
+    screenBackgroundColor: Color,
 ) {
+    val defaultModifier = Modifier
+        .fillMaxSize()
+        .background(screenBackgroundColor)
+
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
@@ -35,12 +42,14 @@ fun Navigation(
                 openAbout = { navController.navigate(Screen.About.route) },
                 openSettings = { navController.navigate(Screen.Settings.route) },
                 openStats = { navController.navigate(Screen.Stats.route) },
+                modifier = defaultModifier,
             )
         }
 
         composable(Screen.About.route) {
             AboutScreen(
                 goBack = { navController.popBackStack() },
+                modifier = defaultModifier,
             )
         }
 
@@ -51,6 +60,7 @@ fun Navigation(
                 state = state,
                 onEvent = viewModel::onEvent,
                 goBack = { navController.popBackStack() },
+                modifier = defaultModifier,
             )
         }
 

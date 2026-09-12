@@ -40,8 +40,9 @@ fun SettingsScreen(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
     goBack: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Column {
+    Column(modifier) {
         CenterAlignedTopAppBar(
             title = { Text("Settings") },
             navigationIcon = {
