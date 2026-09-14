@@ -70,6 +70,7 @@ fun Navigation(
             StatsScreen(
                 state = state,
                 goBack = { navController.goBackToHome() },
+                modifier = defaultModifier,
             )
         }
     }

@@ -45,6 +45,7 @@ import java.time.format.DateTimeFormatter
 fun StatsScreen(
     state: StatsViewModel.State,
     goBack: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val locale = Locale.current
     val dayPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "dd MMM")
@@ -54,7 +55,7 @@ fun StatsScreen(
     val yearPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "YYYY")
     val yearFormatter = DateTimeFormatter.ofPattern(yearPattern)
 
-    Column {
+    Column(modifier) {
         CenterAlignedTopAppBar(
             title = { Text(stringResource(R.string.stats)) },
             navigationIcon = {
