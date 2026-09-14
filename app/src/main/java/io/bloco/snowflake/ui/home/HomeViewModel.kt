@@ -1,5 +1,6 @@
 package io.bloco.snowflake.ui.home
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.bloco.snowflake.background.SnowflakeManager
@@ -51,6 +52,7 @@ class HomeViewModel(
             .launchIn(viewModelScope)
     }
 
+    @Immutable
     data class State(
         val snowflakeState: SnowflakeManager.State = SnowflakeManager.State.Stopped,
         val config: AppConfig? = null,

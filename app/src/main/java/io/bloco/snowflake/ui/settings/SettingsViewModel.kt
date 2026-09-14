@@ -1,5 +1,6 @@
 package io.bloco.snowflake.ui.settings
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.bloco.snowflake.common.PublishFlow
@@ -60,6 +61,7 @@ class SettingsViewModel(
             }.launchIn(viewModelScope)
     }
 
+    @Immutable
     data class State(
         val config: AppConfig? = null,
         val capacity: Capacity? = null,

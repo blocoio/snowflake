@@ -1,9 +1,13 @@
 package io.bloco.snowflake.ui.stats
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.bloco.snowflake.models.DayStats
 import io.bloco.snowflake.models.sum
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -32,17 +36,20 @@ class StatsViewModel(
             .map { today.minusDays(it) }
             .filter { it >= firstDate }
             .map { day -> stats.firstOrNull { it.date == day } ?: DayStats(date = day) }
+            .toPersistentList()
         val months = stats
             .filter { it.date >= today.withDayOfMonth(1).minusMonths(LAST_N_MONTHS) }
             .groupBy { it.date.withDayOfMonth(1) }
             .map { (month, stats) ->
                 (stats.sum() ?: DayStats()).copy(date = month)
             }.sortedByDescending { it.date }
+            .toPersistentList()
         val years = stats
             .groupBy { it.date.withDayOfYear(1) }
             .map { (year, stats) ->
                 (stats.sum() ?: DayStats()).copy(date = year)
             }.sortedByDescending { it.date }
+            .toPersistentList()
         return State(
             days = days,
             months = months,
@@ -51,10 +58,11 @@ class StatsViewModel(
         )
     }
 
+    @Immutable
     data class State(
-        val days: List<DayStats> = emptyList(),
-        val months: List<DayStats> = emptyList(),
-        val years: List<DayStats> = emptyList(),
+        val days: ImmutableList<DayStats> = persistentListOf(),
+        val months: ImmutableList<DayStats> = persistentListOf(),
+        val years: ImmutableList<DayStats> = persistentListOf(),
         val total: DayStats? = null,
     )
 

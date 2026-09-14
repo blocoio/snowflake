@@ -1,5 +1,6 @@
 package io.bloco.snowflake.ui
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.bloco.snowflake.models.AppConfig
@@ -25,6 +26,7 @@ class MainViewModel(
             .launchIn(viewModelScope)
     }
 
+    @Immutable
     data class State(
         val isEnabled: Boolean = false,
     )

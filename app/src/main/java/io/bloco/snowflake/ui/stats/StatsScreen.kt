@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import io.bloco.snowflake.R
 import io.bloco.snowflake.models.DayStats
 import io.bloco.snowflake.ui.theme.SnowflakeTheme
+import kotlinx.collections.immutable.persistentListOf
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -191,7 +192,7 @@ private fun StatsScreenPreview() {
         StatsScreen(
             state = StatsViewModel.State(
                 total = DayStats(LocalDate.now(), 100, 0, 1000, 1000),
-                days = listOf(
+                days = persistentListOf(
                     DayStats(LocalDate.now().minusDays(1), 2, 0, 1, 1),
                 ),
             ),
