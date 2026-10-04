@@ -16,6 +16,46 @@
     </plurals>
     <string name="today_after_value">astăzi</string>
     <string name="snowflake_stats_connections">Conexiuni</string>
-    <string name="snowflake_stats_inbound">Date primite</string>
-    <string name="snowflake_stats_outbound">Date trimise</string>
+    <string name="snowflake_stats_inbound">Rx</string>
+    <string name="snowflake_stats_outbound">Tx</string>
+    <string name="battery_optimizations_text">Vă rugăm să dezactivați optimizările bateriei pentru această aplicație, ca să poată rula în fundal fără probleme</string>
+    <string name="battery_optimizations_action">Continuă</string>
+    <string name="about">Despre</string>
+    <string name="about_title1">Ce este Snowflake?</string>
+    <string name="about_text1">Snowflake le permite oamenilor să se conecteze la rețeaua Tor în locurile unde Tor este blocat, redirecționând conexiunea prin proxy-uri rulate de voluntari situați în țări ne-cenzurate. \n\nSimilar cu VPN-urile, care ajută utilizatorii să ocolească cenzura pe Internet, Snowflake deghizează activitatea ta online astfel încât să pară că faci un apel video sau vocal, făcându-te mai greu de detectat de cenzorii de pe Internet.</string>
+    <string name="about_title2">Cum funcționează Snowflake?</string>
+    <string name="about_text2">Snowflake folosește o tehnologie numită WebRTC, care este utilizată frecvent de software-ul de videoconferință. Acest lucru ajută să-ți ascunzi utilizarea Tor față de cenzori, făcând să pară că ești într-un apel audio sau video.\n\nAflă mai multe la https://snowflake.torproject.org</string>
+    <string name="about_title3">Este sigur pentru mine?</string>
+    <string name="about_text3">Nu trebuie să-ți faci griji despre ce site-uri accesează oamenii prin aplicația ta Snowflake. Adresa lor IP vizibilă de navigare va corespunde nodului lor de ieșire Tor, nu al tău (deoarece tu ești doar un punct de intrare).</string>
+    <string name="about_title4">Pot să evit cenzura folosind această aplicație?</string>
+    <string name="about_text4">Nu. Dacă vrei să eviți cenzura, trebuie să descarci o aplicație care folosește Tor, cum ar fi Tor Browser sau Orbot și să selectezi Snowflake în setările aplicației.</string>
+    <string name="about_title5">Cine a făcut această aplicație?</string>
+    <string name="about_text5">Această aplicație a fost realizată de Bloco, un studio Android din Portugalia. A fost construită pe baza muncii excelente a echipelor Tor și Guardian Project.</string>
+    <string name="settings">Setări</string>
+    <string name="settings_background">Rulează în fundal</string>
+    <string name="settings_background_context">Vom cere sistemului Android să pornească aplicația în fundal</string>
+    <string name="settings_unmetered">Doar conexiuni nelimitate</string>
+    <string name="settings_unmetered_context">Rulează doar dacă dispozitivul este conectat la o rețea nelimitată ca Wi-Fi-ul</string>
+    <string name="settings_charging">Doar în timp ce se încarcă</string>
+    <string name="settings_charging_context">Rulează doar dacă bateria dispozitivului se încarcă</string>
+    <string name="settings_capacity">Câți oameni se pot ajuta în același timp</string>
+    <plurals name="settings_capacity_specific">
+        <item quantity="one">Ajută doar o persoană</item>
+        <item quantity="few">Ajută %d persoane în același timp</item>
+        <item quantity="other">Ajută %d de persoane în același timp</item>
+    </plurals>
+    <string name="settings_capacity_unlimited">Ajută un număr nelimitat de persoane în același timp</string>
+    <string name="settings_capacity_warning">Schimbările se aplică doar la repornirea serviciului</string>
+    <string name="notification_channel">Snowflake</string>
+    <string name="notification_text">Se caută oameni ce pot fi ajutați să evite cenzura…</string>
+    <plurals name="notification_text_connected">
+        <item quantity="one">Se ajută o persoană să evite cenzura</item>
+        <item quantity="few">Se ajută %d persoane să evite cenzura</item>
+        <item quantity="other">Se ajută %d de persoane să evite cenzura</item>
+    </plurals>
+    <string name="stats">Statistici</string>
+    <string name="stats_today">Astăzi</string>
+    <string name="stats_total">Totalul</string>
+    <string name="quick_settings_looking">Se caută…</string>
+    <string name="quick_settings_helping">Se ajută %d</string>
 </resources>
