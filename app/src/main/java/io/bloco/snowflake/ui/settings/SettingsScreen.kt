@@ -23,6 +23,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -77,6 +80,7 @@ private fun BackgroundSetting(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val background = state.config?.background == true
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -85,7 +89,10 @@ private fun BackgroundSetting(
                 .selectable(
                     selected = background,
                     role = Role.Switch,
-                    onClick = { onEvent(SettingsViewModel.Event.BackgroundChange(!background)) },
+                    onClick = {
+                        onEvent(SettingsViewModel.Event.BackgroundChange(!background))
+                        hapticFeedback.forSwitch(!background)
+                    },
                 ).padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         Text(
@@ -114,6 +121,7 @@ private fun UnmeteredSetting(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val unmeteredOnly = state.config?.unmeteredOnly == true
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -122,7 +130,10 @@ private fun UnmeteredSetting(
                 .selectable(
                     selected = unmeteredOnly,
                     role = Role.Switch,
-                    onClick = { onEvent(SettingsViewModel.Event.UnmeteredOnlyChange(!unmeteredOnly)) },
+                    onClick = {
+                        onEvent(SettingsViewModel.Event.UnmeteredOnlyChange(!unmeteredOnly))
+                        hapticFeedback.forSwitch(!unmeteredOnly)
+                    },
                 ).padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         Text(
@@ -151,6 +162,7 @@ private fun ChargingSetting(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val chargingOnly = state.config?.chargingOnly == true
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -159,7 +171,10 @@ private fun ChargingSetting(
                 .selectable(
                     selected = chargingOnly,
                     role = Role.Switch,
-                    onClick = { onEvent(SettingsViewModel.Event.ChargingOnlyChange(!chargingOnly)) },
+                    onClick = {
+                        onEvent(SettingsViewModel.Event.ChargingOnlyChange(!chargingOnly))
+                        hapticFeedback.forSwitch(!chargingOnly)
+                    },
                 ).padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         Text(
@@ -188,6 +203,7 @@ private fun CapacitySetting(
     state: SettingsViewModel.State,
     onEvent: (SettingsViewModel.Event) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Text(
         text = stringResource(R.string.settings_capacity),
         style = MaterialTheme.typography.titleMediumEmphasized,
@@ -204,6 +220,7 @@ private fun CapacitySetting(
         onValueChange = {
             val cap = CAPACITY_RANGE_VALUES[it] ?: CAPACITY_RANGE_VALUES.values.first()
             onEvent(SettingsViewModel.Event.CapacityChange(cap))
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
         },
         valueRange = CAPACITY_RANGE_VALUES.keys.let { it.first()..it.last() },
         steps = CAPACITY_RANGE_VALUES.size - 2,
@@ -242,6 +259,15 @@ private fun CapacitySetting(
                 .padding(vertical = 4.dp, horizontal = 16.dp),
         )
     }
+}
+
+private fun HapticFeedback.forSwitch(isTurnedOn: Boolean) {
+    performHapticFeedback(
+        when {
+            isTurnedOn -> HapticFeedbackType.ToggleOn
+            else -> HapticFeedbackType.ToggleOff
+        },
+    )
 }
 
 private val CAPACITY_RANGE_VALUES =

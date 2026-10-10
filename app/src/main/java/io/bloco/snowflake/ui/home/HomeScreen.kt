@@ -42,7 +42,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -70,6 +72,7 @@ fun HomeScreen(
     openStats: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val isEnabled = state.config?.isEnabled == true
     val enabledTransition = updateTransition(isEnabled, label = "enabled")
     val sizeClass = currentWindowAdaptiveInfoV2().windowSizeClass
@@ -171,7 +174,15 @@ fun HomeScreen(
                     .selectable(
                         selected = isEnabled,
                         role = Role.Switch,
-                        onClick = { onEvent(HomeViewModel.Event.EnabledChange(!isEnabled)) },
+                        onClick = {
+                            onEvent(HomeViewModel.Event.EnabledChange(!isEnabled))
+                            hapticFeedback.performHapticFeedback(
+                                when {
+                                    isEnabled -> HapticFeedbackType.ToggleOff
+                                    else -> HapticFeedbackType.ToggleOn
+                                },
+                            )
+                        },
                     ),
         ) {
             Row(
