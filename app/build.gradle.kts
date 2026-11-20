@@ -13,7 +13,9 @@ plugins {
 android {
     namespace = "io.bloco.snowflake"
     compileSdk {
-        version = release(37)
+        version = release(37) {
+            minorApiLevel = 1
+        }
     }
 
     defaultConfig {
