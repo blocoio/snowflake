@@ -51,9 +51,9 @@ fun StatsScreen(
     val locale = Locale.current
     val dayPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "dd MMM")
     val dayFormatter = DateTimeFormatter.ofPattern(dayPattern)
-    val monthPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "MMM YYYY")
+    val monthPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "MMM yyyy")
     val monthFormatter = DateTimeFormatter.ofPattern(monthPattern)
-    val yearPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "YYYY")
+    val yearPattern = DateFormat.getBestDateTimePattern(locale.platformLocale, "yyyy")
     val yearFormatter = DateTimeFormatter.ofPattern(yearPattern)
 
     Column(modifier) {
