@@ -5,6 +5,8 @@ import io.bloco.snowflake.models.StatsInstant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import java.time.LocalDate
 
 class StatsStore(
@@ -12,6 +14,8 @@ class StatsStore(
     val getLastDayStats: () -> Flow<DayStats?>,
     val getAllStats: () -> Flow<List<DayStats>>,
 ) {
+    private val mutex = Mutex()
+
     fun today() =
         getLastDayStats()
             // Ensure it's Today's since we may not have an entry yet
@@ -19,21 +23,23 @@ class StatsStore(
 
     fun all() = getAllStats()
 
-    suspend fun incrementInstant(instant: StatsInstant) {
-        val previousValue = today().first()
-        val newValue = previousValue.copy(
-            failedConnections = previousValue.failedConnections + instant.failedConnectionCount,
-            inboundBytes = previousValue.inboundBytes + instant.inboundBytes,
-            outboundBytes = previousValue.outboundBytes + instant.outboundBytes,
-        )
-        updateStats(newValue)
-    }
+    suspend fun incrementInstant(instant: StatsInstant) =
+        mutex.withLock {
+            val previousValue = today().first()
+            val newValue = previousValue.copy(
+                failedConnections = previousValue.failedConnections + instant.failedConnectionCount,
+                inboundBytes = previousValue.inboundBytes + instant.inboundBytes,
+                outboundBytes = previousValue.outboundBytes + instant.outboundBytes,
+            )
+            updateStats(newValue)
+        }
 
-    suspend fun incrementConnections() {
-        val previousValue = today().first()
-        val newValue = previousValue.copy(
-            connections = previousValue.connections + 1,
-        )
-        updateStats(newValue)
-    }
+    suspend fun incrementConnections() =
+        mutex.withLock {
+            val previousValue = today().first()
+            val newValue = previousValue.copy(
+                connections = previousValue.connections + 1,
+            )
+            updateStats(newValue)
+        }
 }
