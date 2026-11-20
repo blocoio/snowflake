@@ -47,7 +47,7 @@ fun SettingsScreen(
 ) {
     Column(modifier) {
         CenterAlignedTopAppBar(
-            title = { Text("Settings") },
+            title = { Text(stringResource(R.string.settings)) },
             navigationIcon = {
                 IconButton(onClick = { goBack() }) {
                     Icon(
