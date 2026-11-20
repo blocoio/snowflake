@@ -50,7 +50,7 @@ class SnowflakeWorker(
             return Result.failure()
         }
 
-        if (snowflakeManager.state.value is SnowflakeManager.State.Running) {
+        if (snowflakeManager.state.value != SnowflakeManager.State.Stopped) {
             Timber.i("SnowflakeWorker: already running")
             return Result.success()
         }

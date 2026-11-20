@@ -11,6 +11,7 @@
     <string name="snowflake_disabled">Enable Snowflake. Help others bypass censorship.</string>
     <string name="snowflake_enabled">Snowflake is Active. You’re helping bypass censorship.</string>
     <string name="snowflake_stopped">Stopped</string>
+    <string name="snowflake_starting">Starting…</string>
     <string name="snowflake_looking_to_help">Looking for someone to help…</string>
     <string name="snowflake_helping">Helping</string>
     <plurals name="persons">
@@ -78,5 +79,6 @@
     <string name="stats_total">Total</string>
 
     <string name="quick_settings_looking">Looking…</string>
+    <string name="quick_settings_starting">Starting…</string>
     <string name="quick_settings_helping">Helping %d</string>
 </resources>

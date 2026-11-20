@@ -72,6 +72,8 @@ class SnowflakeTileService : TileService() {
                     getString(R.string.quick_settings_looking)
                 }
 
+            SnowflakeManager.State.Starting -> getString(R.string.quick_settings_starting)
+
             SnowflakeManager.State.Stopped -> getString(R.string.snowflake_stopped)
         }
 }

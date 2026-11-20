@@ -262,6 +262,8 @@ private fun Stats(
         val running = state.snowflakeState as? SnowflakeManager.State.Running
         StatsCell(
             title = when {
+                state.snowflakeState == SnowflakeManager.State.Starting ->
+                    stringResource(R.string.snowflake_starting)
                 running == null -> stringResource(R.string.snowflake_stopped)
                 running.clientsConnected > 0 -> stringResource(R.string.snowflake_helping)
                 else -> null
