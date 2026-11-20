@@ -12,7 +12,6 @@ import androidx.room.Room
 import androidx.work.WorkManager
 import io.bloco.snowflake.background.BatteryOptimization
 import io.bloco.snowflake.background.ConfigureWorkers
-import io.bloco.snowflake.background.MonitorAppOpen
 import io.bloco.snowflake.background.SnowflakeManager
 import io.bloco.snowflake.data.AppDataStore
 import io.bloco.snowflake.data.FetchStunServers
@@ -75,7 +74,6 @@ class Dependencies(
 
     val batteryOptimization by lazy { BatteryOptimization(powerManager, app) }
     val configureWorkers by lazy { ConfigureWorkers(workManager) }
-    val monitorAppOpen by lazy { MonitorAppOpen() }
     private val snowflakeProxy: SnowflakeProxy by lazy { SnowflakeProxy() }
 
     val snowflakeManager by lazy {
@@ -110,7 +108,6 @@ class Dependencies(
     val mainViewModel by lazy {
         MainViewModel(
             getAppConfig = appDataStore::appConfig,
-            markAppAsOpened = monitorAppOpen::markAppAsOpened,
         )
     }
 
