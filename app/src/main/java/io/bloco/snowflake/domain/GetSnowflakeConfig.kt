@@ -30,14 +30,14 @@ class GetSnowflakeConfig(
     companion object {
         private val DEFAULT_STUN_SERVERS =
             listOf(
-                "stun.epygi.com:3478",
-                "stun.uls.co.za:3478",
-                "stun.voipgate.com:3478",
-                "stun.mixvoip.com:3478",
-                "stun.telnyx.com:3478",
-                "stun.hot-chilli.net:3478",
-                "stun.fitauto.ru:3478",
-                "stun.m-online.net:3478",
+                "stun:stun.epygi.com:3478",
+                "stun:stun.uls.co.za:3478",
+                "stun:stun.voipgate.com:3478",
+                "stun:stun.mixvoip.com:3478",
+                "stun:stun.telnyx.com:3478",
+                "stun:stun.hot-chilli.net:3478",
+                "stun:stun.fitauto.ru:3478",
+                "stun:stun.m-online.net:3478",
             )
     }
 }
