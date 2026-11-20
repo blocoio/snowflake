@@ -22,8 +22,8 @@ android {
         applicationId = "io.bloco.snowflake"
         minSdk = 26
         targetSdk = 37
-        versionCode = 80 // Increment by 5 to account for ABI split
-        versionName = "1.15"
+        versionCode = 85 // Increment by 5 to account for ABI split
+        versionName = "1.16"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         androidResources.localeFilters += listOf(

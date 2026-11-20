@@ -25,6 +25,17 @@ Similar to VPNs, which help users bypass Internet censorship, Snowflake disguise
 activity as though you’re making a video or voice call, making you less detectable to Internet
 censors.
 
+## Verifying GitHub releases
+
+App APKs are also available attached to [GitHub releases](https://github.com/blocoio/snowflake/releases).
+They are built from the corresponding git tag and signed by the developer. You can verify them with
+[AppVerifier](https://github.com/soupslurpr/AppVerifier) or `apksigner verify --print-certs`:
+
+```
+io.bloco.snowflake
+D4:75:4E:FF:DD:C6:12:BE:97:B2:D8:29:85:75:22:90:CB:D7:B2:01:A1:38:B5:B7:23:0E:36:55:D1:44:EB:F5
+```
+
 ## Contribute
 
 ### Bugs & Ideas
